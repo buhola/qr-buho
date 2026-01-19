@@ -1,0 +1,9 @@
+{
+  "label": "Recursos Adicionales",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "slug": "multi-empresa/recursos-adicionales",
+    "description": "Guía para gestionar recursos adicionales en el sistema."
+  }
+}
