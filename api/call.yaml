@@ -20,6 +20,26 @@ paths:
           application/json:
             schema:
               type: object
+              example:
+                {
+                  "number": "51955682576",
+                  "isVideo": false,
+                  "callDuration": 5
+                }
       responses:
         '200':
           description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  {
+                    "message": "Llamada simulada iniciada",
+                    "data": {
+                      "number": "51955682576",
+                      "isVideo": false,
+                      "callDuration": 5,
+                      "status": "active"
+                    }
+                  }

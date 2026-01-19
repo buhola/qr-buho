@@ -20,9 +20,31 @@ paths:
           application/json:
             schema:
               type: object
+              example:
+                {
+                  "subject": "Test 02",
+                  "description": "optional",
+                  "participants": [
+                    "5531900000000",
+                    "5531900000000"
+                  ]
+                }
       responses:
         '200':
           description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  {
+                    "message": "Grupo creado exitosamente",
+                    "data": {
+                      "id": "120363404495022854@g.us",
+                      "subject": "Test 02",
+                      "description": "optional"
+                    }
+                  }
   "/api/group/update/picture":
     post:
       summary: "Update Group Picture"
@@ -31,37 +53,102 @@ paths:
           application/json:
             schema:
               type: object
+              example:
+                {
+                  "groupJid": "120363404495022854@g.us",
+                  "image": "https://evolution-api.com/files/sticker.png"
+                }
       responses:
         '200':
           description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  {
+                    "message": "Foto del grupo actualizada exitosamente",
+                    "data": {
+                      "groupJid": "120363404495022854@g.us"
+                    }
+                  }
   "/api/group/all":
     get:
       summary: "Fetch All Groups"
       responses:
         '200':
           description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  {
+                    "data": [
+                      {
+                        "id": "120363404495022854@g.us",
+                        "subject": "Test 02",
+                        "description": "optional",
+                        "participants": ["5531900000000"]
+                      }
+                    ]
+                  }
   "/api/group/find":
     get:
       summary: "Find Group by Jid"
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
+      parameters:
+        - name: groupJid
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Group JID
       responses:
         '200':
           description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  {
+                    "data": {
+                      "id": "120363404495022854@g.us",
+                      "subject": "Test 02",
+                      "description": "optional",
+                      "participants": ["5531900000000"],
+                      "creation": 1234567890
+                    }
+                  }
   "/api/group/participants":
     get:
       summary: "Find Participants"
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
+      parameters:
+        - name: groupJid
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Group JID
       responses:
         '200':
           description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  {
+                    "data": {
+                      "groupJid": "120363404495022854@g.us",
+                      "participants": [
+                        {
+                          "id": "5531900000000@s.whatsapp.net",
+                          "admin": false
+                        }
+                      ]
+                    }
+                  }
   "/api/group/leave":
     post:
       summary: "Leave Group"
@@ -70,9 +157,24 @@ paths:
           application/json:
             schema:
               type: object
+              example:
+                {
+                  "groupJid": "120363404495022854@g.us"
+                }
       responses:
         '200':
           description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  {
+                    "message": "Grupo abandonado exitosamente",
+                    "data": {
+                      "groupJid": "120363404495022854@g.us"
+                    }
+                  }
   "/api/group/update/name":
     post:
       summary: "Update Group Name"
@@ -81,9 +183,26 @@ paths:
           application/json:
             schema:
               type: object
+              example:
+                {
+                  "groupJid": "120363404495022854@g.us",
+                  "subject": "Group Name or Subject"
+                }
       responses:
         '200':
           description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  {
+                    "message": "Nombre del grupo actualizado exitosamente",
+                    "data": {
+                      "groupJid": "120363404495022854@g.us",
+                      "subject": "Group Name or Subject"
+                    }
+                  }
   "/api/group/update/description":
     post:
       summary: "Update Group Description"
@@ -92,32 +211,106 @@ paths:
           application/json:
             schema:
               type: object
+              example:
+                {
+                  "groupJid": "120363404495022854@g.us",
+                  "description": "Test in group created by gateway"
+                }
       responses:
         '200':
           description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  {
+                    "message": "Descripción del grupo actualizada exitosamente",
+                    "data": {
+                      "groupJid": "120363404495022854@g.us",
+                      "description": "Test in group created by gateway"
+                    }
+                  }
   "/api/group/participant/update":
     post:
       summary: "Update Participant"
-      responses:
-        '200':
-          description: Successful response
-  "/api/group/toggle-ephemeral":
-    post:
-      summary: "Toggle Ephemeral"
-      responses:
-        '200':
-          description: Successful response
-  "/api/group/invite/code":
-    get:
-      summary: "Fetch Invite Code"
       requestBody:
         content:
           application/json:
             schema:
               type: object
+              example:
+                {
+                  "groupJid": "120363404495022854@g.us",
+                  "participants": ["5531900000000@s.whatsapp.net"],
+                  "action": "promote"
+                }
       responses:
         '200':
           description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  {
+                    "message": "Participante actualizado exitosamente",
+                    "data": {
+                      "groupJid": "120363404495022854@g.us"
+                    }
+                  }
+  "/api/group/toggle-ephemeral":
+    post:
+      summary: "Toggle Ephemeral"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                {
+                  "groupJid": "120363404495022854@g.us",
+                  "ephemeral": 86400
+                }
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  {
+                    "message": "Mensajes efímeros actualizados exitosamente",
+                    "data": {
+                      "groupJid": "120363404495022854@g.us",
+                      "ephemeral": 86400
+                    }
+                  }
+  "/api/group/invite/code":
+    get:
+      summary: "Fetch Invite Code"
+      parameters:
+        - name: groupJid
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Group JID
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  {
+                    "data": {
+                      "groupJid": "120363404495022854@g.us",
+                      "inviteCode": "KoOUHDF7WO0BwP2YK04fT0"
+                    }
+                  }
     post:
       summary: "Find group by invited code"
       requestBody:
@@ -125,20 +318,48 @@ paths:
           application/json:
             schema:
               type: object
+              example:
+                {
+                  "inviteCode": "KoOUHDF7WO0BwP2YK04fT0"
+                }
       responses:
         '200':
           description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  {
+                    "data": {
+                      "groupJid": "120363404495022854@g.us",
+                      "subject": "Test 02"
+                    }
+                  }
   "/api/group/invite/revoke":
     get:
       summary: "Revoke Invite Code"
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
+      parameters:
+        - name: groupJid
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Group JID
       responses:
         '200':
           description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  {
+                    "message": "Código de invitación revocado exitosamente",
+                    "data": {
+                      "groupJid": "120363404495022854@g.us"
+                    }
+                  }
   "/group/invite/send":
     post:
       summary: "Send Invite Url"
@@ -147,12 +368,56 @@ paths:
           application/json:
             schema:
               type: object
+              example:
+                {
+                  "groupJid": "120363404495022854@g.us",
+                  "description": "Access this link to join my WhatsApp group:",
+                  "numbers": [
+                    "51904458227"
+                  ]
+                }
       responses:
         '200':
           description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  {
+                    "message": "Invitaciones enviadas exitosamente",
+                    "data": {
+                      "groupJid": "120363404495022854@g.us",
+                      "sent": 1
+                    }
+                  }
   "/api/group/update/setting":
     post:
       summary: "Update settings"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                {
+                  "groupJid": "120363404495022854@g.us",
+                  "settings": {
+                    "announcement": true,
+                    "restrict": false
+                  }
+                }
       responses:
         '200':
           description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  {
+                    "message": "Configuración del grupo actualizada exitosamente",
+                    "data": {
+                      "groupJid": "120363404495022854@g.us"
+                    }
+                  }

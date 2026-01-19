@@ -15,6 +15,47 @@ paths:
   "/webhook/set":
     post:
       summary: "Set"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                {
+                  "webhook": {
+                    "enabled": true,
+                    "url": "https://webhook.site",
+                    "headers": {
+                      "autorization": "Bearer TOKEN",
+                      "Content-Type": "application/json"
+                    },
+                    "byEvents": false,
+                    "base64": false,
+                    "events": [
+                      "MESSAGES_UPSERT"
+                    ]
+                  }
+                }
       responses:
         '200':
           description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  {
+                    "message": "Webhook configurado exitosamente",
+                    "data": {
+                      "id": "cmkbzujb31054nx4j2sbf6mmp",
+                      "url": "https://webhook.site",
+                      "headers": {
+                        "Content-Type": "application/json",
+                        "autorization": "Bearer TOKEN"
+                      },
+                      "enabled": true,
+                      "events": [
+                        "MESSAGES_UPSERT"
+                      ]
+                    }
+                  }

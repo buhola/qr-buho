@@ -15,9 +15,49 @@ paths:
   "/api/plan/list":
     get:
       summary: "List by filter"
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: integer
+          description: Plan ID
+        - name: name
+          in: query
+          schema:
+            type: string
+          description: Filter by plan name
+        - name: description
+          in: query
+          schema:
+            type: string
+          description: Filter by description
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          description: Number of items per page
       responses:
         '200':
           description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  {
+                    "data": [
+                      {
+                        "id": 1,
+                        "name": "Plan Premium",
+                        "is_free": true,
+                        "price": 49.99,
+                        "description": "Plan con todas las funcionalidades",
+                        "limit_devices": 10,
+                        "limit_messages": 5000,
+                        "limit_contacts": 1000
+                      }
+                    ]
+                  }
   "/api/plan/register":
     post:
       summary: "Registrar Plan"
@@ -26,6 +66,34 @@ paths:
           application/json:
             schema:
               type: object
+              example:
+                {
+                  "name": "Plan Premium",
+                  "is_free": true,
+                  "price": 49.99,
+                  "description": "Plan con todas las funcionalidades",
+                  "limit_devices": 10,
+                  "limit_messages": 5000,
+                  "limit_contacts": 1000
+                }
       responses:
         '200':
           description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  {
+                    "message": "Plan registrado exitosamente",
+                    "data": {
+                      "id": 1,
+                      "name": "Plan Premium",
+                      "is_free": true,
+                      "price": 49.99,
+                      "description": "Plan con todas las funcionalidades",
+                      "limit_devices": 10,
+                      "limit_messages": 5000,
+                      "limit_contacts": 1000
+                    }
+                  }

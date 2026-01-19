@@ -20,6 +20,36 @@ paths:
           application/json:
             schema:
               type: object
+              example:
+                {
+                  "number": "51955682576",
+                  "title": "Title Button",
+                  "description": "Description Button",
+                  "footer": "Footer Button",
+                  "buttons": [
+                    {
+                      "type": "reply",
+                      "displayText": "Resposta",
+                      "id": "123"
+                    }
+                  ]
+                }
       responses:
         '200':
           description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  {
+                    "message": "Mensaje enviado exitosamente",
+                    "data": {
+                      "key": {
+                        "remoteJid": "51955682576@s.whatsapp.net",
+                        "fromMe": true,
+                        "id": "3EB0FDF1AB6CAE81793069"
+                      },
+                      "status": "PENDING"
+                    }
+                  }
