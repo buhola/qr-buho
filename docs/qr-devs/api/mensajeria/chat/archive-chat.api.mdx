@@ -1,0 +1,72 @@
+---
+id: archive-chat
+title: "Archive Chat"
+description: "Archive Chat"
+sidebar_label: "Archive Chat"
+hide_title: true
+hide_table_of_contents: true
+api: eJytU8GO0zAQ/ZVqziZpQZWoT+wiziBaTlWFJsl0k8WxXXvcbRXl39E42y3LCg4sPji2M37z5r3xAIEOiSLfuuYMeoDaWSbLskTvTVcjd86W99FZOYt1Sz3Kis+eQIOr7qlmUEAn7L2hjNEig4blYrWYv1u9Xy2XH2Lx0CJH9L6wJOEY6rY7EmgOiUYZCgJF72ykKCBv53P5NBTr0HkhARrWqa4pxn0ys0swqP/CuacY8U7+fmyRZxM9bNyMTh27iD1ZllwNMv57jVLl84puppiZZAUFPXHrGtDgXZS9R25BQynpyguegkjhSCGC3g6QggENLbOPuiwHJouWv3fNWBxCUaXWFQbh97SbHDVbZxxQcMTQYWUm6Z8gJgP2mIzU2lDv/giUqsb12FkYx3GnQLT/eu2sT69pDgWd3btMrGNzsUhIU4gTi0UxL+Ywqixbj9l2iz29FPgZ+6eOYDpx6U3mryZFh0fttxPjK6mdglbM0VsYhgojfQtmHOX4kCicQW93Vz1lNypoCRsK2a4fdJYKppZ9s5H8Em6S8HjRvqO63Lipa/L819jdL/3z5fN6Awqqx2fdu0buBHwAlWcNoMBlHbLn+WwAg/YuTe9gwpTxE4Z4aa8=
+sidebar_class_name: "post api-method"
+info_path: qr-devs/api/mensajeria/chat/chat
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Archive Chat"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/chat/archive"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Archive Chat
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object","example":{"chat":"51910398955@s.whatsapp.net","archive":true}}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful response","content":{"application/json":{"schema":{"type":"object","example":{"message":"Chat archivado exitosamente","data":{"chat":"51910398955@s.whatsapp.net","archive":true}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

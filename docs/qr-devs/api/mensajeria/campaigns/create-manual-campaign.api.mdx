@@ -1,0 +1,72 @@
+---
+id: create-manual-campaign
+title: "Create manual campaign"
+description: "Create manual campaign"
+sidebar_label: "Create manual campaign"
+hide_title: true
+hide_table_of_contents: true
+api: eJzNVM1u2zAMfhWBZyV2AuyiW1cM2E7r2u4UBAVtsbE7WVL10zUw/FB7hr3YQDlNUgzracAmGDYtkfTH7yM9QqDHTDG9d3oPaoTW2UQ2sYnem77F1DtbPURneS+2HQ3IVtp7AgWueaA2gQR6xsEbKkd9YgMucfD48wcKTcKHTA2ChF1w2UdQm5VcbyUMFCPu2PujMygFxUSCoshWDGQjPtApegmyANDZ0B0mULCu1+8Wq3pRr8SqVjVfIAFTwra78/oelM3GTLwkBIre2UiRMa7rmh+aYht6zzWCgpvcthQjyL9Cw6m0IxFtINQo6LlPLuJANhFI0JhKrl6DWsl/Tl9MmHIEdXTWME0HDl/zdRkIE4kBbUYjWsbb7ywwrNQ5DQq8i8yKx9SBggp9X724xWqO4y9SeKLAVY2QgwEFXUo+qqoaE1m06a7X0/IxLJvcuaVhHl4DuS1e4qbkAQlPGHpszCz1McUs+D1mw8VrGtwfE+VGuwF7y5VvJbDu16dB+fAf97qE3t67c2hfri+uPomFuHwhngmiEOeKV8t6WcMki1QDlva2ONBb8r7i7DgDiZ5T5U1hTc46jgflN4C+57E6g3BQfyuh4yZRGxjHBiN9DWaaePsxU9iD2mxPevLbJKEj1BRKu3yjPSOdx3Vxy0jY3WRG9NvoTvIl4qJtyac3fbdnfXz1+eYWJDSHv+TgNMcE/A6y3BWABFcYKT1X9kYwaHd5lnzOyesXOorWFA==
+sidebar_class_name: "post api-method"
+info_path: qr-devs/api/mensajeria/campaigns/qrapi-campaigns
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Create manual campaign"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/api/campaigns/manual"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Create manual campaign
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object","example":{"title":"Campaña de prueba","groups":[1,2],"message":"Hola, este es un mensaje de prueba.","schedule_at":"2025-10-01 10:00:00","attach_pdf":null}}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Success","content":{"application/json":{"schema":{"type":"object","example":{"message":"Campaña creada exitosamente","data":{"id":1,"title":"Campaña de prueba","groups":[1,2],"message":"Hola, este es un mensaje de prueba.","schedule_at":"2025-10-01 10:00:00","status":"scheduled"}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

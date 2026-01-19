@@ -1,0 +1,9 @@
+{
+  "label": "Mensajer\u00eda",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "slug": "mensajeria",
+    "description": "Encuentra ayuda sobre la API de Mensajer\u00eda (Cliente)"
+  }
+}

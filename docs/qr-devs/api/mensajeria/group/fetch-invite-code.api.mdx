@@ -1,0 +1,72 @@
+---
+id: fetch-invite-code
+title: "Fetch Invite Code"
+description: "Fetch Invite Code"
+sidebar_label: "Fetch Invite Code"
+hide_title: true
+hide_table_of_contents: true
+api: eJx1U8tu2zAQ/BVhTy1AWIrj9MFTH2nSJIcUjYOiMIyCltYWU0mkyaUTQ9C/F0vZah2nuggQZmdnZ0YtWOVUjYTOg5y10KgaQcLKmWCvdQECdAMS1gHdFgQ4XAftsABJLqAAn5dYK5At0NbyoCenmxV0Agr0udOWtGGCSyZMrq/OoZszjbem8eh5cpxl/DrE34U8R++XoUr2YBCQm4awIYYrayudK4anD55n2mM1ZvGAOYEAfFK1rTDuURQhw4kSTsbZ6ZvTSTaZvD/LxuN3Z5MPq1Hw8fiNJvxsCma7Mbf3X88v3v64zT49fhv/vMkmy2kGXf88v/gCKS+Tq0iQRAYBNVJpeOMKWZVVVIKEVFmdRjlpvy/Ne7hHt9kHE1wFEkoi62WatoSNauiXLrrR2o0WoTSjSsFzDdOISu4iDwjYKKfVoup9Hyh695cqVAQSCqzNf4nCojC10g0fPWd7liZSaWJz+5R5DzrfD56MslHGdbDGU61iTLuOvWTQwdYhRsInSm0V94reiXZn3gyU1SD6NIfAYlUKhLmA0nhiWNsulMd7V3Udf+4LzcYW2rMlBcilqjweaRg6B6++79r/OvlbZ/GyyN+4PfyNNqoKDIv93+cAcjbvBJSoCnRRTT/3Mc/R0j9TR21nlqFNl1+m0HV/AKY0R1s=
+sidebar_class_name: "get api-method"
+info_path: qr-devs/api/mensajeria/group/group
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Fetch Invite Code"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/api/group/invite/code"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Fetch Invite Code
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"groupJid","in":"query","required":true,"schema":{"type":"string"},"description":"Group JID"}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful response","content":{"application/json":{"schema":{"type":"object","example":{"data":{"groupJid":"120363404495022854@g.us","inviteCode":"KoOUHDF7WO0BwP2YK04fT0"}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      
