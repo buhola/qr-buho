@@ -23,7 +23,7 @@ const config: Config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'zjceo', // Usually your GitHub org/user name.
+  organizationName: 'buhola', // Usually your GitHub org/user name.
   projectName: 'qr-buho', // Usually your repo name.
 
   onBrokenLinks: 'throw',
@@ -49,7 +49,7 @@ const config: Config = {
           showLastUpdateTime: true,
           showLastUpdateAuthor: true,
           editUrl:
-            'https://github.com/zjceo/qr-buho/tree/main/',
+            'https://github.com/buhola/qr-buho/tree/main/',
         },
         theme: {
           customCss: './src/css/custom.css',
