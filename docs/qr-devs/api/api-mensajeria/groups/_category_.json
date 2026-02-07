@@ -1,0 +1,9 @@
+{
+    "label": "Grupos",
+    "position": 3,
+    "link": {
+      "type": "generated-index",
+      "slug": "api/mensajeria/groups",
+      "description": "Documentacion de API de Grupos"
+    }
+  }

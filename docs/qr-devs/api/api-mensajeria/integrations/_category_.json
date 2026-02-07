@@ -1,0 +1,9 @@
+{
+    "label": "Integraciones",
+    "position": 4,
+    "link": {
+      "type": "generated-index",
+      "slug": "api/mensajeria/integrations",
+      "description": "Documentacion de API de Integraciones"
+    }
+  }

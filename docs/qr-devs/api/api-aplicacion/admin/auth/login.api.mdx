@@ -1,0 +1,72 @@
+---
+id: login
+title: "Login"
+description: "Login"
+sidebar_label: "Login"
+hide_title: true
+hide_table_of_contents: true
+api: eJytVEFu2zAQ/IoxZ0Z2eqgNnuoUPRRo0TRxT4YRrMW1xYQiZZJKYgh+VN/QjxUrOUmTIu2h1YGiyN3ZnZ2BOkTetZzyWTB76A5l8Jl9li01jbMlZRv8+DoFL2eprLgm2eV9w9AI62suMxT4nurGsVxxTdZBg0xt/bvcmlBbb0NRhhoKDaV0F6KB7otFSvzjO+Egj0Lk1ASfOAnQm8lEXoZTGW0jjUDjsi1LTgnqv/RKjb3K4YYFeWPS5m2aTc0mmSTLdDadFUUBhTZxlHBroE/VXxh6qqXcXC4HXsLsOYtPYWs9FGrOVZBZNCHlfjq5gsaY2lyN3TEocbzlmKCXHdoohaucm6TH410s1m0VCkd4WeEzWT+67DNxUC8Tu8yefL6y5vAqwqIPecBQuKVoae0GbR7zB4U21LoMDcN1eBWoXZtQ0zCUlYIIdfFkvw//6iAF6zehb85mAcLXi/n5x9HJ6IITOzeQ4JiGrk6LSTGRLBl9Tb1njtI9qPOMxqOPMt/nceN6ImqYa3cUbgkRDgqDdCuFSnTVS3TdmhJ/i+5wkONdy3EPvVw9jVW+DgoVkxGzLTvc8B4a7webnyykuoS7Vrr4zfIi8pAxL0tu8h9jV79Y7/zL5QIK6+MvoA5GciLdQfWrBhRCP4Ve+v6sgyO/bWkrsQOmPD8BoBl8IA==
+sidebar_class_name: "post api-method"
+info_path: qr-devs/api/api-aplicacion/admin/auth/qrapi-reseller
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Login"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/auth/login"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Login
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object","example":{"email":"admin@tudominio.com","password":"contraseña"}}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Success","content":{"application/json":{"schema":{"type":"object","example":{"api_token":"fdsf6s87dfsdsdfsd7878...","user":{"id":1,"email":"admin@tudominio.com","name":"Admin"}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

@@ -1,0 +1,9 @@
+{
+    "label": "Mensajería",
+    "position": 3,
+    "link": {
+      "type": "generated-index",
+      "slug": "api/mensajeria",
+      "description": "Documentacion de API de Mensajería"
+    }
+  }

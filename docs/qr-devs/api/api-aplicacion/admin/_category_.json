@@ -1,0 +1,9 @@
+{
+    "label": "Admin",
+    "position": 1,
+    "link": {
+      "type": "generated-index",
+      "slug": "api/aplicacion/admin",
+      "description": "Documentacion de API de Admin"
+    }
+  }

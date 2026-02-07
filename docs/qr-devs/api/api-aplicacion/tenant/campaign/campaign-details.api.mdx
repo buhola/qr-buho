@@ -1,0 +1,72 @@
+---
+id: campaign-details
+title: "Campaign Details"
+description: "Campaign Details"
+sidebar_label: "Campaign Details"
+hide_title: true
+hide_table_of_contents: true
+api: eJx1U0Fu2zAQ/IqwpxZgLNmoL7wFSdHm1ibpKTCCtbi2mFIkQ67SGIIe1Tf0Y8VKjmMjiSHAEjU7mp2d7SFiwpaYUgZ914PHlkCDNaDAetAQkRtQkOixs4kMaE4dKch1Qy2C7oF3cazwTFtKMCgwlOtkI9sgBBfYRrRbX1xdwrASphyDz5SleFFV8ndacdPVNeUMCurgmTwLBGN0tkaBlA9ZcP1bEWH9QDWDAnrGNjoauZFHiDWg5wrYspxPsv79xcJQEVNHawQF2xS6KEbM1WKloKWccSvo78GhKigzFZSLzhct+YwP9Fo9g8kU0zm6RwYNi2qxPJtXZ9W8mFe6kkswjNxl0AewOM2B0d0nqm205DmDXlYK8tj6l6WCDVoB6uUw/T70+JIYrRPrWuImGNCwJTFkHKOGEqMt6z06l7kJf8remkGEUXp6SUGXHGhomGPWZdkzefR8b80we0yzddeEmRO7TkXcjqjiZuQBBU+YLK7dNOgDxTTuDXZOPDLUhg+JurUJLVoPwyDBsX4TRqr9BH9en/+4Ks6Kl+ala+lgIpnPqlklaYwhc4tjXvbhfsetEwGHODE9cxndKEFNpvR7J+8Ao5WEHn1c3AQF2hpYKWhCZsH1/Roz/UpuGOT4saO0A323ejVotNzYLPcG9AZdpjeSDqsAn673u/i5ON4t9b7q/SH63TgS18kTKPhNu2nPh9WgoCE0lEYh04vzuqbIRyVv9m9YHYXs29dbGIb/heVxDw==
+sidebar_class_name: "get api-method"
+info_path: qr-devs/api/api-aplicacion/tenant/campaign/qrapi-campaigns
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Campaign Details"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/api/campaigns/show/{id}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Campaign Details
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"id","in":"path","required":true,"schema":{"type":"integer"},"description":"Campaign ID"}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Success","content":{"application/json":{"schema":{"type":"object","example":{"data":{"id":1,"title":"Campaña de prueba","groups":[1,2],"message":"Hola, este es un mensaje de prueba.","schedule_at":"2025-10-01 10:00:00","status":"scheduled","total_recipients":50,"sent":45,"failed":5}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

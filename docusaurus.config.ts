@@ -67,89 +67,89 @@ const config: Config = {
         config: {
           integrations: {
             specPath: "api/integrations.yaml",
-            outputDir: "docs/qr-devs/api/mensajeria/integrations",
-            baseUrl: "/qr-devs/api/mensajeria",
+            outputDir: "docs/qr-devs/api/api-mensajeria/integrations",
+            baseUrl: "/qr-devs/api/api-mensajeria/integrations",
             sidebarOptions: {
               groupPathsBy: "tag",
             },
           },
           send_message: {
             specPath: "api/send_message.yaml",
-            outputDir: "docs/qr-devs/api/mensajeria/send_message",
-            baseUrl: "/qr-devs/api/mensajeria",
+            outputDir: "docs/qr-devs/api/api-mensajeria/send",
+            baseUrl: "/qr-devs/api/api-mensajeria/send",
             sidebarOptions: {
               groupPathsBy: "tag",
             },
           },
           call: {
             specPath: "api/call.yaml",
-            outputDir: "docs/qr-devs/api/mensajeria/call",
-            baseUrl: "/qr-devs/api/mensajeria",
+            outputDir: "docs/qr-devs/api/api-mensajeria/calls",
+            baseUrl: "/qr-devs/api/api-mensajeria/calls",
             sidebarOptions: {
               groupPathsBy: "tag",
             },
           },
           chat: {
             specPath: "api/chat.yaml",
-            outputDir: "docs/qr-devs/api/mensajeria/chat",
-            baseUrl: "/qr-devs/api/mensajeria",
+            outputDir: "docs/qr-devs/api/api-mensajeria/chats",
+            baseUrl: "/qr-devs/api/api-mensajeria/chats",
             sidebarOptions: {
               groupPathsBy: "tag",
             },
           },
           group: {
             specPath: "api/group.yaml",
-            outputDir: "docs/qr-devs/api/mensajeria/group",
-            baseUrl: "/qr-devs/api/mensajeria",
+            outputDir: "docs/qr-devs/api/api-mensajeria/groups",
+            baseUrl: "/qr-devs/api/api-mensajeria/groups",
             sidebarOptions: {
               groupPathsBy: "tag",
             },
           },
           label: {
             specPath: "api/label.yaml",
-            outputDir: "docs/qr-devs/api/mensajeria/label",
-            baseUrl: "/qr-devs/api/mensajeria",
+            outputDir: "docs/qr-devs/api/api-mensajeria/label",
+            baseUrl: "/qr-devs/api/api-mensajeria/label",
             sidebarOptions: {
               groupPathsBy: "tag",
             },
           },
+          // Application APIs
           devices: {
             specPath: "api/devices.yaml",
-            outputDir: "docs/qr-devs/api/mensajeria/devices",
-            baseUrl: "/qr-devs/api/mensajeria",
+            outputDir: "docs/qr-devs/api/api-aplicacion/tenant/device",
+            baseUrl: "/qr-devs/api/api-aplicacion/tenant/device",
             sidebarOptions: {
               groupPathsBy: "tag",
             },
           },
           campaigns: {
             specPath: "api/campaigns.yaml",
-            outputDir: "docs/qr-devs/api/mensajeria/campaigns",
-            baseUrl: "/qr-devs/api/mensajeria",
+            outputDir: "docs/qr-devs/api/api-aplicacion/tenant/campaign",
+            baseUrl: "/qr-devs/api/api-aplicacion/tenant/campaign",
             sidebarOptions: {
               groupPathsBy: "tag",
             },
           },
-          // Admin APIs
           reseller: {
             specPath: "api/reseller.yaml",
-            outputDir: "docs/qr-devs/api/admin/reseller",
-            baseUrl: "/qr-devs/api/admin",
+            outputDir: "docs/qr-devs/api/api-aplicacion/admin/auth",
+            baseUrl: "/qr-devs/api/api-aplicacion/admin/auth",
             sidebarOptions: {
               groupPathsBy: "tag",
             },
           },
           plans: {
             specPath: "api/plans.yaml",
-            outputDir: "docs/qr-devs/api/admin/plans",
-            baseUrl: "/qr-devs/api/admin",
+            outputDir: "docs/qr-devs/api/api-aplicacion/admin",
+            baseUrl: "/qr-devs/api/api-aplicacion/admin",
             sidebarOptions: {
               groupPathsBy: "tag",
             },
           },
           tenants: {
             specPath: "api/tenants.yaml",
-            outputDir: "docs/qr-devs/api/admin/tenants",
-            baseUrl: "/qr-devs/api/admin",
+            outputDir: "docs/qr-devs/api/api-aplicacion/admin",
+            baseUrl: "/qr-devs/api/api-aplicacion/admin",
             sidebarOptions: {
               groupPathsBy: "tag",
             },

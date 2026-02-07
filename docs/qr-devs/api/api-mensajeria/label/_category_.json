@@ -1,0 +1,9 @@
+{
+    "label": "Etiquetas",
+    "position": 5,
+    "link": {
+      "type": "generated-index",
+      "slug": "api/mensajeria/label",
+      "description": "Documentacion de API de Etiquetas"
+    }
+  }

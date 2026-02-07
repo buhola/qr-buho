@@ -1,0 +1,72 @@
+---
+id: find-participants
+title: "Find Participants"
+description: "Find Participants"
+sidebar_label: "Find Participants"
+hide_title: true
+hide_table_of_contents: true
+api: eJx1U8tu2zAQ/BVjTw1ASPKraHRKgbRBcyqa9GQYxVpaW0wlkiaXbgyB/16Qst3YTnURIMzOjmZmezBosSMm66Bc9KCwIyhhY7U3j7IGAVJBCVtPdg8CLG29tFRDydaTAFc11CGUPfDexEHHVqoNBAE1ucpKw1JHgodIOHr8dg9hGWmc0cqRi5OTooivc/yTrypybu3b0REMAiqtmBRHOBrTygojPH9xcaa/VqNXL1QxCKBX7ExLaQ9ygpx+sYTxpJh+nM6K2ex2Xkwmn+azu03mHYjoDstKGlQ8+JPw8/l0fFscnjuX/WmQHRqTKYrLsO6iaWtsHYVlGJ5LQ75KVY++v6UX0BE3Oi7YJB6D3EAJORqZJ7W5Occ7srtjcN62UELDbFyZ5z2TQsW/ZB2yrc1WvtFZi3Ap4jmhRk+JBwTs0EpctUMuJ4ohnTX6lqGEmjr9XyK/qnWHUkEIMWep1jpRSY7mDy2Ie8i6YXCcFVkR62K04w5TjIcOvufQ2dZTzEyvnJs27RWDE/3BvQWgkSCGtC8DXQpotOOI6vsVOvpp2xDi56Hv0ddauuhIfcjzSsKpkvDhx+E4bkb/2i7e1/ib9udXtsPWR1g6j2MMUC6WQUBDWJNNaoa5z1VFht9MXR1DZDm16eHLM4TwF4tVVCY=
+sidebar_class_name: "get api-method"
+info_path: qr-devs/api/api-mensajeria/groups/group
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Find Participants"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/api/group/participants"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Find Participants
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"groupJid","in":"query","required":true,"schema":{"type":"string"},"description":"Group JID"}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful response","content":{"application/json":{"schema":{"type":"object","example":{"data":{"groupJid":"120363404495022854@g.us","participants":[{"id":"5531900000000@s.whatsapp.net","admin":false}]}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

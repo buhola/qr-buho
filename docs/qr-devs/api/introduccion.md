@@ -61,4 +61,4 @@ Utilizada por las empresas para operar sus servicios de WhatsApp.
 
 ## 🚀 Primeros Pasos
 
-Si eres un desarrollador integrando **QR Buho**, te recomendamos comenzar explorando la sección **[Mensajería > Devices](./mensajeria/devices/qrapi-devices.info.mdx)** para entender cómo conectar una sesión de WhatsApp, y luego probar el **[Envío de Mensajes](./mensajeria/send_message/send-message.info.mdx)**.
+Si eres un desarrollador integrando **QR Buho**, te recomendamos comenzar explorando la sección **[Mensajería > Devices](./api-aplicacion/tenant/device/qrapi-devices.info.mdx)** para entender cómo conectar una sesión de WhatsApp, y luego probar el **[Envío de Mensajes](./api-mensajeria/send/send-message.info.mdx)**.
