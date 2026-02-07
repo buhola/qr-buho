@@ -1,9 +1,9 @@
 {
-    "label": "Aplicación",
+    "label": "API Aplicación",
     "position": 1,
     "link": {
       "type": "generated-index",
-      "slug": "api/aplicacion",
+      "slug": "api-aplicacion",
       "description": "Documentacion de API de Aplicación"
     }
   }
