@@ -1,0 +1,9 @@
+{
+    "label": "Contactos",
+    "position": 2,
+    "link": {
+      "type": "generated-index",
+      "slug": "contacts",
+      "description": "Documentacion de API de Contactos"
+    }
+  }

@@ -178,6 +178,14 @@ const config: Config = {
               groupPathsBy: "tag",
             },
           },
+          contacts: {
+            specPath: "api/contacts.yaml",
+            outputDir: "docs/qr-devs/api/api-mensajeria/chats/contacts",
+            baseUrl: "/qr-devs/api/api-mensajeria/chats/contacts",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+            },
+          },
         }
       }
     ]
