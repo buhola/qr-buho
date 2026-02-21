@@ -1,9 +1,9 @@
 {
-    "label": "Externa",
+    "label": "API Externa",
     "position": 2,
     "link": {
       "type": "generated-index",
-      "slug": "api/externa",
+      "slug": "api-externa",
       "description": "Documentacion de API Externa"
     }
   }

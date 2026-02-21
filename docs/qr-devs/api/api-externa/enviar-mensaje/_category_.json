@@ -1,0 +1,9 @@
+{
+    "label": "Mensajes",
+    "position": 1,
+    "link": {
+      "type": "generated-index",
+      "slug": "enviar-mensaje",
+      "description": "Documentacion de API Mensajes"
+    }
+  }

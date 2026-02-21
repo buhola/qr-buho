@@ -154,6 +154,30 @@ const config: Config = {
               groupPathsBy: "tag",
             },
           },
+          enviarMensaje: {
+            specPath: "api/Enviarmensaje/enviarMensaje.yaml",
+            outputDir: "docs/qr-devs/api/api-externa/enviar-mensaje",
+            baseUrl: "/qr-devs/api/api-externa/enviar-mensaje",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+            },
+          },
+          enviarPDF: {
+            specPath: "api/Enviarpdf/enviarPDF.yaml",
+            outputDir: "docs/qr-devs/api/api-externa/enviar-pdf",
+            baseUrl: "/qr-devs/api/api-externa/enviar-pdf",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+            },
+          },
+          enviarMultimedia: {
+            specPath: "api/Enviarmultimedia/enviarMultimedia.yaml",
+            outputDir: "docs/qr-devs/api/api-externa/enviar-multimedia",
+            baseUrl: "/qr-devs/api/api-externa/enviar-multimedia",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+            },
+          },
         }
       }
     ]
