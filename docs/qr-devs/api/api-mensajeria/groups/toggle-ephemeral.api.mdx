@@ -1,8 +1,8 @@
 ---
 id: toggle-ephemeral
-title: "Toggle Ephemeral"
-description: "Toggle Ephemeral"
-sidebar_label: "Toggle Ephemeral"
+title: "Mensajes Temporales"
+description: "Activar o desactivar mensajes temporales en el grupo"
+sidebar_label: "Mensajes Temporales"
 hide_title: true
 hide_table_of_contents: true
 api: eJytVMtu2zAQ/BVjz4ylOE6Q8tQHggIFiha1ezKMYi2tLboUSfOR2hX0Sf2K/liwVOIkcNtLyoNEkbvD2Z2hOvC0SxTiW1sfQHZQWRPJRJ6ic1pVGJU1xTZYw2uhaqhFnsWDI5BgV1uqIgigPbZOE29tvE3ug6pBwvmkvLi6mJbT6avLcjK5vpy+3oxT4HjXUEseNcjrq2lZ9jwEeArOmkCBgSZlya+aQuWVYyIgYZaqikJYJz16CAbxX3i3FAJuePcjmYBbCiNa//7VkrdhhFVMqNVPrG0Y0V5FG7AlE/nwGiO+rHAu/XmZc7vZaBrdHKMFtBQby+DOBqbuMDYgoUCninx0EXPSGT1JCuRvyQeQiw6S1yChidEFWRRdJIMmflN1P9758So1dqwRTojkqNEs44CAW/QKV3pQ6Agx6LTGpCNIqKm1fwVKq9q2qAz0fb8UwBJ9eTThzUt9JECZtc3kVGQgeM84zJx8GKicj8txCb3InWwxW8RgS3/u+7Myjg6KtI+F07kQMbS2u5dkAegUiKEAEHAiy1JAwxrKBXTdCgN99brveXmXyB9ALpaPjeavXkBDWJPPOn6nA0h4N1j+bM58OFwn5nVi/148ZLypKnLxn7HLJzb7/Gk2BwGr+19Da2vO8fgDRH5KAAE29yWbIa91oNFs0nCPBkwed+INfYA=
@@ -24,49 +24,53 @@ import Translate from "@docusaurus/Translate";
   as={"h1"}
   className={"openapi__heading"}
   children={"Toggle Ephemeral"}
->
-</Heading>
+></Heading>
 
 <MethodEndpoint
   method={"post"}
   path={"/api/group/toggle-ephemeral"}
   context={"endpoint"}
->
-  
-</MethodEndpoint>
-
-
+></MethodEndpoint>
 
 Toggle Ephemeral
 
-<Heading
-  id={"request"}
-  as={"h2"}
-  className={"openapi-tabs__heading"}
->
+<Heading id={"request"} as={"h2"} className={"openapi-tabs__heading"}>
   <Translate id="theme.openapi.request.title">Request</Translate>
 </Heading>
 
-<ParamsDetails
-  parameters={undefined}
->
-  
-</ParamsDetails>
+<ParamsDetails parameters={undefined}></ParamsDetails>
 
 <RequestSchema
   title={"Body"}
-  body={{"content":{"application/json":{"schema":{"type":"object","example":{"groupJid":"120363404495022854@g.us","ephemeral":86400}}}}}}
->
-  
-</RequestSchema>
+  body={{
+    content: {
+      "application/json": {
+        schema: {
+          type: "object",
+          example: { groupJid: "120363404495022854@g.us", ephemeral: 86400 },
+        },
+      },
+    },
+  }}
+></RequestSchema>
 
 <StatusCodes
   id={undefined}
   label={undefined}
-  responses={{"200":{"description":"Successful response","content":{"application/json":{"schema":{"type":"object","example":{"message":"Mensajes efímeros actualizados exitosamente","data":{"groupJid":"120363404495022854@g.us","ephemeral":86400}}}}}}}}
->
-  
-</StatusCodes>
-
-
-      
+  responses={{
+    "200": {
+      description: "Successful response",
+      content: {
+        "application/json": {
+          schema: {
+            type: "object",
+            example: {
+              message: "Mensajes efímeros actualizados exitosamente",
+              data: { groupJid: "120363404495022854@g.us", ephemeral: 86400 },
+            },
+          },
+        },
+      },
+    },
+  }}
+></StatusCodes>

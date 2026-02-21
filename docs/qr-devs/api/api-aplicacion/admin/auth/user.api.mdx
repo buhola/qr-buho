@@ -1,8 +1,8 @@
 ---
 id: user
-title: "User"
-description: "User"
-sidebar_label: "User"
+title: "Perfil de Usuario"
+description: "Obtener datos del administrador autenticado"
+sidebar_label: "Perfil"
 hide_title: true
 hide_table_of_contents: true
 api: eJx1kk1u2zAQha8ivDVruV1yl0VRdFEgjZOVYRQjaWIxpUiGMwpsCDpVj9CLFZRSB3URbvjzZt4MvuGEzJJiEBbYCZ+227J1LG12SV0MsNiNbcsiMGhjUA5aQigl71oqIfWTlLgJ0vY8UDnpOTEsYvPErcKATzQkz0UaWISORd2xuN+/QtVyztRRxSenUWjgoIx5WeaqlQfhDIOBtY8dLI5c3BNpD4uakqtp1L728RjHogjnF84Cu58wZg+LXjWJrevnvGnGPm484brIN3Kh2i2ZmM114qQcKOgP183vOtwvIX89DF4oO2r8yviSv5J+pNErLDoe4rtGY9PFgVwoWA4GLjzGxcppgYrvdze3X6sP1R0Le7+W5Cyrx8fNdrPFbJCi6EDLpAIN/Ibzn5qX4SmftE5+qWpWCNMr6j0oORgU2DB4xX0w6KNokaepIeGH7Oe5PD+PnM+w+8MbinKbDXqmjvMyn598hsVN23LShZkfSxv/fbQC4PIBvny+xzz/AVmx81I=
@@ -20,45 +20,34 @@ import TabItem from "@theme/TabItem";
 import Heading from "@theme/Heading";
 import Translate from "@docusaurus/Translate";
 
-<Heading
-  as={"h1"}
-  className={"openapi__heading"}
-  children={"User"}
->
-</Heading>
+<Heading as={"h1"} className={"openapi__heading"} children={"User"}></Heading>
 
 <MethodEndpoint
   method={"get"}
   path={"/api/auth/logout"}
   context={"endpoint"}
->
-  
-</MethodEndpoint>
-
-
+></MethodEndpoint>
 
 User
 
-<ParamsDetails
-  parameters={undefined}
->
-  
-</ParamsDetails>
+<ParamsDetails parameters={undefined}></ParamsDetails>
 
-<RequestSchema
-  title={"Body"}
-  body={undefined}
->
-  
-</RequestSchema>
+<RequestSchema title={"Body"} body={undefined}></RequestSchema>
 
 <StatusCodes
   id={undefined}
   label={undefined}
-  responses={{"200":{"description":"Success","content":{"application/json":{"schema":{"type":"object","example":{"message":"Sesión cerrada exitosamente"}}}}}}}
->
-  
-</StatusCodes>
-
-
-      
+  responses={{
+    "200": {
+      description: "Success",
+      content: {
+        "application/json": {
+          schema: {
+            type: "object",
+            example: { message: "Sesión cerrada exitosamente" },
+          },
+        },
+      },
+    },
+  }}
+></StatusCodes>

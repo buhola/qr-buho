@@ -1,11 +1,11 @@
 ---
 id: send-presence
-title: "Send Presence"
-description: "Send Presence"
-sidebar_label: "Send Presence"
+title: "Enviar Presencia"
+description: "Simular estado escribiendo o grabando"
+sidebar_label: "Enviar Presencia"
 hide_title: true
 hide_table_of_contents: true
-api: eJytU01z0zAQ/SuZdxZx2qNuwHDhQoaWUybDrKVNrWJ9VJJLMh7/d2btpoFCOVUHW16t3r59+zwi88PApX6I9gQ9wsRQOVTZUkq9M1RdDM19iUFixXTsSXb1lBgasb1nU6HAR/KpZzkKg285Q2McM/tY+bOz0wQFyz2doK+uNxuFlLlwMAJiok+xuHCHSZZC5pJiKFwE7nqzkZflYrJLQgcaN4MxXMph6FfnZKg3Ye+5FLqT0+3C0NGKw6MjSys+uhoLeQ6VF66TekmMg11tz70peK5dtNBIsUilRLWDRmM6qs1Zg6ZwsFAonB85F+jdiCH30OhqTUU3zVg5UKjfnZ3WD3ndDl1c94SX1W/nrNXNjAOFR8qO2n4R8hlikfNAQ1+hYdnHV4GG1kZPLki3ewVR8uvFMZ/eZugKLhziTNFVgcPHjkQsEWPhc7XerDeSKTJ6mscZyPM/FP+jkedRVz7WJvVzK2oRd3waxg5mKZcuIPNA9gqdTE3vMI4tFf6W+2mS8MPA+QS9218klq9JoWOyosNuxA8+SSuLJ9/dCg9J7wfh85c/J3W+8d4YTvW/ufvfjLX9cnMLhfbpD/bRyp1MP6HmpwYU4qzHbIM5NqKncDcsRl8wZf0CZfpnRg==
+api: eJytU01z0zAQ/SuZdxZx2qNuwHDhQoaWUybDrKVNrWJ9VJJLMh7/d2btpoFCOVUHW16t3r59+zwi88PApX6I9gQ9wsRQOVTZUkq9M1RdDM19iUFixXTsSXb1lBgasb1nU6HAR/KpZzkKg285Q2McM/tY+XOz0wQFyz2doK+uNxuFlLlwMAJiok+xuHCHSZZC5pJiKFwE7nqzkZflYrJLQgcaN4MxXMph6FfnZKg3Ye+5FLqT0+3C0NGKw6MjSys+uhoLeQ6VF66TekmMg11tz70peK5dtNBIsUilRLWDRmM6qs1Zg6ZwsFAonB85F+jdiCH30OhqTUU3zVg5UKjfnZ3WD3ndDl1c94SX1W/nrNXNjAOFR8qO2n4R8hlikfNAQ1+hYdnHV4GG1kZPLki3ewVR8uvFMZ/eZugKLhziTNFVgcPHjkQsEWPhc7XerDeSKTJ6mscZyPM/FP+jkedRVz7WJvVzK2oRd3waxg5mKZcuIPNA9gqdTE3vMI4tFf6W+2mS8MPA+QS9218klq9JoWOyosNuxA8+SSuLJ9/dCg9J7wfh85c/J3W+8d4YTvW/ufvfjLX9cnMLhfbpD/bRyp1MP6HmpwYU4qzHbIM5NqKncDcsRl8wZf0CZfpnRg==
 sidebar_class_name: "post api-method"
 info_path: qr-devs/api/api-mensajeria/chats/chat
 custom_edit_url: null
@@ -24,49 +24,54 @@ import Translate from "@docusaurus/Translate";
   as={"h1"}
   className={"openapi__heading"}
   children={"Send Presence"}
->
-</Heading>
+></Heading>
 
 <MethodEndpoint
   method={"post"}
   path={"/chat/presence/send"}
   context={"endpoint"}
->
-  
-</MethodEndpoint>
-
-
+></MethodEndpoint>
 
 Send Presence
 
-<Heading
-  id={"request"}
-  as={"h2"}
-  className={"openapi-tabs__heading"}
->
+<Heading id={"request"} as={"h2"} className={"openapi-tabs__heading"}>
   <Translate id="theme.openapi.request.title">Request</Translate>
 </Heading>
 
-<ParamsDetails
-  parameters={undefined}
->
-  
-</ParamsDetails>
+<ParamsDetails parameters={undefined}></ParamsDetails>
 
 <RequestSchema
   title={"Body"}
-  body={{"content":{"application/json":{"schema":{"type":"object","example":{"number":"{{remoteJid}}","delay":1200,"presence":"composing"}}}}}}
->
-  
-</RequestSchema>
+  body={{
+    content: {
+      "application/json": {
+        schema: {
+          type: "object",
+          example: {
+            number: "{{remoteJid}}",
+            delay: 1200,
+            presence: "composing",
+          },
+        },
+      },
+    },
+  }}
+></RequestSchema>
 
 <StatusCodes
   id={undefined}
   label={undefined}
-  responses={{"200":{"description":"Successful response","content":{"application/json":{"schema":{"type":"object","example":{"message":"Presencia enviada exitosamente"}}}}}}}
->
-  
-</StatusCodes>
-
-
-      
+  responses={{
+    "200": {
+      description: "Successful response",
+      content: {
+        "application/json": {
+          schema: {
+            type: "object",
+            example: { message: "Presencia enviada exitosamente" },
+          },
+        },
+      },
+    },
+  }}
+></StatusCodes>

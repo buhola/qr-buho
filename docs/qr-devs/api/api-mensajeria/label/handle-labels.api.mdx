@@ -1,11 +1,11 @@
 ---
 id: handle-labels
-title: "Handle Labels"
-description: "Handle Labels"
-sidebar_label: "Handle Labels"
+title: "Gestionar Etiquetas"
+description: "Añadir o eliminar etiquetas de un contacto"
+sidebar_label: "Gestionar Etiquetas"
 hide_title: true
 hide_table_of_contents: true
-api: eJytVMtu2zAQ/BVjzqxkp2iR8tQHArRAgRZNejKMYCVuIqUUSZNUEkPwvxdL2UnT1yk8SBQ5O9zZHWpC5O3IKb/3Zgc9ofUus8sypRBs31LuvatvkneyltqOB5JZ3gWGhm9uuM1Q4HsagmXZcuPQcITGq9Wbl69PV6vTk9XbVN11lBOFUDmWAEsN208GGisoUCvnQIOMwV6GQuQUvEuchPRkuZSX4dTGPhzA52PbckpXo10cwVDPomHglOhads9yvx0504IKlaEF3/fZJxrYZTnOUKbnky3Cn4r8SM5YXnyWwASFgXPnhSD4JIyBcgeNmkJfF/a6KxFQSBxvOSbo9YQxWmh0OYek63rK7Mjly97sq22smrHzlSX8fvZFQS3OCw8Ubin21Ni5JQ8Uc2OuaLQZGoYH/0+isTF+oN6J2I2C9OTbowPPntNECr278iXRPgspSglFBcc0A1fVsloKVGo5UPGHo4H/UvYneh68k/k+18EWRWqu8XToyBoU+mOOUDh0ZaPQSeP0GtPUUOLv0e73srwdOe6g15vHOsvXXqFjMlKM9YQfvIPGh9niLy4kC4HbUbL5w+57dYx417Yc8n+xm1+89fXL+QUUmsNvYfBGYiLdQZWnBhR8qUbxQlmbYMldj/O9mTll/AT8rXrM
+api: eJytVMtu2zAQ/BVjzqxkp2iR8tQHArRAgRZNejKMYCVuIqUUSZNUEkPwvxdL2UnT1yk8SBQ5O9zZHWpC5O3IKb/3Zgc9ofUus8sypRBs31LuvatvkneyltqOB5JZ3gWGhm9uuM1Q4HsagmXZcuPQcITGq9Wbl69PV6vTk9XbVN11lBOFUDmWAEsN208GGisoUCvnQIOMwV6GQuQUvEuchPRkuZSX4dTGPhzA52PbckpXo10cwVDPomHglOhads9yvx0504IKlaEF3/fZJxrYZTnOUKbnky3Cn4r8SM5YXnyWwASFgXPnhSD4JIyBcgeNmkJfF/a6KxFQSBxvOSbo9YQxWmh0OYek63rK7Mjly97sq22smrHzlSX8fvZFQS3OCw8Ubin21Ni5JQ8Uc2OuaLQZGoYH/0+isTF+oN6J2I2C9OTbowPPntNECr278iXRPgspSglFBcc0A1fVsloKVGo5UPGHo4H/UvYneh68k/k+18EWRWqu8XToSBoU+mOOUDh0ZaPQSeP0GtPUUOLv0e73srwdOe6g15vHOsvXXqFjMlKM9YQfvIPGh9niLy4kC4HbUbL5w+57dYx417Yc8n+xm1+89fXL+QUUmsNvYfBGYiLdQZWnBhR8qUbxQlmbYMldj/O9mTll/AT8rXrM
 sidebar_class_name: "post api-method"
 info_path: qr-devs/api/api-mensajeria/label/label
 custom_edit_url: null
@@ -24,49 +24,61 @@ import Translate from "@docusaurus/Translate";
   as={"h1"}
   className={"openapi__heading"}
   children={"Handle Labels"}
->
-</Heading>
+></Heading>
 
 <MethodEndpoint
   method={"post"}
   path={"/api/label/handle"}
   context={"endpoint"}
->
-  
-</MethodEndpoint>
-
-
+></MethodEndpoint>
 
 Handle Labels
 
-<Heading
-  id={"request"}
-  as={"h2"}
-  className={"openapi-tabs__heading"}
->
+<Heading id={"request"} as={"h2"} className={"openapi-tabs__heading"}>
   <Translate id="theme.openapi.request.title">Request</Translate>
 </Heading>
 
-<ParamsDetails
-  parameters={undefined}
->
-  
-</ParamsDetails>
+<ParamsDetails parameters={undefined}></ParamsDetails>
 
 <RequestSchema
   title={"Body"}
-  body={{"content":{"application/json":{"schema":{"type":"object","example":{"number":"51936811821@s.whatsapp.net","labelId":"1","action":"add"}}}}}}
->
-  
-</RequestSchema>
+  body={{
+    content: {
+      "application/json": {
+        schema: {
+          type: "object",
+          example: {
+            number: "51936811821@s.whatsapp.net",
+            labelId: "1",
+            action: "add",
+          },
+        },
+      },
+    },
+  }}
+></RequestSchema>
 
 <StatusCodes
   id={undefined}
   label={undefined}
-  responses={{"200":{"description":"Successful response","content":{"application/json":{"schema":{"type":"object","example":{"message":"Etiqueta aplicada exitosamente","data":{"number":"51936811821@s.whatsapp.net","labelId":"1","action":"add"}}}}}}}}
->
-  
-</StatusCodes>
-
-
-      
+  responses={{
+    "200": {
+      description: "Successful response",
+      content: {
+        "application/json": {
+          schema: {
+            type: "object",
+            example: {
+              message: "Etiqueta aplicada exitosamente",
+              data: {
+                number: "51936811821@s.whatsapp.net",
+                labelId: "1",
+                action: "add",
+              },
+            },
+          },
+        },
+      },
+    },
+  }}
+></StatusCodes>

@@ -1,8 +1,8 @@
 ---
 id: create-excel-campaign
-title: "Create excel campaign"
-description: "Create excel campaign"
-sidebar_label: "Create excel campaign"
+title: "Campaña desde Excel"
+description: "Crear una nueva campaña masiva subiendo un archivo Excel"
+sidebar_label: "Desde Excel"
 hide_title: true
 hide_table_of_contents: true
 api: eJx1U0Fu2zAQ/AqxZ8aSDfTCWxAUbS9F26SnwAhW0tpiSpEMuQoSCHpU39CPFUvZbpw0ggBB0uxwdnZ2gogJB2JKGcztBB4HAgMR99YjE2iwHgw8jJSeQUNuexoQzAT8HAVoPdOeEswaOsptspFtkIqv49BQUmGnLNOQVaSkIu4J5q2GRDkGnykL06au5XFefj22LeUMGtrgmTwLBGN0tkWBVPdZcNNbRaG5p5ZBAz3hEB0VbmQs7dkOzFoDW5YfcIVDxD+/UXWkYhqpQdCwT2GM4sZab7YaBspZdBv4HBxqRZlJUVajVwP5jPf0r3p1sKgbHd0hg4FNvflwsa4v6rVa16aWWzCMPGYwJ3BXbBmISyftmBJ5vit+id5I6fhSa+DA6MCs5+V67fxVIhSJTy051UqHdu+hsPehAwN7Ensicg8GKoy2OqJy5WyWn5nS4zESY3JgoGeO2VTVxOTR853t5tVDWjVjH1ZObDsXcVNQ6rrwgIZHTBYbt0z8RLHMfYejE686GsK7RGPThQGth3kWq6zfhUJ1mOT3H5ffvqgLdXXsRM6klBeS9ape1ZLRGDIPWIJzSPp7bp2pOIWL6Ymr6IoOvTgzHZy8BYxW8vpCQXFzq6EPmQUxTQ1m+pncPMvnZavE485mcacDs0OX6c3xpyV4f6/0/zX+oufzfX5ENwqsJO44FjC321lDT9hRKoqWusu2pcgvqt6s4CG3S7I+fbyBef4LoKx2dQ==
@@ -24,49 +24,59 @@ import Translate from "@docusaurus/Translate";
   as={"h1"}
   className={"openapi__heading"}
   children={"Create excel campaign"}
->
-</Heading>
+></Heading>
 
 <MethodEndpoint
   method={"get"}
   path={"/api/campaigns/list"}
   context={"endpoint"}
->
-  
-</MethodEndpoint>
-
-
+></MethodEndpoint>
 
 Create excel campaign
 
-<Heading
-  id={"request"}
-  as={"h2"}
-  className={"openapi-tabs__heading"}
->
+<Heading id={"request"} as={"h2"} className={"openapi-tabs__heading"}>
   <Translate id="theme.openapi.request.title">Request</Translate>
 </Heading>
 
 <ParamsDetails
-  parameters={[{"name":"paginate","in":"query","schema":{"type":"integer"},"description":"Number of items per page"}]}
->
-  
-</ParamsDetails>
+  parameters={[
+    {
+      name: "paginate",
+      in: "query",
+      schema: { type: "integer" },
+      description: "Number of items per page",
+    },
+  ]}
+></ParamsDetails>
 
-<RequestSchema
-  title={"Body"}
-  body={undefined}
->
-  
-</RequestSchema>
+<RequestSchema title={"Body"} body={undefined}></RequestSchema>
 
 <StatusCodes
   id={undefined}
   label={undefined}
-  responses={{"200":{"description":"Success","content":{"application/json":{"schema":{"type":"object","example":{"data":[{"id":1,"title":"Campaña de prueba","groups":[1,2],"message":"Hola, este es un mensaje de prueba.","schedule_at":"2025-10-01 10:00:00","status":"scheduled"}],"meta":{"current_page":1,"per_page":10,"total":1}}}}}}}}
->
-  
-</StatusCodes>
-
-
-      
+  responses={{
+    "200": {
+      description: "Success",
+      content: {
+        "application/json": {
+          schema: {
+            type: "object",
+            example: {
+              data: [
+                {
+                  id: 1,
+                  title: "Campaña de prueba",
+                  groups: [1, 2],
+                  message: "Hola, este es un mensaje de prueba.",
+                  schedule_at: "2025-10-01 10:00:00",
+                  status: "scheduled",
+                },
+              ],
+              meta: { current_page: 1, per_page: 10, total: 1 },
+            },
+          },
+        },
+      },
+    },
+  }}
+></StatusCodes>

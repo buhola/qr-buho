@@ -1,8 +1,8 @@
 ---
 id: register-tenant
-title: "Register Tenant"
-description: "Register Tenant"
-sidebar_label: "Register Tenant"
+title: "Registrar Tenant"
+description: "Crear un nuevo tenant en la plataforma"
+sidebar_label: "Registrar Tenant"
 hide_title: true
 hide_table_of_contents: true
 api: eJy9VE1P20AQ/SvRO2/ihCSU+FTacuihKgV6iiI0tge81LtrdtdAZPm/V2NbfIqeUPdie3Y+3rw34xaebxsO8Ysr9khb5M5GtlFeqa4rnVPUziY3wVmxhbxkQ/IW9zUjhctuOI9Q4AcydcVyZcnI1YmpPQf6xsZBoXCGtEWKgo2TIzGGdIUUVBhtP/PgP8udgUJNIdw7XyDF4mC5Wh+KrSJ7qQuki06OgudQOxs4SNmD+VweBYfc61pgI8V5k+ccAtSHdGY4BLqW2wu2ZOPE87UO0VPhJvygowtk2EaWfin22QQulouj1fpoczTNaJVNV9l6M802y4MpHRbL1aflPM/Xa6iPIK7rRmpe0nDW42Q/GXBDwXAsnWCrXYg937FEioRqncTeKfFjEBQC+zv2Aem2ReOldBljHdIkufWzrCndrCK8LvqDtJ2c95Ho1OvAdqhyqYvu3Qwjy2MOhTvymrJq0PsxflD9ipoqjjS9m6jJRjq7rtspiPhnTwtw8n9nWEHbK9e3oqOUxa+z49Pvk+mokkytsD60sJjNZ3N0qhfMkH2G8q26L7p/HOnIDzGpq75/NcjRjsJvQbWGGkmFrNYo/k6hlBFJt2jbjAL/9lXXifm2Yb9Hut09CSNfnULJVLDvp+UP75Hi67B80wsBIu5VI4DeLKKMyRBxnOdcx3/67p5N8enP8wsoZONvzLhCYjzdSyt0jxRQcD0h/fD0thYV2etm2Oghp5y/h1e4Cw==
@@ -24,49 +24,64 @@ import Translate from "@docusaurus/Translate";
   as={"h1"}
   className={"openapi__heading"}
   children={"Register Tenant"}
->
-</Heading>
+></Heading>
 
 <MethodEndpoint
   method={"post"}
   path={"/api/tenant/register"}
   context={"endpoint"}
->
-  
-</MethodEndpoint>
-
-
+></MethodEndpoint>
 
 Register Tenant
 
-<Heading
-  id={"request"}
-  as={"h2"}
-  className={"openapi-tabs__heading"}
->
+<Heading id={"request"} as={"h2"} className={"openapi-tabs__heading"}>
   <Translate id="theme.openapi.request.title">Request</Translate>
 </Heading>
 
-<ParamsDetails
-  parameters={undefined}
->
-  
-</ParamsDetails>
+<ParamsDetails parameters={undefined}></ParamsDetails>
 
 <RequestSchema
   title={"Body"}
-  body={{"content":{"application/json":{"schema":{"type":"object","example":{"name":"EmpresaDemo","domain":"demooooo","email":"admin@empresa.com","password":"123456","plan_id":1}}}}}}
->
-  
-</RequestSchema>
+  body={{
+    content: {
+      "application/json": {
+        schema: {
+          type: "object",
+          example: {
+            name: "EmpresaDemo",
+            domain: "demooooo",
+            email: "admin@empresa.com",
+            password: "123456",
+            plan_id: 1,
+          },
+        },
+      },
+    },
+  }}
+></RequestSchema>
 
 <StatusCodes
   id={undefined}
   label={undefined}
-  responses={{"200":{"description":"Success","content":{"application/json":{"schema":{"type":"object","example":{"message":"Tenant registrado exitosamente","data":{"id":"31845898-ba4b-4b59-b932-a6d34730cc55","name":"EmpresaDemo","domain":"demooooo","email":"admin@empresa.com"}}}}}}}}
->
-  
-</StatusCodes>
-
-
-      
+  responses={{
+    "200": {
+      description: "Success",
+      content: {
+        "application/json": {
+          schema: {
+            type: "object",
+            example: {
+              message: "Tenant registrado exitosamente",
+              data: {
+                id: "31845898-ba4b-4b59-b932-a6d34730cc55",
+                name: "EmpresaDemo",
+                domain: "demooooo",
+                email: "admin@empresa.com",
+              },
+            },
+          },
+        },
+      },
+    },
+  }}
+></StatusCodes>

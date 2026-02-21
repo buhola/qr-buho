@@ -1,8 +1,8 @@
 ---
 id: list-devices
-title: "List Devices"
-description: "List Devices"
-sidebar_label: "List Devices"
+title: "Listar Dispositivos"
+description: "Obtener la lista de todos los dispositivos registrados"
+sidebar_label: "Listar Dispositivos"
 hide_title: true
 hide_table_of_contents: true
 api: eJx1kt1u1DAQhV9lda5NslsoP76rVISQQAJarlYr5HWmxMWx3cxk1VXkd0d2ygKL8E3szPGZk28yYyROMTAx9IyL9bo8OmI7uiQuBmjcTNYSMxRsDEJBisSk5J01RdLec9HNYNvTYMpOjomgEff3ZAUK9GiG5Kl6GzHQ2xmug94oBDMU6Ue3unacIjtxhwiF1MdQCpebN69fvbx88fxiAwUWIxNDlyiBrFCHvMt1qbPYHxzL6poOzlLJPpD0sYPGdyqJkpEeGq1Jru0WUesdlxLTeKCRa8hp9NDoRRLrtp2FggnyzXW5eRib/dTHxhucd76tqtVN9YHCwYzO7P2C+GSxgL4zkxdodDTE/xpN+y4OxgXknHcKLtzFauWkMMXnL1ef3q+e/fGxJf9isWnWzRpZIUWWwdQ5PSE/A/RX69MIhR6lTb42VwuO+QneFia5evGXRQW4U+gjS6nP894wfR19zuX1w0TjEXq7+42knLJCT6ajsRL/QUdoXFlLSSo7P5Uc//xvBcRppu/e3iLnn2b88XE=
@@ -24,41 +24,43 @@ import Translate from "@docusaurus/Translate";
   as={"h1"}
   className={"openapi__heading"}
   children={"List Devices"}
->
-</Heading>
+></Heading>
 
 <MethodEndpoint
   method={"get"}
   path={"/api/devices/list"}
   context={"endpoint"}
->
-  
-</MethodEndpoint>
-
-
+></MethodEndpoint>
 
 List Devices
 
-<ParamsDetails
-  parameters={undefined}
->
-  
-</ParamsDetails>
+<ParamsDetails parameters={undefined}></ParamsDetails>
 
-<RequestSchema
-  title={"Body"}
-  body={undefined}
->
-  
-</RequestSchema>
+<RequestSchema title={"Body"} body={undefined}></RequestSchema>
 
 <StatusCodes
   id={undefined}
   label={undefined}
-  responses={{"200":{"description":"Success","content":{"application/json":{"schema":{"type":"object","example":{"data":[{"id":1,"name":"Mi Dispositivo","phone":"51987654321","status":"connected"}]}}}}}}}
->
-  
-</StatusCodes>
-
-
-      
+  responses={{
+    "200": {
+      description: "Success",
+      content: {
+        "application/json": {
+          schema: {
+            type: "object",
+            example: {
+              data: [
+                {
+                  id: 1,
+                  name: "Mi Dispositivo",
+                  phone: "51987654321",
+                  status: "connected",
+                },
+              ],
+            },
+          },
+        },
+      },
+    },
+  }}
+></StatusCodes>

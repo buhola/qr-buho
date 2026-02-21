@@ -1,8 +1,8 @@
 ---
 id: create-device
-title: "Create Device"
-description: "Create Device"
-sidebar_label: "Create Device"
+title: "Crear Dispositivo"
+description: "Registrar una nueva instancia de WhatsApp"
+sidebar_label: "Crear Dispositivo"
 hide_title: true
 hide_table_of_contents: true
 api: eJytU01vEzEQ/SvRnN1sUigfvhXKgQOiNOUURWhiT7suu7Zjz4ZEq/3vaLxpmxaBBMKHXdvz9Wbecw+JNh1lfhfsHnQPJngmz7LFGBtnkF3w1V0OXu6yqalF2fE+EmgI6zsyDApoh21sSEweWzF9cpMLl2PIjt02gIJYBy+Gs/nbN69fnb18cTqHQZaCRDkGnylL/OlsJj9L2SQXpT5oWHTGUM6g/gvElnLGW7EeQZyYRGjDhHaOQ8aWPBMosMglnbOg5+qvulOQGbnLoAW1J8Nkx5al6acNvk+ETJML2jojZVviOljQEEMW9BG5Bg0VRlfZ4pQrU2KkDKUtpQx62UOXGtBQM8esq6pn8uj5m7PDdJOm664O0wbhefXr4jVZlDygYIvJ4boZCXlIMdJyg13DoMFSG36bqFvb0KLz0u5KgbBz9Si1D/+oFgXO34SCybHEw5er88uPk5PD3EQfMogRy3w6m84kSEbYoj8q93zaT5p4kA7TjqvYlDbUONj+QMQSMLoSeF/3QMZKQS2M6SX0/RozfU3NMMj1pqO0B71cPY5XToOCmtBSKux9p73AGzV+ci04xL3pBM8veh/UfcS5MRT5j76rI1Fdfl5cg4L14dm3wUpMwh+gylcDKAhlHkUC5a6HBv1tNz6cMaesn4E9cJg=
@@ -24,49 +24,58 @@ import Translate from "@docusaurus/Translate";
   as={"h1"}
   className={"openapi__heading"}
   children={"Create Device"}
->
-</Heading>
+></Heading>
 
 <MethodEndpoint
   method={"post"}
   path={"/api/devices/create"}
   context={"endpoint"}
->
-  
-</MethodEndpoint>
-
-
+></MethodEndpoint>
 
 Create Device
 
-<Heading
-  id={"request"}
-  as={"h2"}
-  className={"openapi-tabs__heading"}
->
+<Heading id={"request"} as={"h2"} className={"openapi-tabs__heading"}>
   <Translate id="theme.openapi.request.title">Request</Translate>
 </Heading>
 
-<ParamsDetails
-  parameters={undefined}
->
-  
-</ParamsDetails>
+<ParamsDetails parameters={undefined}></ParamsDetails>
 
 <RequestSchema
   title={"Body"}
-  body={{"content":{"application/json":{"schema":{"type":"object","example":{"name":"Mi Dispositivo","phone":"51987654321"}}}}}}
->
-  
-</RequestSchema>
+  body={{
+    content: {
+      "application/json": {
+        schema: {
+          type: "object",
+          example: { name: "Mi Dispositivo", phone: "51987654321" },
+        },
+      },
+    },
+  }}
+></RequestSchema>
 
 <StatusCodes
   id={undefined}
   label={undefined}
-  responses={{"200":{"description":"Success","content":{"application/json":{"schema":{"type":"object","example":{"message":"Dispositivo creado exitosamente","data":{"id":1,"name":"Mi Dispositivo","phone":"51987654321","status":"connected"}}}}}}}}
->
-  
-</StatusCodes>
-
-
-      
+  responses={{
+    "200": {
+      description: "Success",
+      content: {
+        "application/json": {
+          schema: {
+            type: "object",
+            example: {
+              message: "Dispositivo creado exitosamente",
+              data: {
+                id: 1,
+                name: "Mi Dispositivo",
+                phone: "51987654321",
+                status: "connected",
+              },
+            },
+          },
+        },
+      },
+    },
+  }}
+></StatusCodes>

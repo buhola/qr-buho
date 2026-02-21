@@ -1,8 +1,8 @@
 ---
 id: find-labels
-title: "Find labels"
-description: "Find labels"
-sidebar_label: "Find labels"
+title: "Buscar Etiquetas"
+description: "Consultar lista de etiquetas disponibles"
+sidebar_label: "Buscar Etiquetas"
 hide_title: true
 hide_table_of_contents: true
 api: eJx1ks1uGyEUhV/FOt2iGSdRVYldF3VVKbukK8uq7jDXHVIGCNyJYo149wrsukqqsuHvcM7lgxWJcww+c4Zecbvd1m7kbJKNYoOHxsNiDOd8XNzmjxgKJnhhL1VOMTprqMr7p1zPrMhm4pnqSE6RoRGGJzYCBX6lOTpuOSQEvV9hR2jcQMHTXMXf5hiSkJcW5EKCxofd7uOnuzuUQ2lNvStzZ/24cTSwy1CYWaZQXX9yNYkkEzR6irZvmv5o/QiFzOmFU25VLMlBYxKJWff9KuzJyw87lu45dcMyhc4R3sc+NtXmoflA4YWSpcGdeV4tzlSPtDiBxshz+K/RMoxhJutRSjkoWH8MzcpKhYb7Wn3N4ZTPB2+6bbdFUYghy0wN/4XjWyZv8q4PI/wqfXQtUZ0ZrBdee1C0UHCXzMbsoDCFLHV3XQfK/D25Uury88LpBL0//KVQZ0VhYho5Nci/+ASNz8ZwlIbLLbWKf/5Qvfv1Eb9+eUQpvwGFuec1
@@ -24,41 +24,36 @@ import Translate from "@docusaurus/Translate";
   as={"h1"}
   className={"openapi__heading"}
   children={"Find labels"}
->
-</Heading>
+></Heading>
 
 <MethodEndpoint
   method={"get"}
   path={"/api/label/find"}
   context={"endpoint"}
->
-  
-</MethodEndpoint>
-
-
+></MethodEndpoint>
 
 Find labels
 
-<ParamsDetails
-  parameters={undefined}
->
-  
-</ParamsDetails>
+<ParamsDetails parameters={undefined}></ParamsDetails>
 
-<RequestSchema
-  title={"Body"}
-  body={undefined}
->
-  
-</RequestSchema>
+<RequestSchema title={"Body"} body={undefined}></RequestSchema>
 
 <StatusCodes
   id={undefined}
   label={undefined}
-  responses={{"200":{"description":"Successful response","content":{"application/json":{"schema":{"type":"object","example":{"data":[{"id":"1","name":"Important","color":"#FF5733"}]}}}}}}}
->
-  
-</StatusCodes>
-
-
-      
+  responses={{
+    "200": {
+      description: "Successful response",
+      content: {
+        "application/json": {
+          schema: {
+            type: "object",
+            example: {
+              data: [{ id: "1", name: "Important", color: "#FF5733" }],
+            },
+          },
+        },
+      },
+    },
+  }}
+></StatusCodes>
