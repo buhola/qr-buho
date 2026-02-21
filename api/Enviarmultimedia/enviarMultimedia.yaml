@@ -63,7 +63,7 @@ components:
     EnviarMultimediaRequest:
       type: object
       properties:
-        media:
+        media_type:
           type: string
           enum: [image, video, audio]
           example: "image"
