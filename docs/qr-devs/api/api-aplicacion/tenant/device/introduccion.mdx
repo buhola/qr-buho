@@ -1,0 +1,68 @@
+---
+id: dispositivos
+title: "Conectar WhatsApp"
+description: "Conecta tus números de WhatsApp escaneando un código QR para habilitarlos como remitentes en la API."
+sidebar_label: Conectar WhatsApp
+sidebar_position: "1"
+hide_title: true
+custom_edit_url: null
+---
+
+import Heading from "@theme/Heading";
+import Admonition from "@theme/Admonition";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Conectar tus números de WhatsApp"}
+/>
+
+En esta sección puedes gestionar tus **dispositivos**, que son los **números de WhatsApp que conectas a la API**. Cada dispositivo representa un número de teléfono que se vincula a la API para habilitarlo como remitente.
+
+Una vez conectado, podrás usar este número para:
+- Enviar mensajes individuales o masivos.
+- Ver y gestionar tus conversaciones.
+- Crear y administrar grupos.
+- Consumir el resto de los endpoints de la API.
+
+<Admonition type="info" title="Antes de empezar">
+  - **No necesitas clave de acceso (Bearer Token) para crear un dispositivo.**  
+    Este es el único caso en el que no se requiere autenticación.
+  - **Una vez conectado el dispositivo**, necesitarás tu Bearer Token para autenticarte en todos los demás endpoints de la API.
+  - El token se envía siempre en el encabezado de la solicitud:  
+    `Authorization: Bearer TU_CLAVE_AQUÍ`
+</Admonition>
+
+### Flujo para conectar un dispositivo (paso a paso)
+
+Este proceso se realiza **una sola vez por número** y es muy sencillo:
+
+1. **Crear el dispositivo**  
+   Llama al endpoint `POST /devices/create`.  
+   Solo necesitas proporcionar un nombre descriptivo para identificar el número (por ejemplo, *"Tienda Principal"*).
+
+2. **Recibir el código QR**  
+   La API responderá con los datos del dispositivo y un **código QR**  
+   (en formato base64 o como enlace). Este QR deberá ser escaneado desde WhatsApp.
+
+3. **Escanear el QR desde WhatsApp**  
+   - Abre WhatsApp en tu dispositivo móvil.  
+   - Ve a **Ajustes → Dispositivos vinculados → Vincular dispositivo**.  
+   - Escanea el QR proporcionado por la API.
+
+4. **Dispositivo conectado**  
+   Una vez que completes el escaneo:
+   - El número quedará vinculado como remitente en la API.
+   - Se habilitará el uso de los endpoints relacionados con dicho número.
+   - **Nota importante:** El registro del dispositivo **no genera un token de acceso**.  
+
+---
+
+**Ejemplo de respuesta al crear el dispositivo**:
+```json
+{
+  "id": "dev-12345",
+  "name": "Tienda Principal",
+  "qr": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...",
+  "message": "Escanea este QR con WhatsApp"
+}

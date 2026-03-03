@@ -1,64 +1,84 @@
 ---
-sidebar_position: 0
-title: Introducción
+sidebar_position: 1
 ---
 
 # Introducción a la API de QR Buho
 
-Bienvenido a la documentación oficial de la API de **QR Buho**. Esta referencia te permitirá integrar nuestras funcionalidades de gestión multi-empresa y mensajería de WhatsApp directamente en tus aplicaciones.
+Bienvenido a la **documentación oficial de la API de QR Buho** 🚀
 
-La API está dividida en dos grandes secciones según el rol del usuario: **Admin (Reseller)** y **Tenant (Cliente Final)**.
+Aquí encontrarás todo lo necesario para integrar nuestras potentes funcionalidades de **gestión multi-empresa (multitenant)** y **mensajería avanzada de WhatsApp** directamente en tus aplicaciones, CRMs, bots o sistemas internos.
+
+Con QR Buho puedes automatizar campañas masivas, gestionar sesiones de WhatsApp mediante QR, enviar mensajes multimedia, etiquetar contactos, recibir eventos en tiempo real vía webhooks y mucho más — todo con una arquitectura SaaS segura, escalable y lista para producción.
+
+## Categorías de APIs
+
+Nuestras APIs están organizadas en tres grandes grupos según su propósito:
+
+- **API de Aplicación** → Core del sistema (nuestra propia API multitenant)  
+- **API de Mensajería** → Integración externa con Evolution API (funcionalidades avanzadas de WhatsApp)  
+- **APIs Externas** → Integraciones complementarias con servicios de terceros
 
 ## 🌍 URLs Base
 
-Dependiendo del contexto de la operación, deberás utilizar una de las siguientes URLs base:
+| Rol                | Descripción                                           | URL Base                        | Ejemplo                                           |
+|--------------------|-------------------------------------------------------|---------------------------------|---------------------------------------------------|
+| **Reseller** | Gestión global: planes, clientes, billing, etc.       | `https://qr.buho.la`           | `https://qr.buho.la/api/plan/list`               |
+| **Cliente** | Operaciones específicas de cada empresa              | `https://{cliente_id}.buho.la`  | `https://empresa1.buho.la/api/devices/list`      |
 
-| Rol        | Descripción                                                          | URL Base                      | Ejemplo                                     |
-| :--------- | :------------------------------------------------------------------- | :---------------------------- | :------------------------------------------ |
-| **Admin**  | Para gestión de planes, tenants y configuración global.              | `https://qr.buho.la`          | `https://qr.buho.la/api/plan/list`          |
-| **Tenant** | Para operaciones de una empresa específica (mensajes, dispositivos). | `https://{tenant_id}.buho.la` | `https://empresa1.buho.la/api/devices/list` |
-
-:::tip Dinamismo
-En la documentación interactiva, puedes cambiar el valor de `{tenant_id}` (por defecto `demo`) para probar las peticiones contra tu propio subdominio.
-:::
+> **Tip dinámico**: En la documentación interactiva puedes cambiar `{cliente_id}` (por defecto `demo`) para probar contra tu propio subdominio.
 
 ## 🔐 Autenticación
 
-La mayoría de los endpoints están protegidos y requieren autenticación mediate **Bearer Token**.
+Todos los endpoints protegidos requieren autenticación mediante **Bearer Token** (JWT).
 
-### Pasos para autenticarse
+**Pasos para obtener tu token:**
 
-1.  Obtén tu token de acceso realizando una petición al endpoint de **Login**:
-    - **Admin:** `/auth/login` (Sección Reseller)
-    - **Tenant:** `/api/auth/login` (Generalmente gestionado internamente o vía panel)
+1. Realiza login según tu rol:
+   - **Reseller**: `POST https://qr.buho.la/auth/login`
+   - **Cliente**: `POST https://{cliente_id}.buho.la/api/auth/login`
 
-2.  Incluye el token en el encabezado `Authorization` de tus peticiones HTTP:
+2. Incluye el token en todas las peticiones:
 
 ```http
 Authorization: Bearer <tu_token_de_acceso>
 Content-Type: application/json
 ```
 
-## 📚 Módulos Disponibles
+## 📚 Módulos Principales
 
-### API Admin (Reseller)
+### API de Aplicación (Core propio)
 
-Diseñada para los administradores del sistema SaaS.
+**Reseller**
+- Gestión de administradores y sesión
+- Creación, edición y suspensión de clientes
+- Planes y suscripciones
+- Reportes globales y billing
 
-- **Reseller (Auth):** Gestión de sesión y registro de administradores.
-- **Tenants:** Creación, listado y administración de las empresas clientes.
-- **Plans:** Gestión de los planes de suscripción ofrecidos.
+**Cliente**
+- **Devices** → Vinculación y control de sesiones WhatsApp (QR, reconexión, logout)
+- **Campaigns** → Mensajería masiva y programada
+- **Send Message** → Envío individual (texto, imágenes, audio, video, documentos, plantillas)
+- **Contacts & Labels** → Gestión de contactos y etiquetas
+- **Chats & Groups** → Interacción con conversaciones y grupos
 
-### API Tenant (Cliente)
+### API de Mensajería (Evolution API)
 
-Utilizada por las empresas para operar sus servicios de WhatsApp.
+Funcionalidades avanzadas del proveedor externo:
+- Envío de mensajes
+- Gestión completa de chats
+- Webhooks en tiempo real
+- Administración de grupos
+- Llamadas (voice calls)
+- Etiquetas (labels)
 
-- **Devices:** Vinculación y gestión de sesiones de WhatsApp (QR).
-- **Campaigns:** Creación de campañas de mensajería masiva.
-- **Send Message:** Envío individual de mensajes (texto, media).
-- **Chat / Group:** Gestión de chats y grupos de WhatsApp.
-- **Contacts / Label:** Administración de etiquetas y contactos.
+### APIs Externas
 
-## 🚀 Primeros Pasos
+Integraciones adicionales disponibles (Stripe, Mercado Pago, Firebase, analytics, etc.).
 
-Si eres un desarrollador integrando **QR Buho**, te recomendamos comenzar explorando la sección **[Mensajería > Devices](./api-aplicacion/tenant/device/qrapi-devices.info.mdx)** para entender cómo conectar una sesión de WhatsApp, y luego probar el **[Envío de Mensajes](./api-mensajeria/send/send-message.info.mdx)**.
+## 🚀 Primeros Pasos Recomendados
+
+**Si eres Reseller** → Ve a **API de Aplicación > Reseller** y crea tu primer cliente.  
+**Si eres Cliente** → Dirígete a **Mensajería > Devices**, escanea el QR y vincula tu número de WhatsApp.  
+**Luego** → Prueba el endpoint **Send Message** — es el más usado y el mejor para validar que todo funciona.
+
+¡Estás listo para construir integraciones increíbles!

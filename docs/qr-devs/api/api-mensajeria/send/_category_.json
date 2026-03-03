@@ -1,9 +1,9 @@
 {
-    "label": "Envío",
-    "position": 6,
+    "label": "Envío de Mensajes",
+    "position": 2,
     "link": {
       "type": "generated-index",
-      "slug": "api/mensajeria/send",
-      "description": "Documentacion de API de Envío"
+      "slug": "send-message",
+      "description": "Envío de todo tipo de mensajes individuales: texto, imágenes, videos, documentos, audios/voz, stickers, ubicaciones, contactos, reacciones, encuestas y mensajes interactivos."
     }
   }
