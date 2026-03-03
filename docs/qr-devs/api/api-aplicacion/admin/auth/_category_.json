@@ -3,7 +3,7 @@
   "position": 1,
   "link": {
     "type": "generated-index",
-    "slug": "auth",
+    "slug": "reseller-auth",
     "description": "Guía completa de autenticación: login para resellers, obtención de tokens JWT, verificación y cierre de sesión."
   }
 }

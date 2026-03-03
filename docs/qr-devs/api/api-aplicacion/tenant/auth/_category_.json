@@ -3,7 +3,7 @@
   "position": 1,
   "link": {
     "type": "generated-index",
-    "slug": "auth",
+    "slug": "tenant-auth",
     "description": "Login y verificación de token para tenants"
   }
 }
