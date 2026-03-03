@@ -1,1 +1,0 @@
-(globalThis.webpackChunkwaya=globalThis.webpackChunkwaya||[]).push([[6473],{11724(){},22179(){},73936(){}}]);
