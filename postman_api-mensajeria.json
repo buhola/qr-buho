@@ -1,0 +1,755 @@
+{
+  "info": {
+    "_postman_id": "qr-buho-api-mensajeria",
+    "name": "QR Buho - API Mensajeria (Evolution API)",
+    "description": "Coleccion de endpoints avanzados de la API de Mensajeria de QR Buho. Incluye Llamadas, Chats, Grupos, Integraciones (Webhooks), Etiquetas y Envio de mensajes con botones. Basado en la Evolution API.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "https://tu-dominio.com",
+      "type": "string"
+    },
+    {
+      "key": "api_key",
+      "value": "",
+      "type": "string",
+      "description": "API Key de la instancia de Evolution API"
+    },
+    {
+      "key": "instance_name",
+      "value": "mi-instancia",
+      "type": "string",
+      "description": "Nombre de la instancia de WhatsApp"
+    }
+  ],
+  "item": [
+    {
+      "name": "Llamadas",
+      "item": [
+        {
+          "name": "Llamada Falsa (Fake Call)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" },
+              { "key": "apikey", "value": "{{api_key}}" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/call/fake",
+              "host": ["{{base_url}}"],
+              "path": ["call", "fake"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"number\": \"51955682576\",\n  \"isVideo\": false,\n  \"callDuration\": 5\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "description": "Simula una llamada entrante a un numero de WhatsApp."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Chats",
+      "item": [
+        {
+          "name": "Encontrar Chats",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" },
+              { "key": "apikey", "value": "{{api_key}}" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/chat/findChats/{{instance_name}}",
+              "host": ["{{base_url}}"],
+              "path": ["chat", "findChats", "{{instance_name}}"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "description": "Obtiene la lista de chats de la instancia."
+          }
+        },
+        {
+          "name": "Encontrar Mensajes",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" },
+              { "key": "apikey", "value": "{{api_key}}" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/chat/findMessages/{{instance_name}}",
+              "host": ["{{base_url}}"],
+              "path": ["chat", "findMessages", "{{instance_name}}"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"where\": {\n    \"key\": {\n      \"remoteJid\": \"51955682576@s.whatsapp.net\"\n    }\n  },\n  \"limit\": 20\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "description": "Obtiene los mensajes de un chat especifico de la instancia."
+          }
+        },
+        {
+          "name": "Verificar Numero de WhatsApp",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" },
+              { "key": "apikey", "value": "{{api_key}}" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/chat/whatsappNumbers/{{instance_name}}",
+              "host": ["{{base_url}}"],
+              "path": ["chat", "whatsappNumbers", "{{instance_name}}"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"numbers\": [\"51955682576\"]\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "description": "Verifica si un numero de telefono tiene cuenta de WhatsApp."
+          }
+        },
+        {
+          "name": "Archivar Chat",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" },
+              { "key": "apikey", "value": "{{api_key}}" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/chat/archiveChat/{{instance_name}}",
+              "host": ["{{base_url}}"],
+              "path": ["chat", "archiveChat", "{{instance_name}}"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"lastMessage\": {\n    \"key\": {\n      \"remoteJid\": \"51955682576@s.whatsapp.net\",\n      \"fromMe\": true,\n      \"id\": \"3EB0FDF1AB6CAE81793069\"\n    },\n    \"messageTimestamp\": 1726586899\n  },\n  \"archive\": true\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "description": "Archiva o desarchiva un chat."
+          }
+        },
+        {
+          "name": "Marcar Chat como No Leido",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" },
+              { "key": "apikey", "value": "{{api_key}}" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/chat/markChatUnread/{{instance_name}}",
+              "host": ["{{base_url}}"],
+              "path": ["chat", "markChatUnread", "{{instance_name}}"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"lastMessage\": {\n    \"key\": {\n      \"remoteJid\": \"51955682576@s.whatsapp.net\",\n      \"fromMe\": false,\n      \"id\": \"3EB0FDF1AB6CAE81793069\"\n    },\n    \"messageTimestamp\": 1726586899\n  },\n  \"markChatUnread\": true\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "description": "Marca un chat como no leido."
+          }
+        },
+        {
+          "name": "Leer Mensajes",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" },
+              { "key": "apikey", "value": "{{api_key}}" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/chat/readMessages/{{instance_name}}",
+              "host": ["{{base_url}}"],
+              "path": ["chat", "readMessages", "{{instance_name}}"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"readMessages\": [\n    {\n      \"remoteJid\": \"51955682576@s.whatsapp.net\",\n      \"fromMe\": false,\n      \"id\": \"3EB0FDF1AB6CAE81793069\"\n    }\n  ]\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "description": "Marca mensajes como leidos."
+          }
+        },
+        {
+          "name": "Eliminar Mensaje",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" },
+              { "key": "apikey", "value": "{{api_key}}" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/chat/deleteMessageForEveryone/{{instance_name}}",
+              "host": ["{{base_url}}"],
+              "path": ["chat", "deleteMessageForEveryone", "{{instance_name}}"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"3EB0FDF1AB6CAE81793069\",\n  \"fromMe\": true,\n  \"remoteJid\": \"51955682576@s.whatsapp.net\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "description": "Elimina un mensaje para todos los participantes."
+          }
+        },
+        {
+          "name": "Editar Mensaje",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" },
+              { "key": "apikey", "value": "{{api_key}}" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/chat/updateMessage/{{instance_name}}",
+              "host": ["{{base_url}}"],
+              "path": ["chat", "updateMessage", "{{instance_name}}"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"number\": \"51955682576\",\n  \"key\": {\n    \"id\": \"3EB0FDF1AB6CAE81793069\"\n  },\n  \"text\": \"Mensaje editado\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "description": "Edita el contenido de un mensaje enviado."
+          }
+        },
+        {
+          "name": "Actualizar Estado de Bloqueo",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" },
+              { "key": "apikey", "value": "{{api_key}}" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/chat/updateBlockStatus/{{instance_name}}",
+              "host": ["{{base_url}}"],
+              "path": ["chat", "updateBlockStatus", "{{instance_name}}"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"number\": \"51955682576\",\n  \"status\": \"block\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "description": "Bloquea o desbloquea un contacto."
+          }
+        },
+        {
+          "name": "Enviar Presencia (Typing...)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" },
+              { "key": "apikey", "value": "{{api_key}}" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/chat/sendPresence/{{instance_name}}",
+              "host": ["{{base_url}}"],
+              "path": ["chat", "sendPresence", "{{instance_name}}"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"number\": \"51955682576\",\n  \"options\": {\n    \"presence\": \"composing\",\n    \"delay\": 1200\n  }\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "description": "Envia un indicador de presencia (escribiendo, grabando audio, etc.)."
+          }
+        },
+        {
+          "name": "Obtener Foto de Perfil",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/json" },
+              { "key": "apikey", "value": "{{api_key}}" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/chat/fetchProfilePicture/{{instance_name}}?number=51955682576",
+              "host": ["{{base_url}}"],
+              "path": ["chat", "fetchProfilePicture", "{{instance_name}}"],
+              "query": [
+                { "key": "number", "value": "51955682576", "description": "Numero del contacto" }
+              ]
+            },
+            "description": "Obtiene la URL de la foto de perfil de un contacto."
+          }
+        },
+        {
+          "name": "Obtener Media en Base64",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" },
+              { "key": "apikey", "value": "{{api_key}}" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/chat/getBase64FromMediaMessage/{{instance_name}}",
+              "host": ["{{base_url}}"],
+              "path": ["chat", "getBase64FromMediaMessage", "{{instance_name}}"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": {\n    \"key\": {\n      \"id\": \"3EB0FDF1AB6CAE81793069\",\n      \"remoteJid\": \"51955682576@s.whatsapp.net\",\n      \"fromMe\": true\n    }\n  },\n  \"convertToMp4\": false\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "description": "Obtiene el archivo multimedia de un mensaje en formato Base64."
+          }
+        },
+        {
+          "name": "Ver Status / Estados",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/json" },
+              { "key": "apikey", "value": "{{api_key}}" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/chat/findStatusMessage/{{instance_name}}",
+              "host": ["{{base_url}}"],
+              "path": ["chat", "findStatusMessage", "{{instance_name}}"]
+            },
+            "description": "Obtiene los estados publicados por los contactos."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Grupos",
+      "item": [
+        {
+          "name": "Crear Grupo",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" },
+              { "key": "apikey", "value": "{{api_key}}" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/group/create/{{instance_name}}",
+              "host": ["{{base_url}}"],
+              "path": ["group", "create", "{{instance_name}}"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subject\": \"Grupo de Prueba\",\n  \"description\": \"Descripcion del grupo\",\n  \"participants\": [\"51955682576\"]\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "description": "Crea un nuevo grupo de WhatsApp."
+          }
+        },
+        {
+          "name": "Obtener Todos los Grupos",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/json" },
+              { "key": "apikey", "value": "{{api_key}}" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/group/fetchAllGroups/{{instance_name}}?getParticipants=true",
+              "host": ["{{base_url}}"],
+              "path": ["group", "fetchAllGroups", "{{instance_name}}"],
+              "query": [
+                { "key": "getParticipants", "value": "true", "description": "Incluir lista de participantes" }
+              ]
+            },
+            "description": "Obtiene todos los grupos de la instancia."
+          }
+        },
+        {
+          "name": "Obtener Codigo de Invitacion",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/json" },
+              { "key": "apikey", "value": "{{api_key}}" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/group/inviteCode/{{instance_name}}?groupJid=120363XXXXXXX@g.us",
+              "host": ["{{base_url}}"],
+              "path": ["group", "inviteCode", "{{instance_name}}"],
+              "query": [
+                { "key": "groupJid", "value": "120363XXXXXXX@g.us", "description": "JID del grupo" }
+              ]
+            },
+            "description": "Obtiene el codigo de invitacion del grupo."
+          }
+        },
+        {
+          "name": "Buscar Grupo por Codigo de Invitacion",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/json" },
+              { "key": "apikey", "value": "{{api_key}}" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/group/inviteInfo/{{instance_name}}?inviteCode=XXXXXXXXXXXX",
+              "host": ["{{base_url}}"],
+              "path": ["group", "inviteInfo", "{{instance_name}}"],
+              "query": [
+                { "key": "inviteCode", "value": "XXXXXXXXXXXX", "description": "Codigo de invitacion" }
+              ]
+            },
+            "description": "Obtiene informacion de un grupo usando su codigo de invitacion."
+          }
+        },
+        {
+          "name": "Buscar Grupo por JID",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/json" },
+              { "key": "apikey", "value": "{{api_key}}" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/group/findGroupInfos/{{instance_name}}?groupJid=120363XXXXXXX@g.us",
+              "host": ["{{base_url}}"],
+              "path": ["group", "findGroupInfos", "{{instance_name}}"],
+              "query": [
+                { "key": "groupJid", "value": "120363XXXXXXX@g.us", "description": "JID del grupo" }
+              ]
+            },
+            "description": "Obtiene la informacion de un grupo por su JID."
+          }
+        },
+        {
+          "name": "Obtener Participantes",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/json" },
+              { "key": "apikey", "value": "{{api_key}}" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/group/participants/{{instance_name}}?groupJid=120363XXXXXXX@g.us",
+              "host": ["{{base_url}}"],
+              "path": ["group", "participants", "{{instance_name}}"],
+              "query": [
+                { "key": "groupJid", "value": "120363XXXXXXX@g.us", "description": "JID del grupo" }
+              ]
+            },
+            "description": "Obtiene la lista de participantes del grupo."
+          }
+        },
+        {
+          "name": "Actualizar Participante",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" },
+              { "key": "apikey", "value": "{{api_key}}" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/group/updateParticipant/{{instance_name}}",
+              "host": ["{{base_url}}"],
+              "path": ["group", "updateParticipant", "{{instance_name}}"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"groupJid\": \"120363XXXXXXX@g.us\",\n  \"action\": \"add\",\n  \"participants\": [\"51955682576\"]\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "description": "Agrega, elimina, promueve o degrada participantes. Actions: 'add', 'remove', 'promote', 'demote'."
+          }
+        },
+        {
+          "name": "Salir del Grupo",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" },
+              { "key": "apikey", "value": "{{api_key}}" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/group/leaveGroup/{{instance_name}}",
+              "host": ["{{base_url}}"],
+              "path": ["group", "leaveGroup", "{{instance_name}}"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"groupJid\": \"120363XXXXXXX@g.us\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "description": "La instancia abandona el grupo especificado."
+          }
+        },
+        {
+          "name": "Revocar Codigo de Invitacion",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" },
+              { "key": "apikey", "value": "{{api_key}}" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/group/revokeInviteCode/{{instance_name}}",
+              "host": ["{{base_url}}"],
+              "path": ["group", "revokeInviteCode", "{{instance_name}}"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"groupJid\": \"120363XXXXXXX@g.us\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "description": "Revoca el codigo de invitacion actual del grupo y genera uno nuevo."
+          }
+        },
+        {
+          "name": "Enviar URL de Invitacion",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" },
+              { "key": "apikey", "value": "{{api_key}}" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/group/sendInvite/{{instance_name}}",
+              "host": ["{{base_url}}"],
+              "path": ["group", "sendInvite", "{{instance_name}}"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"groupJid\": \"120363XXXXXXX@g.us\",\n  \"description\": \"Te invito a unirte a nuestro grupo\",\n  \"numbers\": [\"51955682576\"]\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "description": "Envia el enlace de invitacion del grupo a numeros especificos."
+          }
+        },
+        {
+          "name": "Actualizar Nombre del Grupo",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" },
+              { "key": "apikey", "value": "{{api_key}}" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/group/updateGroupSubject/{{instance_name}}",
+              "host": ["{{base_url}}"],
+              "path": ["group", "updateGroupSubject", "{{instance_name}}"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"groupJid\": \"120363XXXXXXX@g.us\",\n  \"subject\": \"Nuevo Nombre del Grupo\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "description": "Actualiza el nombre (subject) del grupo."
+          }
+        },
+        {
+          "name": "Actualizar Descripcion del Grupo",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" },
+              { "key": "apikey", "value": "{{api_key}}" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/group/updateGroupDescription/{{instance_name}}",
+              "host": ["{{base_url}}"],
+              "path": ["group", "updateGroupDescription", "{{instance_name}}"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"groupJid\": \"120363XXXXXXX@g.us\",\n  \"description\": \"Nueva descripcion del grupo\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "description": "Actualiza la descripcion del grupo."
+          }
+        },
+        {
+          "name": "Actualizar Foto del Grupo",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" },
+              { "key": "apikey", "value": "{{api_key}}" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/group/updateGroupPicture/{{instance_name}}",
+              "host": ["{{base_url}}"],
+              "path": ["group", "updateGroupPicture", "{{instance_name}}"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"groupJid\": \"120363XXXXXXX@g.us\",\n  \"image\": \"data:image/jpeg;base64,....\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "description": "Actualiza la foto del grupo en Base64."
+          }
+        },
+        {
+          "name": "Configuracion del Grupo",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" },
+              { "key": "apikey", "value": "{{api_key}}" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/group/updateSetting/{{instance_name}}",
+              "host": ["{{base_url}}"],
+              "path": ["group", "updateSetting", "{{instance_name}}"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"groupJid\": \"120363XXXXXXX@g.us\",\n  \"action\": \"announcement\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "description": "Configura los ajustes del grupo. Actions: 'announcement' (solo admins), 'not_announcement' (todos)."
+          }
+        },
+        {
+          "name": "Activar Mensajes Efimeros",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" },
+              { "key": "apikey", "value": "{{api_key}}" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/group/toggleEphemeral/{{instance_name}}",
+              "host": ["{{base_url}}"],
+              "path": ["group", "toggleEphemeral", "{{instance_name}}"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"groupJid\": \"120363XXXXXXX@g.us\",\n  \"expiration\": 604800\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "description": "Activa o desactiva los mensajes efimeros en el grupo. Expiracion en segundos: 86400 (1 dia), 604800 (7 dias), 0 (desactivar)."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Integraciones (Webhook)",
+      "item": [
+        {
+          "name": "Configurar Webhook",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" },
+              { "key": "apikey", "value": "{{api_key}}" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/webhook/set",
+              "host": ["{{base_url}}"],
+              "path": ["webhook", "set"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"webhook\": {\n    \"enabled\": true,\n    \"url\": \"https://webhook.site\",\n    \"headers\": {\n      \"autorization\": \"Bearer TOKEN\",\n      \"Content-Type\": \"application/json\"\n    },\n    \"byEvents\": false,\n    \"base64\": false,\n    \"events\": [\"MESSAGES_UPSERT\"]\n  }\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "description": "Configura el webhook de la instancia para recibir eventos."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Etiquetas (Labels)",
+      "item": [
+        {
+          "name": "Encontrar Etiquetas",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/json" },
+              { "key": "apikey", "value": "{{api_key}}" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/label/findLabels/{{instance_name}}",
+              "host": ["{{base_url}}"],
+              "path": ["label", "findLabels", "{{instance_name}}"]
+            },
+            "description": "Lista todas las etiquetas disponibles en la instancia."
+          }
+        },
+        {
+          "name": "Gestionar Etiquetas",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" },
+              { "key": "apikey", "value": "{{api_key}}" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/label/handleLabel/{{instance_name}}",
+              "host": ["{{base_url}}"],
+              "path": ["label", "handleLabel", "{{instance_name}}"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"number\": \"51955682576\",\n  \"labelId\": \"1\",\n  \"action\": \"add\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "description": "Agrega o elimina una etiqueta de un contacto. Actions: 'add', 'remove'."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Enviar Mensajes",
+      "item": [
+        {
+          "name": "Enviar Mensaje con Botones",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" },
+              { "key": "apikey", "value": "{{api_key}}" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/message/send",
+              "host": ["{{base_url}}"],
+              "path": ["message", "send"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"number\": \"51955682576\",\n  \"title\": \"Title Button\",\n  \"description\": \"Description Button\",\n  \"footer\": \"Footer Button\",\n  \"buttons\": [\n    {\n      \"type\": \"reply\",\n      \"displayText\": \"Resposta\",\n      \"id\": \"123\"\n    }\n  ]\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "description": "Envia un mensaje interactivo con botones de respuesta rapida."
+          }
+        }
+      ]
+    }
+  ]
+}

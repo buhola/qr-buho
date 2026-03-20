@@ -1,0 +1,357 @@
+{
+  "info": {
+    "_postman_id": "qr-buho-api-aplicacion",
+    "name": "QR Buho - API Aplicacion",
+    "description": "Coleccion de endpoints de la API de Aplicacion de QR Buho. Incluye endpoints de Admin (Autenticacion, Tenants, Planes) y Tenant (Campanas, Dispositivos).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "https://tu-dominio.com",
+      "type": "string"
+    },
+    {
+      "key": "api_token",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Admin",
+      "item": [
+        {
+          "name": "Autenticacion",
+          "item": [
+            {
+              "name": "Registrar Administrador",
+              "request": {
+                "method": "POST",
+                "header": [
+                  { "key": "Content-Type", "value": "application/json" },
+                  { "key": "Accept", "value": "application/json" }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/auth/register",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "auth", "register"]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"demo9@gmail.com\",\n  \"name\": \"demo9\",\n  \"password\": \"12345678\",\n  \"password_confirmation\": \"12345678\"\n}",
+                  "options": { "raw": { "language": "json" } }
+                },
+                "description": "Crear una nueva cuenta de administrador."
+              }
+            },
+            {
+              "name": "Iniciar Sesion",
+              "request": {
+                "method": "POST",
+                "header": [
+                  { "key": "Content-Type", "value": "application/json" },
+                  { "key": "Accept", "value": "application/json" }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/auth/login",
+                  "host": ["{{base_url}}"],
+                  "path": ["auth", "login"]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"admin@tudominio.com\",\n  \"password\": \"contraseña\"\n}",
+                  "options": { "raw": { "language": "json" } }
+                },
+                "description": "Iniciar sesion en el sistema."
+              }
+            },
+            {
+              "name": "Verificar Token",
+              "request": {
+                "method": "POST",
+                "header": [
+                  { "key": "Content-Type", "value": "application/json" },
+                  { "key": "Accept", "value": "application/json" }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/auth/verify_token",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "auth", "verify_token"]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"api_token\": \"sakldjlsajdakls4534sf4ww...\"\n}",
+                  "options": { "raw": { "language": "json" } }
+                },
+                "description": "Validar si un token de acceso es valido."
+              }
+            },
+            {
+              "name": "Perfil de Usuario (Logout)",
+              "request": {
+                "method": "GET",
+                "header": [
+                  { "key": "Accept", "value": "application/json" },
+                  { "key": "Authorization", "value": "Bearer {{api_token}}" }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/auth/logout",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "auth", "logout"]
+                },
+                "description": "Obtener datos del administrador autenticado / Cerrar sesion."
+              }
+            }
+          ]
+        },
+        {
+          "name": "Tenants",
+          "item": [
+            {
+              "name": "Registrar Tenant",
+              "request": {
+                "method": "POST",
+                "header": [
+                  { "key": "Content-Type", "value": "application/json" },
+                  { "key": "Accept", "value": "application/json" },
+                  { "key": "Authorization", "value": "Bearer {{api_token}}" }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/tenant/register",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "tenant", "register"]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"EmpresaDemo\",\n  \"domain\": \"demooooo\",\n  \"email\": \"admin@empresa.com\",\n  \"password\": \"123456\",\n  \"plan_id\": 1\n}",
+                  "options": { "raw": { "language": "json" } }
+                },
+                "description": "Crear un nuevo tenant en la plataforma."
+              }
+            },
+            {
+              "name": "Listar Tenants con Filtro",
+              "request": {
+                "method": "GET",
+                "header": [
+                  { "key": "Accept", "value": "application/json" },
+                  { "key": "Authorization", "value": "Bearer {{api_token}}" }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/tenant/list?id=&domain=&active=true&paginate=10",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "tenant", "list"],
+                  "query": [
+                    { "key": "id", "value": "", "description": "Tenant ID" },
+                    { "key": "domain", "value": "", "description": "Tenant domain" },
+                    { "key": "active", "value": "true", "description": "Filter by active status" },
+                    { "key": "paginate", "value": "10", "description": "Items por pagina" }
+                  ]
+                },
+                "description": "Obtener lista de tenants filtrados."
+              }
+            },
+            {
+              "name": "Eliminar Tenant",
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  { "key": "Accept", "value": "application/json" },
+                  { "key": "Authorization", "value": "Bearer {{api_token}}" }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/tenant/delete/:id",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "tenant", "delete", ":id"],
+                  "variable": [
+                    { "key": "id", "value": "31845898-ba4b-4b59-b932-a6d34730cc55", "description": "Tenant ID" }
+                  ]
+                },
+                "description": "Eliminar un tenant y todos sus datos del sistema."
+              }
+            }
+          ]
+        },
+        {
+          "name": "Planes",
+          "item": [
+            {
+              "name": "Registrar Plan",
+              "request": {
+                "method": "POST",
+                "header": [
+                  { "key": "Content-Type", "value": "application/json" },
+                  { "key": "Accept", "value": "application/json" },
+                  { "key": "Authorization", "value": "Bearer {{api_token}}" }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/plan/register",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "plan", "register"]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Plan Premium\",\n  \"is_free\": true,\n  \"price\": 49.99,\n  \"description\": \"Plan con todas las funcionalidades\",\n  \"limit_devices\": 10,\n  \"limit_messages\": 5000,\n  \"limit_contacts\": 1000\n}",
+                  "options": { "raw": { "language": "json" } }
+                },
+                "description": "Crear un nuevo plan de suscripcion."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Tenant",
+      "item": [
+        {
+          "name": "Campanas",
+          "item": [
+            {
+              "name": "Crear Campana Manual",
+              "request": {
+                "method": "POST",
+                "header": [
+                  { "key": "Content-Type", "value": "application/json" },
+                  { "key": "Accept", "value": "application/json" },
+                  { "key": "Authorization", "value": "Bearer {{api_token}}" }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/campaigns/manual",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "campaigns", "manual"]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"Campana de prueba\",\n  \"groups\": [1, 2],\n  \"message\": \"Hola, este es un mensaje de prueba.\",\n  \"schedule_at\": \"2025-10-01 10:00:00\",\n  \"attach_pdf\": null\n}",
+                  "options": { "raw": { "language": "json" } }
+                },
+                "description": "Crear una nueva campana ingresando los numeros manualmente."
+              }
+            },
+            {
+              "name": "Listar Campanas",
+              "request": {
+                "method": "GET",
+                "header": [
+                  { "key": "Accept", "value": "application/json" },
+                  { "key": "Authorization", "value": "Bearer {{api_token}}" }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/campaigns/list?paginate=10",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "campaigns", "list"],
+                  "query": [
+                    { "key": "paginate", "value": "10", "description": "Items por pagina" }
+                  ]
+                },
+                "description": "Listar campanas (tambien sirve para campanas desde Excel)."
+              }
+            },
+            {
+              "name": "Detalles de Campana",
+              "request": {
+                "method": "GET",
+                "header": [
+                  { "key": "Accept", "value": "application/json" },
+                  { "key": "Authorization", "value": "Bearer {{api_token}}" }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/campaigns/show/:id",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "campaigns", "show", ":id"],
+                  "variable": [
+                    { "key": "id", "value": "1", "description": "Campaign ID" }
+                  ]
+                },
+                "description": "Obtener informacion detallada de una campana especifica."
+              }
+            }
+          ]
+        },
+        {
+          "name": "Dispositivos",
+          "item": [
+            {
+              "name": "Crear Dispositivo",
+              "request": {
+                "method": "POST",
+                "header": [
+                  { "key": "Content-Type", "value": "application/json" },
+                  { "key": "Accept", "value": "application/json" },
+                  { "key": "Authorization", "value": "Bearer {{api_token}}" }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/devices/create",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "devices", "create"]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Mi Dispositivo\",\n  \"phone\": \"51987654321\"\n}",
+                  "options": { "raw": { "language": "json" } }
+                },
+                "description": "Registrar una nueva instancia de WhatsApp."
+              }
+            },
+            {
+              "name": "Listar Dispositivos",
+              "request": {
+                "method": "GET",
+                "header": [
+                  { "key": "Accept", "value": "application/json" },
+                  { "key": "Authorization", "value": "Bearer {{api_token}}" }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/devices/list",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "devices", "list"]
+                },
+                "description": "Obtener la lista de todos los dispositivos registrados."
+              }
+            },
+            {
+              "name": "Detalles de Dispositivo",
+              "request": {
+                "method": "GET",
+                "header": [
+                  { "key": "Accept", "value": "application/json" },
+                  { "key": "Authorization", "value": "Bearer {{api_token}}" }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/devices/fetch?id=1",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "devices", "fetch"],
+                  "query": [
+                    { "key": "id", "value": "1", "description": "Device ID" }
+                  ]
+                },
+                "description": "Obtener informacion tecnica de una instancia."
+              }
+            },
+            {
+              "name": "Eliminar Dispositivo",
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  { "key": "Accept", "value": "application/json" },
+                  { "key": "Authorization", "value": "Bearer {{api_token}}" }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/devices/delete/:id",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "devices", "delete", ":id"],
+                  "variable": [
+                    { "key": "id", "value": "1", "description": "Device ID" }
+                  ]
+                },
+                "description": "Eliminar una instancia de WhatsApp del sistema."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

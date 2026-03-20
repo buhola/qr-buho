@@ -1,0 +1,145 @@
+{
+  "info": {
+    "_postman_id": "qr-buho-api-externa",
+    "name": "QR Buho - API Externa (Mensajeria Simple)",
+    "description": "Coleccion de endpoints de la API Externa de QR Buho. Permite enviar mensajes de texto, multimedia (imagenes, videos, audios) y archivos PDF directamente a numeros de WhatsApp. Usa el token de dispositivo para autenticarse.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "https://tu-dominio.com",
+      "type": "string"
+    },
+    {
+      "key": "device_token",
+      "value": "",
+      "type": "string",
+      "description": "Token de autenticacion del dispositivo"
+    }
+  ],
+  "item": [
+    {
+      "name": "Enviar Mensaje de Texto",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Accept", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{device_token}}" }
+        ],
+        "url": {
+          "raw": "{{base_url}}/api/message/send-text",
+          "host": ["{{base_url}}"],
+          "path": ["api", "message", "send-text"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"number\": \"123456789\",\n  \"message\": \"Plain text message\"\n}",
+          "options": { "raw": { "language": "json" } }
+        },
+        "description": "Permite enviar un mensaje de texto a un numero de WhatsApp. El campo 'number' debe ser el numero en formato internacional sin el '+'."
+      },
+      "response": [
+        {
+          "name": "200 - Mensaje enviado correctamente",
+          "status": "OK",
+          "code": 200,
+          "originalRequest": {
+            "method": "POST",
+            "url": { "raw": "{{base_url}}/api/message/send-text" }
+          },
+          "body": "{\n  \"data\": {\n    \"key\": {\n      \"remoteJid\": \"51123456789@s.whatsapp.net\",\n      \"fromMe\": true,\n      \"id\": \"BAE51C2115EE6FC0\"\n    },\n    \"messageTimestamp\": \"1726586899\",\n    \"status\": \"PENDING\"\n  }\n}"
+        },
+        {
+          "name": "400 - Error en la solicitud",
+          "status": "Bad Request",
+          "code": 400,
+          "originalRequest": {
+            "method": "POST",
+            "url": { "raw": "{{base_url}}/api/message/send-text" }
+          },
+          "body": "{ \"error\": \"Descripcion del error\" }"
+        },
+        {
+          "name": "401 - No autorizado",
+          "status": "Unauthorized",
+          "code": 401,
+          "originalRequest": {
+            "method": "POST",
+            "url": { "raw": "{{base_url}}/api/message/send-text" }
+          },
+          "body": "{ \"error\": \"Token incorrecto o ausente\" }"
+        }
+      ]
+    },
+    {
+      "name": "Enviar Archivo Multimedia",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Accept", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{device_token}}" }
+        ],
+        "url": {
+          "raw": "{{base_url}}/api/message/send-media",
+          "host": ["{{base_url}}"],
+          "path": ["api", "message", "send-media"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"number\": \"51123456789\",\n  \"media_type\": \"image\",\n  \"caption\": \"Plain Text message\",\n  \"link\": \"https://example.com/image.png\"\n}",
+          "options": { "raw": { "language": "json" } }
+        },
+        "description": "Permite enviar imagenes, videos o audios a un numero de WhatsApp.\n\n- **media_type**: Puede ser 'image', 'video' o 'audio'.\n- **link**: URL publica o cadena en Base64 del archivo.\n- **caption**: Texto opcional que acompana el archivo.\n- **number**: Numero en formato internacional sin el '+'."
+      },
+      "response": [
+        {
+          "name": "200 - Multimedia enviado correctamente",
+          "status": "OK",
+          "code": 200,
+          "originalRequest": {
+            "method": "POST",
+            "url": { "raw": "{{base_url}}/api/message/send-media" }
+          },
+          "body": "{\n  \"data\": {\n    \"key\": {\n      \"remoteJid\": \"51123456789@s.whatsapp.net\",\n      \"fromMe\": true,\n      \"id\": \"3EB0CAF5AF1C92781BFD84\"\n    },\n    \"messageTimestamp\": \"1731950893\",\n    \"status\": \"PENDING\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Enviar PDF por WhatsApp",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Accept", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{device_token}}" }
+        ],
+        "url": {
+          "raw": "{{base_url}}/api/message/send/pdf",
+          "host": ["{{base_url}}"],
+          "path": ["api", "message", "send", "pdf"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"number\": \"123456789\",\n  \"message\": \"File PDF\",\n  \"file\": \"JVBERi0xLjQKJeLjz9MK....\",\n  \"filename\": \"file.pdf\"\n}",
+          "options": { "raw": { "language": "json" } }
+        },
+        "description": "Permite enviar un archivo PDF a un numero de WhatsApp.\n\n- **number**: Numero en formato internacional sin el '+'.\n- **message**: Texto que acompana el PDF.\n- **file**: Archivo en formato Base64.\n- **filename**: Nombre del archivo con extension .pdf."
+      },
+      "response": [
+        {
+          "name": "200 - PDF enviado correctamente",
+          "status": "OK",
+          "code": 200,
+          "originalRequest": {
+            "method": "POST",
+            "url": { "raw": "{{base_url}}/api/message/send/pdf" }
+          },
+          "body": "{\n  \"data\": {\n    \"key\": {\n      \"remoteJid\": \"51123456789@s.whatsapp.net\",\n      \"fromMe\": true,\n      \"id\": \"BAE51C2115EE6FC0\"\n    },\n    \"messageTimestamp\": \"1723397000\",\n    \"status\": \"PENDING\"\n  }\n}"
+        }
+      ]
+    }
+  ]
+}
