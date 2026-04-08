@@ -1,0 +1,79 @@
+openapi: 3.0.3
+info:
+  title: Send Location
+  version: 1.0.0
+
+servers:
+  - url: https://{tenant_id}.qr.buho.la
+    description: Tenant Server
+    variables:
+      tenant_id:
+        default: demo
+        description: Tenant subdomain
+
+paths:
+  /api/send/{instance}:
+    post:
+      summary: Send location
+      description: Send a location message.
+      parameters:
+        - name: instance
+          in: path
+          required: true
+          description: Connected device instance number
+          schema:
+            type: string
+            example: "51987654321"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [type, payload]
+              properties:
+                type:
+                  type: string
+                  example: sendLocation
+                payload:
+                  type: object
+                  required: [number, name, address, latitude, longitude]
+                  properties:
+                    number:
+                      type: string
+                      example: "51987654321"
+                    name:
+                      type: string
+                      example: "Oficina principal"
+                    address:
+                      type: string
+                      example: "Av. Javier Prado 123, Lima"
+                    latitude:
+                      type: number
+                      format: double
+                      example: -12.0464
+                    longitude:
+                      type: number
+                      format: double
+                      example: -77.0428
+            example:
+              type: sendLocation
+              payload:
+                number: "51987654321"
+                name: "Oficina principal"
+                address: "Av. Javier Prado 123, Lima"
+                latitude: -12.0464
+                longitude: -77.0428
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  key:
+                    remoteJid: "51987654321@s.whatsapp.net"
+                    fromMe: true
+                    id: "3EB0123456789ABCDEF"
+                  status: "PENDING"

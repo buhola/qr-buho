@@ -1,0 +1,87 @@
+openapi: 3.0.3
+info:
+  title: Send Video
+  version: 1.0.0
+
+servers:
+  - url: https://{tenant_id}.qr.buho.la
+    description: Tenant Server
+    variables:
+      tenant_id:
+        default: demo
+        description: Tenant subdomain
+
+paths:
+  /api/send/{instance}:
+    post:
+      summary: Send video message
+      description: Send a video using the generic send endpoint.
+      parameters:
+        - name: instance
+          in: path
+          required: true
+          description: Connected device instance number
+          schema:
+            type: string
+            example: "51987654321"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [type, payload]
+              properties:
+                type:
+                  type: string
+                  example: sendMedia
+                payload:
+                  type: object
+                  required: [number, mediatype, media]
+                  properties:
+                    number:
+                      type: string
+                      example: "51987654321"
+                    mediatype:
+                      type: string
+                      example: video
+                    media:
+                      type: string
+                      description: Public URL or base64 video content
+                      example: "https://example.com/video.mp4"
+                    caption:
+                      type: string
+                      example: "Video de prueba"
+                    mimetype:
+                      type: string
+                      example: "video/mp4"
+                    fileName:
+                      type: string
+                      example: "video.mp4"
+                    delay:
+                      type: integer
+                      default: 1200
+                      example: 1200
+            example:
+              type: sendMedia
+              payload:
+                number: "51987654321"
+                mediatype: "video"
+                media: "https://example.com/video.mp4"
+                caption: "Video de prueba"
+                mimetype: "video/mp4"
+                fileName: "video.mp4"
+                delay: 1200
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  key:
+                    remoteJid: "51987654321@s.whatsapp.net"
+                    fromMe: true
+                    id: "3EB0123456789ABCDEF"
+                  status: "PENDING"

@@ -1,0 +1,87 @@
+openapi: 3.0.3
+info:
+  title: Send Image
+  version: 1.0.0
+
+servers:
+  - url: https://{tenant_id}.qr.buho.la
+    description: Tenant Server
+    variables:
+      tenant_id:
+        default: demo
+        description: Tenant subdomain
+
+paths:
+  /api/send/{instance}:
+    post:
+      summary: Send image message
+      description: Send an image using the generic send endpoint.
+      parameters:
+        - name: instance
+          in: path
+          required: true
+          description: Connected device instance number
+          schema:
+            type: string
+            example: "51987654321"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [type, payload]
+              properties:
+                type:
+                  type: string
+                  example: sendMedia
+                payload:
+                  type: object
+                  required: [number, mediatype, media]
+                  properties:
+                    number:
+                      type: string
+                      example: "51987654321"
+                    mediatype:
+                      type: string
+                      example: image
+                    media:
+                      type: string
+                      description: Public URL or base64 image content
+                      example: "https://example.com/foto.jpg"
+                    caption:
+                      type: string
+                      example: "Esta es mi foto favorita"
+                    mimetype:
+                      type: string
+                      example: "image/jpeg"
+                    fileName:
+                      type: string
+                      example: "foto.jpg"
+                    delay:
+                      type: integer
+                      default: 1200
+                      example: 1200
+            example:
+              type: sendMedia
+              payload:
+                number: "51987654321"
+                mediatype: "image"
+                media: "https://example.com/foto.jpg"
+                caption: "Esta es mi foto favorita"
+                mimetype: "image/jpeg"
+                fileName: "foto.jpg"
+                delay: 1200
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  key:
+                    remoteJid: "51987654321@s.whatsapp.net"
+                    fromMe: true
+                    id: "3EB0123456789ABCDEF"
+                  status: "PENDING"

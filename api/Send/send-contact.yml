@@ -1,0 +1,78 @@
+openapi: 3.0.3
+info:
+  title: Send Contact
+  version: 1.0.0
+
+servers:
+  - url: https://{tenant_id}.qr.buho.la
+    description: Tenant Server
+    variables:
+      tenant_id:
+        default: demo
+        description: Tenant subdomain
+
+paths:
+  /api/send/{instance}:
+    post:
+      summary: Send contact
+      description: Send a WhatsApp contact card.
+      parameters:
+        - name: instance
+          in: path
+          required: true
+          description: Connected device instance number
+          schema:
+            type: string
+            example: "51987654321"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [type, payload]
+              properties:
+                type:
+                  type: string
+                  example: sendContact
+                payload:
+                  type: object
+                  required: [number, contact]
+                  properties:
+                    number:
+                      type: string
+                      example: "51987654321"
+                    contact:
+                      type: object
+                      description: Contact payload forwarded to Evolution
+                      properties:
+                        fullName:
+                          type: string
+                          example: "Juan Pérez"
+                        phoneNumber:
+                          type: string
+                          example: "51999888777"
+                        organization:
+                          type: string
+                          example: "Digital Buho"
+            example:
+              type: sendContact
+              payload:
+                number: "51987654321"
+                contact:
+                  fullName: "Juan Pérez"
+                  phoneNumber: "51999888777"
+                  organization: "Digital Buho"
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  key:
+                    remoteJid: "51987654321@s.whatsapp.net"
+                    fromMe: true
+                    id: "3EB0123456789ABCDEF"
+                  status: "PENDING"

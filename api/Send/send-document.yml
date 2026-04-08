@@ -1,0 +1,87 @@
+openapi: 3.0.3
+info:
+  title: Send Document
+  version: 1.0.0
+
+servers:
+  - url: https://{tenant_id}.qr.buho.la
+    description: Tenant Server
+    variables:
+      tenant_id:
+        default: demo
+        description: Tenant subdomain
+
+paths:
+  /api/send/{instance}:
+    post:
+      summary: Send document
+      description: Send a document using the generic send endpoint.
+      parameters:
+        - name: instance
+          in: path
+          required: true
+          description: Connected device instance number
+          schema:
+            type: string
+            example: "51987654321"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [type, payload]
+              properties:
+                type:
+                  type: string
+                  example: sendMedia
+                payload:
+                  type: object
+                  required: [number, mediatype, media, fileName]
+                  properties:
+                    number:
+                      type: string
+                      example: "51987654321"
+                    mediatype:
+                      type: string
+                      example: document
+                    media:
+                      type: string
+                      description: Public URL or base64 document content
+                      example: "https://example.com/contrato.pdf"
+                    caption:
+                      type: string
+                      example: "Adjunto el contrato"
+                    mimetype:
+                      type: string
+                      example: "application/pdf"
+                    fileName:
+                      type: string
+                      example: "contrato.pdf"
+                    delay:
+                      type: integer
+                      default: 1200
+                      example: 1200
+            example:
+              type: sendMedia
+              payload:
+                number: "51987654321"
+                mediatype: "document"
+                media: "https://example.com/contrato.pdf"
+                caption: "Adjunto el contrato"
+                mimetype: "application/pdf"
+                fileName: "contrato.pdf"
+                delay: 1200
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  key:
+                    remoteJid: "51987654321@s.whatsapp.net"
+                    fromMe: true
+                    id: "3EB0123456789ABCDEF"
+                  status: "PENDING"

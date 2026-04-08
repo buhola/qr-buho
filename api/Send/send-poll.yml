@@ -1,0 +1,81 @@
+openapi: 3.0.3
+info:
+  title: Send Poll
+  version: 1.0.0
+
+servers:
+  - url: https://{tenant_id}.qr.buho.la
+    description: Tenant Server
+    variables:
+      tenant_id:
+        default: demo
+        description: Tenant subdomain
+
+paths:
+  /api/send/{instance}:
+    post:
+      summary: Send poll
+      description: Send a WhatsApp poll.
+      parameters:
+        - name: instance
+          in: path
+          required: true
+          description: Connected device instance number
+          schema:
+            type: string
+            example: "51987654321"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [type, payload]
+              properties:
+                type:
+                  type: string
+                  example: sendPoll
+                payload:
+                  type: object
+                  required: [number, name, selectableCount, values]
+                  properties:
+                    number:
+                      type: string
+                      example: "51987654321"
+                    name:
+                      type: string
+                      example: "¿Qué opción prefieres?"
+                    selectableCount:
+                      type: integer
+                      example: 1
+                    values:
+                      type: array
+                      items:
+                        type: string
+                      example:
+                        - "Opción 1"
+                        - "Opción 2"
+                        - "Opción 3"
+            example:
+              type: sendPoll
+              payload:
+                number: "51987654321"
+                name: "¿Qué opción prefieres?"
+                selectableCount: 1
+                values:
+                  - "Opción 1"
+                  - "Opción 2"
+                  - "Opción 3"
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  key:
+                    remoteJid: "51987654321@s.whatsapp.net"
+                    fromMe: true
+                    id: "3EB0123456789ABCDEF"
+                  status: "PENDING"

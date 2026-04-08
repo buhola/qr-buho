@@ -1,0 +1,91 @@
+openapi: 3.0.3
+info:
+  title: Send Buttons
+  version: 1.0.0
+
+servers:
+  - url: https://{tenant_id}.qr.buho.la
+    description: Tenant Server
+    variables:
+      tenant_id:
+        default: demo
+        description: Tenant subdomain
+
+paths:
+  /api/send/{instance}:
+    post:
+      summary: Send buttons message
+      description: Send a message with interactive reply buttons.
+      parameters:
+        - name: instance
+          in: path
+          required: true
+          description: Connected device instance number
+          schema:
+            type: string
+            example: "51987654321"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [type, payload]
+              properties:
+                type:
+                  type: string
+                  example: sendButtons
+                payload:
+                  type: object
+                  required: [number, title, buttons]
+                  properties:
+                    number:
+                      type: string
+                      example: "51987654321"
+                    title:
+                      type: string
+                      example: "Title Button"
+                    description:
+                      type: string
+                      example: "Description Button"
+                    footer:
+                      type: string
+                      example: "Footer Button"
+                    buttons:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          type:
+                            type: string
+                            example: "reply"
+                          displayText:
+                            type: string
+                            example: "Respuesta"
+                          id:
+                            type: string
+                            example: "123"
+            example:
+              type: sendButtons
+              payload:
+                number: "51987654321"
+                title: "Title Button"
+                description: "Description Button"
+                footer: "Footer Button"
+                buttons:
+                  - type: "reply"
+                    displayText: "Respuesta"
+                    id: "123"
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  key:
+                    remoteJid: "51987654321@s.whatsapp.net"
+                    fromMe: true
+                    id: "3EB0123456789ABCDEF"
+                  status: "PENDING"

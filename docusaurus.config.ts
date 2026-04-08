@@ -202,7 +202,7 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: 'Qr Buho',
+      title: 'WaYa',
       logo: {
         alt: 'Qr Buho Logo',
         src: 'img/logo.svg',

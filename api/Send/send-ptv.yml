@@ -1,0 +1,66 @@
+openapi: 3.0.3
+info:
+  title: Send PTV
+  version: 1.0.0
+
+servers:
+  - url: https://{tenant_id}.qr.buho.la
+    description: Tenant Server
+    variables:
+      tenant_id:
+        default: demo
+        description: Tenant subdomain
+
+paths:
+  /api/send/{instance}:
+    post:
+      summary: Send PTV video
+      description: Send a Picture-to-Video message using the sendPtv type.
+      parameters:
+        - name: instance
+          in: path
+          required: true
+          description: Connected device instance number
+          schema:
+            type: string
+            example: "51987654321"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [type, payload]
+              properties:
+                type:
+                  type: string
+                  example: sendPtv
+                payload:
+                  type: object
+                  required: [number, video]
+                  properties:
+                    number:
+                      type: string
+                      example: "51987654321"
+                    video:
+                      type: string
+                      description: Public URL or base64 PTV video content
+                      example: "https://example.com/ptv.mp4"
+            example:
+              type: sendPtv
+              payload:
+                number: "51987654321"
+                video: "https://example.com/ptv.mp4"
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  key:
+                    remoteJid: "51987654321@s.whatsapp.net"
+                    fromMe: true
+                    id: "3EB0123456789ABCDEF"
+                  status: "PENDING"
