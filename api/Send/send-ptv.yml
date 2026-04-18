@@ -1,6 +1,7 @@
-openapi: 3.0.3
+openapi: 3.0.0
 info:
-  title: Send PTV
+  title: "Enviar PTV"
+  description: "Envía un video de tipo Picture-to-Video (PTV)."
   version: 1.0.0
 
 servers:
@@ -9,18 +10,18 @@ servers:
     variables:
       tenant_id:
         default: demo
-        description: Tenant subdomain
+        description: Tenant Subdomain
 
 paths:
-  /api/send/{instance}:
+  "/api/send/{instance}":
     post:
-      summary: Send PTV video
-      description: Send a Picture-to-Video message using the sendPtv type.
+      summary: "Enviar PTV"
+      description: "Envía un video tipo Picture-to-Video (PTV)."
       parameters:
         - name: instance
           in: path
           required: true
-          description: Connected device instance number
+          description: Número de dispositivo
           schema:
             type: string
             example: "51987654321"
@@ -30,21 +31,24 @@ paths:
           application/json:
             schema:
               type: object
-              required: [type, payload]
+              required:
+                - type
+                - payload
               properties:
                 type:
                   type: string
-                  example: sendPtv
+                  example: "sendPtv"
                 payload:
                   type: object
-                  required: [number, video]
+                  required:
+                    - number
+                    - video
                   properties:
                     number:
                       type: string
                       example: "51987654321"
                     video:
                       type: string
-                      description: Public URL or base64 PTV video content
                       example: "https://example.com/ptv.mp4"
             example:
               type: sendPtv
@@ -53,7 +57,7 @@ paths:
                 video: "https://example.com/ptv.mp4"
       responses:
         '200':
-          description: Successful response
+          description: "PTV enviado exitosamente"
           content:
             application/json:
               schema:

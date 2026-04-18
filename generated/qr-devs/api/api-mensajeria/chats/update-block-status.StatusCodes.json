@@ -1,0 +1,1 @@
+{"responses":{"200":{"description":"Successful response","content":{"application/json":{"schema":{"type":"object","example":{"message":"Estado de bloqueo actualizado exitosamente","data":{"number":"51955682576@s.whatsapp.net","block":true}}}}}}}}

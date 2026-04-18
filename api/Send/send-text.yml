@@ -1,6 +1,7 @@
-openapi: 3.0.3
+openapi: 3.0.0
 info:
-  title: Send Text
+  title: "Enviar mensaje de texto"
+  description: "Envía un mensaje de texto simple con opciones de delay (simular escritura) y mention."
   version: 1.0.0
 
 servers:
@@ -12,59 +13,90 @@ servers:
         description: Tenant subdomain
 
 paths:
-  /api/send/{instance}:
+  "/api/send/{instance}":
     post:
-      summary: Send text message
-      description: Send a plain text WhatsApp message through Evolution Gateway.
+      summary: "Enviar mensaje de texto"
+      description: "Envía un mensaje de texto simple con opciones de delay (simular escritura) y mention."
       parameters:
         - name: instance
           in: path
           required: true
-          description: Connected device instance number
+          description: "Número de dispositivo"
           schema:
             type: string
             example: "51987654321"
+
       requestBody:
         required: true
         content:
           application/json:
             schema:
               type: object
-              required: [type, payload]
+              required:
+                - type
+                - payload
               properties:
                 type:
                   type: string
-                  example: sendText
+                  example: "sendText"
                 payload:
                   type: object
-                  required: [number, text]
+                  required:
+                    - number
+                    - text
                   properties:
                     number:
                       type: string
                       example: "51987654321"
+                      description: "Número de destino (sin @s.whatsapp.net)"
                     text:
                       type: string
-                      example: "Hola, este es un mensaje de prueba"
+                      example: "¡Hola! ¿Cómo estás hoy?"
                     delay:
                       type: integer
-                      default: 1200
-                      example: 1200
+                      example: 1500
+                      description: "Retraso en ms para simular escritura"
+                    mention:
+                      type: array
+                      items:
+                        type: string
+                      description: "Números a mencionar (@)"
             example:
               type: sendText
               payload:
                 number: "51987654321"
-                text: "Hola, este es un mensaje de prueba"
-                delay: 1200
+                text: "¡Hola! ¿Cómo estás hoy?"
+                delay: 1500
+                mention:
+                  - "@51987654321"
+
       responses:
         '200':
-          description: Successful response
+          description: "Mensaje enviado exitosamente"
           content:
             application/json:
               schema:
                 type: object
-                example:
-                  key:
-                    remoteJid: "51987654321@s.whatsapp.net"
-                    fromMe: true
-                    id: "3EB0123456789ABCDEF"
-                  status: "PENDING"
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  sendResult:
+                    type: object
+                    description: "Detalles del mensaje enviado (key, messageTimestamp, etc.)"
+                    properties:
+                      key:
+                        type: object
+                        properties:
+                          remoteJid:
+                            type: string
+                            example: "51987654321@s.whatsapp.net"
+                          fromMe:
+                            type: boolean
+                            example: true
+                          id:
+                            type: string
+                            example: "3EB0123456789ABCDEF"
+                      messageTimestamp:
+                        type: integer
+                        example: 1627889400000

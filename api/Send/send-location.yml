@@ -1,6 +1,7 @@
-openapi: 3.0.3
+openapi: 3.0.0
 info:
-  title: Send Location
+  title: "Enviar ubicación"
+  description: "Envía una ubicación geográfica a través de la API."
   version: 1.0.0
 
 servers:
@@ -9,18 +10,18 @@ servers:
     variables:
       tenant_id:
         default: demo
-        description: Tenant subdomain
+        description: Tenant Subdomain
 
 paths:
-  /api/send/{instance}:
+  "/api/send/{instance}":
     post:
-      summary: Send location
-      description: Send a location message.
+      summary: "Enviar ubicación"
+      description: "Envía la ubicación geográfica de un lugar."
       parameters:
         - name: instance
           in: path
           required: true
-          description: Connected device instance number
+          description: Número de dispositivo
           schema:
             type: string
             example: "51987654321"
@@ -30,14 +31,21 @@ paths:
           application/json:
             schema:
               type: object
-              required: [type, payload]
+              required:
+                - type
+                - payload
               properties:
                 type:
                   type: string
-                  example: sendLocation
+                  example: "sendLocation"
                 payload:
                   type: object
-                  required: [number, name, address, latitude, longitude]
+                  required:
+                    - number
+                    - name
+                    - address
+                    - latitude
+                    - longitude
                   properties:
                     number:
                       type: string
@@ -66,7 +74,7 @@ paths:
                 longitude: -77.0428
       responses:
         '200':
-          description: Successful response
+          description: "Ubicación enviada exitosamente"
           content:
             application/json:
               schema:

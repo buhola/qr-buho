@@ -1,0 +1,592 @@
+openapi: 3.0.3
+info:
+  title: "Send Message"
+  version: 1.0.0
+  description: >
+    Generic send endpoint for Waya Evolution Gateway.
+    The message type is selected using the `type` field and the content is sent in `payload`.
+
+servers:
+  - url: https://{tenant_id}.qr.buho.la
+    description: Tenant Server
+    variables:
+      tenant_id:
+        default: demo
+        description: Tenant Subdomain
+
+tags:
+  - name: Send
+    description: Send message operations
+
+paths:
+  "/api/send/{instance}":
+    post:
+      tags:
+        - Send
+      summary: "Send Message"
+      description: >
+        Single public endpoint for sending messages through the gateway.
+        Use the `type` field to indicate the specific Evolution send operation.
+
+      parameters:
+        - name: instance
+          in: path
+          required: true
+          description: Connected device instance number
+          schema:
+            type: string
+            example: "51987654321"
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - $ref: "#/components/schemas/SendTextRequest"
+                - $ref: "#/components/schemas/SendImageRequest"
+                - $ref: "#/components/schemas/SendVideoRequest"
+                - $ref: "#/components/schemas/SendDocumentRequest"
+                - $ref: "#/components/schemas/SendAudioRequest"
+                - $ref: "#/components/schemas/SendPtvRequest"
+                - $ref: "#/components/schemas/SendLocationRequest"
+                - $ref: "#/components/schemas/SendContactRequest"
+                - $ref: "#/components/schemas/SendPollRequest"
+                - $ref: "#/components/schemas/SendButtonsRequest"
+                - $ref: "#/components/schemas/SendListRequest"
+            examples:
+              sendText:
+                summary: Send text
+                value:
+                  type: sendText
+                  payload:
+                    number: "51987654321"
+                    text: "Hola, este es un mensaje de prueba"
+                    delay: 1200
+
+              sendImage:
+                summary: Send image
+                value:
+                  type: sendMedia
+                  payload:
+                    number: "51987654321"
+                    mediatype: "image"
+                    media: "https://example.com/foto.jpg"
+                    caption: "Esta es mi foto favorita"
+                    mimetype: "image/jpeg"
+                    filename: "foto.jpg"
+                    delay: 1200
+
+              sendVideo:
+                summary: Send video
+                value:
+                  type: sendMedia
+                  payload:
+                    number: "51987654321"
+                    mediatype: "video"
+                    media: "https://example.com/video.mp4"
+                    caption: "Video de prueba"
+                    mimetype: "video/mp4"
+                    filename: "video.mp4"
+                    delay: 1200
+
+              sendDocument:
+                summary: Send document
+                value:
+                  type: sendMedia
+                  payload:
+                    number: "51987654321"
+                    mediatype: "document"
+                    media: "https://example.com/contrato.pdf"
+                    caption: "Adjunto el contrato"
+                    mimetype: "application/pdf"
+                    filename: "contrato.pdf"
+                    delay: 1200
+
+              sendAudio:
+                summary: Send WhatsApp audio
+                value:
+                  type: sendWhatsAppAudio
+                  payload:
+                    number: "51987654321"
+                    audio: "https://example.com/audio.mp3"
+
+              sendPtv:
+                summary: Send PTV
+                value:
+                  type: sendPtv
+                  payload:
+                    number: "51987654321"
+                    video: "https://example.com/ptv.mp4"
+
+              sendLocation:
+                summary: Send location
+                value:
+                  type: sendLocation
+                  payload:
+                    number: "51987654321"
+                    name: "Oficina principal"
+                    address: "Av. Javier Prado 123, Lima"
+                    latitude: -12.0464
+                    longitude: -77.0428
+
+              sendContact:
+                summary: Send contact
+                value:
+                  type: sendContact
+                  payload:
+                    number: "51987654321"
+                    contact:
+                      fullName: "Juan Pérez"
+                      phoneNumber: "51999888777"
+                      organization: "Digital Buho"
+
+              sendPoll:
+                summary: Send poll
+                value:
+                  type: sendPoll
+                  payload:
+                    number: "51987654321"
+                    name: "¿Qué opción prefieres?"
+                    selectableCount: 1
+                    values:
+                      - "Opción 1"
+                      - "Opción 2"
+                      - "Opción 3"
+
+              sendButtons:
+                summary: Send buttons
+                value:
+                  type: sendButtons
+                  payload:
+                    number: "51987654321"
+                    title: "Title Button"
+                    description: "Description Button"
+                    footer: "Footer Button"
+                    buttons:
+                      - type: "reply"
+                        displayText: "Respuesta"
+                        id: "123"
+
+              sendList:
+                summary: Send list
+                value:
+                  type: sendList
+                  payload:
+                    number: "51987654321"
+                    title: "Menú principal"
+                    buttonText: "Ver opciones"
+                    description: "Selecciona una opción"
+                    footerText: "Digital Buho"
+                    sections:
+                      - title: "Sección 1"
+                        rows:
+                          - title: "Opción 1"
+                            description: "Descripción de la opción"
+                            rowId: "option_1"
+                          - title: "Opción 2"
+                            description: "Otra descripción"
+                            rowId: "option_2"
+
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SendSuccessResponse"
+              examples:
+                success:
+                  value:
+                    key:
+                      remoteJid: "51987654321@s.whatsapp.net"
+                      fromMe: true
+                      id: "3EB0123456789ABCDEF"
+                    status: "PENDING"
+
+        "403":
+          description: Message limit reached
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Límite de mensajes alcanzado"
+                  timestamp:
+                    type: string
+                    format: date-time
+
+        "404":
+          description: Device or instance not found
+
+        "422":
+          description: Validation error
+
+        "500":
+          description: Messaging service error
+
+components:
+  schemas:
+    SendSuccessResponse:
+      type: object
+      properties:
+        key:
+          type: object
+          properties:
+            remoteJid:
+              type: string
+              example: "51987654321@s.whatsapp.net"
+            fromMe:
+              type: boolean
+              example: true
+            id:
+              type: string
+              example: "3EB0123456789ABCDEF"
+        status:
+          type: string
+          example: "PENDING"
+        usage_warning:
+          type: object
+          nullable: true
+          properties:
+            level:
+              type: string
+              example: "medium"
+            message:
+              type: string
+              example: "Has usado el 80% de tu límite mensual"
+            remaining_messages:
+              type: integer
+              example: 200
+            percentage_used:
+              type: number
+              example: 80
+
+    SendTextRequest:
+      type: object
+      required: [type, payload]
+      properties:
+        type:
+          type: string
+          enum: [sendText]
+        payload:
+          type: object
+          required: [number, text]
+          properties:
+            number:
+              type: string
+              example: "51987654321"
+            text:
+              type: string
+              example: "Hola, este es un mensaje de prueba"
+            delay:
+              type: integer
+              default: 1200
+              example: 1200
+
+    SendImageRequest:
+      type: object
+      required: [type, payload]
+      properties:
+        type:
+          type: string
+          enum: [sendMedia]
+        payload:
+          type: object
+          required: [number, mediatype, media]
+          properties:
+            number:
+              type: string
+              example: "51987654321"
+            mediatype:
+              type: string
+              enum: [image]
+            media:
+              type: string
+              example: "https://example.com/foto.jpg"
+            caption:
+              type: string
+              example: "Esta es mi foto favorita"
+            mimetype:
+              type: string
+              example: "image/jpeg"
+            filename:
+              type: string
+              example: "foto.jpg"
+            delay:
+              type: integer
+              default: 1200
+              example: 1200
+
+    SendVideoRequest:
+      type: object
+      required: [type, payload]
+      properties:
+        type:
+          type: string
+          enum: [sendMedia]
+        payload:
+          type: object
+          required: [number, mediatype, media]
+          properties:
+            number:
+              type: string
+              example: "51987654321"
+            mediatype:
+              type: string
+              enum: [video]
+            media:
+              type: string
+              example: "https://example.com/video.mp4"
+            caption:
+              type: string
+              example: "Video de prueba"
+            mimetype:
+              type: string
+              example: "video/mp4"
+            filename:
+              type: string
+              example: "video.mp4"
+            delay:
+              type: integer
+              default: 1200
+              example: 1200
+
+    SendDocumentRequest:
+      type: object
+      required: [type, payload]
+      properties:
+        type:
+          type: string
+          enum: [sendMedia]
+        payload:
+          type: object
+          required: [number, mediatype, media]
+          properties:
+            number:
+              type: string
+              example: "51987654321"
+            mediatype:
+              type: string
+              enum: [document]
+            media:
+              type: string
+              example: "https://example.com/contrato.pdf"
+            caption:
+              type: string
+              example: "Adjunto el contrato"
+            mimetype:
+              type: string
+              example: "application/pdf"
+            filename:
+              type: string
+              example: "contrato.pdf"
+            delay:
+              type: integer
+              default: 1200
+              example: 1200
+
+    SendAudioRequest:
+      type: object
+      required: [type, payload]
+      properties:
+        type:
+          type: string
+          enum: [sendWhatsAppAudio]
+        payload:
+          type: object
+          required: [number, audio]
+          properties:
+            number:
+              type: string
+              example: "51987654321"
+            audio:
+              type: string
+              example: "https://example.com/audio.mp3"
+
+    SendPtvRequest:
+      type: object
+      required: [type, payload]
+      properties:
+        type:
+          type: string
+          enum: [sendPtv]
+        payload:
+          type: object
+          required: [number, video]
+          properties:
+            number:
+              type: string
+              example: "51987654321"
+            video:
+              type: string
+              example: "https://example.com/ptv.mp4"
+
+    SendLocationRequest:
+      type: object
+      required: [type, payload]
+      properties:
+        type:
+          type: string
+          enum: [sendLocation]
+        payload:
+          type: object
+          required: [number, name, address, latitude, longitude]
+          properties:
+            number:
+              type: string
+              example: "51987654321"
+            name:
+              type: string
+              example: "Oficina principal"
+            address:
+              type: string
+              example: "Av. Javier Prado 123, Lima"
+            latitude:
+              type: number
+              format: double
+              example: -12.0464
+            longitude:
+              type: number
+              format: double
+              example: -77.0428
+
+    SendContactRequest:
+      type: object
+      required: [type, payload]
+      properties:
+        type:
+          type: string
+          enum: [sendContact]
+        payload:
+          type: object
+          required: [number, contact]
+          properties:
+            number:
+              type: string
+              example: "51987654321"
+            contact:
+              type: object
+              additionalProperties: true
+              example:
+                fullName: "Juan Pérez"
+                phoneNumber: "51999888777"
+                organization: "Digital Buho"
+
+    SendPollRequest:
+      type: object
+      required: [type, payload]
+      properties:
+        type:
+          type: string
+          enum: [sendPoll]
+        payload:
+          type: object
+          required: [number, name, selectableCount, values]
+          properties:
+            number:
+              type: string
+              example: "51987654321"
+            name:
+              type: string
+              example: "¿Qué opción prefieres?"
+            selectableCount:
+              type: integer
+              example: 1
+            values:
+              type: array
+              items:
+                type: string
+              example:
+                - "Opción 1"
+                - "Opción 2"
+                - "Opción 3"
+
+    SendButtonsRequest:
+      type: object
+      required: [type, payload]
+      properties:
+        type:
+          type: string
+          enum: [sendButtons]
+        payload:
+          type: object
+          required: [number, title, buttons]
+          properties:
+            number:
+              type: string
+              example: "51987654321"
+            title:
+              type: string
+              example: "Title Button"
+            description:
+              type: string
+              example: "Description Button"
+            footer:
+              type: string
+              example: "Footer Button"
+            buttons:
+              type: array
+              items:
+                type: object
+                properties:
+                  type:
+                    type: string
+                    example: "reply"
+                  displayText:
+                    type: string
+                    example: "Respuesta"
+                  id:
+                    type: string
+                    example: "123"
+
+    SendListRequest:
+      type: object
+      required: [type, payload]
+      properties:
+        type:
+          type: string
+          enum: [sendList]
+        payload:
+          type: object
+          required: [number, title, buttonText, sections]
+          properties:
+            number:
+              type: string
+              example: "51987654321"
+            title:
+              type: string
+              example: "Menú principal"
+            buttonText:
+              type: string
+              example: "Ver opciones"
+            description:
+              type: string
+              example: "Selecciona una opción"
+            footerText:
+              type: string
+              example: "Digital Buho"
+            sections:
+              type: array
+              items:
+                type: object
+                properties:
+                  title:
+                    type: string
+                    example: "Sección 1"
+                  rows:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        title:
+                          type: string
+                          example: "Opción 1"
+                        description:
+                          type: string
+                          example: "Descripción de la opción"
+                        rowId:
+                          type: string
+                          example: "option_1"

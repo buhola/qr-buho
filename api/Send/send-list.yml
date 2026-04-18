@@ -1,6 +1,7 @@
-openapi: 3.0.3
+openapi: 3.0.0
 info:
-  title: Send List
+  title: "Enviar lista"
+  description: "Envía un mensaje con una lista interactiva."
   version: 1.0.0
 
 servers:
@@ -9,18 +10,18 @@ servers:
     variables:
       tenant_id:
         default: demo
-        description: Tenant subdomain
+        description: Tenant Subdomain
 
 paths:
-  /api/send/{instance}:
+  "/api/send/{instance}":
     post:
-      summary: Send list message
-      description: Send an interactive list message.
+      summary: "Enviar lista"
+      description: "Envía un mensaje con una lista de opciones interactivas."
       parameters:
         - name: instance
           in: path
           required: true
-          description: Connected device instance number
+          description: Número de dispositivo
           schema:
             type: string
             example: "51987654321"
@@ -30,14 +31,20 @@ paths:
           application/json:
             schema:
               type: object
-              required: [type, payload]
+              required:
+                - type
+                - payload
               properties:
                 type:
                   type: string
-                  example: sendList
+                  example: "sendList"
                 payload:
                   type: object
-                  required: [number, title, buttonText, sections]
+                  required:
+                    - number
+                    - title
+                    - buttonText
+                    - sections
                   properties:
                     number:
                       type: string
@@ -95,7 +102,7 @@ paths:
                         rowId: "option_2"
       responses:
         '200':
-          description: Successful response
+          description: "Lista enviada exitosamente"
           content:
             application/json:
               schema:

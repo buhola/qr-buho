@@ -1,0 +1,1 @@
+{"title":"Body","body":{"content":{"application/json":{"schema":{"type":"object","example":{"subject":"Test 02","description":"optional","participants":["5531900000000","5531900000000"]}}}}}}

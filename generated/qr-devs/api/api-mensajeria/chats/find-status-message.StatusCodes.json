@@ -1,0 +1,1 @@
+{"responses":{"200":{"description":"Successful response","content":{"application/json":{"schema":{"type":"object","example":{"data":[{"key":{"remoteJid":"status@broadcast","fromMe":false,"id":"3EB04DC69D97835D7CC6F12776D25766FBC224E2"},"message":{"extendedTextMessage":{"text":"Status update"}}}]}}}}}}}

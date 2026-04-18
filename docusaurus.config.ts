@@ -67,23 +67,15 @@ const config: Config = {
         config: {
           integrations: {
             specPath: "api/integrations.yaml",
-            outputDir: "docs/qr-devs/api/api-mensajeria/integrations",
+            outputDir: "generated/qr-devs/api/api-mensajeria/integrations",
             baseUrl: "/qr-devs/api/api-mensajeria/integrations",
-            sidebarOptions: {
-              groupPathsBy: "tag",
-            },
-          },
-          send_message: {
-            specPath: "api/send_message.yaml",
-            outputDir: "docs/qr-devs/api/api-mensajeria/send",
-            baseUrl: "/qr-devs/api/api-mensajeria/send",
             sidebarOptions: {
               groupPathsBy: "tag",
             },
           },
           call: {
             specPath: "api/call.yaml",
-            outputDir: "docs/qr-devs/api/api-mensajeria/calls",
+            outputDir: "generated/qr-devs/api/api-mensajeria/calls",
             baseUrl: "/qr-devs/api/api-mensajeria/calls",
             sidebarOptions: {
               groupPathsBy: "tag",
@@ -91,7 +83,7 @@ const config: Config = {
           },
           chat: {
             specPath: "api/chat.yaml",
-            outputDir: "docs/qr-devs/api/api-mensajeria/chats",
+            outputDir: "generated/qr-devs/api/api-mensajeria/chats",
             baseUrl: "/qr-devs/api/api-mensajeria/chats",
             sidebarOptions: {
               groupPathsBy: "tag",
@@ -99,7 +91,7 @@ const config: Config = {
           },
           group: {
             specPath: "api/group.yaml",
-            outputDir: "docs/qr-devs/api/api-mensajeria/groups",
+            outputDir: "generated/qr-devs/api/api-mensajeria/groups",
             baseUrl: "/qr-devs/api/api-mensajeria/groups",
             sidebarOptions: {
               groupPathsBy: "tag",
@@ -107,7 +99,7 @@ const config: Config = {
           },
           label: {
             specPath: "api/label.yaml",
-            outputDir: "docs/qr-devs/api/api-mensajeria/label",
+            outputDir: "generated/qr-devs/api/api-mensajeria/label",
             baseUrl: "/qr-devs/api/api-mensajeria/label",
             sidebarOptions: {
               groupPathsBy: "tag",
@@ -116,7 +108,7 @@ const config: Config = {
           // Application APIs
           devices: {
             specPath: "api/devices.yaml",
-            outputDir: "docs/qr-devs/api/api-aplicacion/tenant/device",
+            outputDir: "generated/qr-devs/api/api-aplicacion/tenant/device",
             baseUrl: "/qr-devs/api/api-aplicacion/tenant/device",
             sidebarOptions: {
               groupPathsBy: "tag",
@@ -124,7 +116,7 @@ const config: Config = {
           },
           campaigns: {
             specPath: "api/campaigns.yaml",
-            outputDir: "docs/qr-devs/api/api-aplicacion/tenant/campaign",
+            outputDir: "generated/qr-devs/api/api-aplicacion/tenant/campaign",
             baseUrl: "/qr-devs/api/api-aplicacion/tenant/campaign",
             sidebarOptions: {
               groupPathsBy: "tag",
@@ -132,7 +124,7 @@ const config: Config = {
           },
           reseller: {
             specPath: "api/reseller.yaml",
-            outputDir: "docs/qr-devs/api/api-aplicacion/admin/auth",
+            outputDir: "generated/qr-devs/api/api-aplicacion/admin/auth",
             baseUrl: "/qr-devs/api/api-aplicacion/admin/auth",
             sidebarOptions: {
               groupPathsBy: "tag",
@@ -140,7 +132,7 @@ const config: Config = {
           },
           plans: {
             specPath: "api/plans.yaml",
-            outputDir: "docs/qr-devs/api/api-aplicacion/admin",
+            outputDir: "generated/qr-devs/api/api-aplicacion/admin",
             baseUrl: "/qr-devs/api/api-aplicacion/admin",
             sidebarOptions: {
               groupPathsBy: "tag",
@@ -148,23 +140,15 @@ const config: Config = {
           },
           tenants: {
             specPath: "api/tenants.yaml",
-            outputDir: "docs/qr-devs/api/api-aplicacion/admin",
+            outputDir: "generated/qr-devs/api/api-aplicacion/admin",
             baseUrl: "/qr-devs/api/api-aplicacion/admin",
-            sidebarOptions: {
-              groupPathsBy: "tag",
-            },
-          },
-          enviarMensaje: {
-            specPath: "api/Enviarmensaje/enviarMensaje.yaml",
-            outputDir: "docs/qr-devs/api/api-externa/enviar-mensaje",
-            baseUrl: "/qr-devs/api/api-externa/enviar-mensaje",
             sidebarOptions: {
               groupPathsBy: "tag",
             },
           },
           enviarPDF: {
             specPath: "api/Enviarpdf/enviarPDF.yaml",
-            outputDir: "docs/qr-devs/api/api-externa/enviar-pdf",
+            outputDir: "generated/qr-devs/api/api-externa/enviar-pdf",
             baseUrl: "/qr-devs/api/api-externa/enviar-pdf",
             sidebarOptions: {
               groupPathsBy: "tag",
@@ -172,7 +156,7 @@ const config: Config = {
           },
           enviarMultimedia: {
             specPath: "api/Enviarmultimedia/enviarMultimedia.yaml",
-            outputDir: "docs/qr-devs/api/api-externa/enviar-multimedia",
+            outputDir: "generated/qr-devs/api/api-externa/enviar-multimedia",
             baseUrl: "/qr-devs/api/api-externa/enviar-multimedia",
             sidebarOptions: {
               groupPathsBy: "tag",
@@ -180,8 +164,106 @@ const config: Config = {
           },
           contacts: {
             specPath: "api/contacts.yaml",
-            outputDir: "docs/qr-devs/api/api-mensajeria/chats/contacts",
+            outputDir: "generated/qr-devs/api/api-mensajeria/chats/contacts",
             baseUrl: "/qr-devs/api/api-mensajeria/chats/contacts",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+            },
+          },
+          send_text: {
+            specPath: "api/Send/send-text.yml",
+            outputDir: "generated/qr-devs/api/api-mensajeria/send/text",
+            baseUrl: "/qr-devs/api/api-mensajeria/send/text",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+            },
+          },
+
+          send_image: {
+            specPath: "api/Send/send-image.yml",
+            outputDir: "generated/qr-devs/api/api-mensajeria/send/image",
+            baseUrl: "/qr-devs/api/api-mensajeria/send/image",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+            },
+          },
+
+          send_video: {
+            specPath: "api/Send/send-video.yml",
+            outputDir: "generated/qr-devs/api/api-mensajeria/send/video",
+            baseUrl: "/qr-devs/api/api-mensajeria/send/video",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+            },
+          },
+
+          send_document: {
+            specPath: "api/Send/send-document.yml",
+            outputDir: "generated/qr-devs/api/api-mensajeria/send/document",
+            baseUrl: "/qr-devs/api/api-mensajeria/send/document",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+            },
+          },
+
+          send_audio: {
+            specPath: "api/Send/send-audio.yml",
+            outputDir: "generated/qr-devs/api/api-mensajeria/send/audio",
+            baseUrl: "/qr-devs/api/api-mensajeria/send/audio",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+            },
+          },
+
+          send_ptv: {
+            specPath: "api/Send/send-ptv.yml",
+            outputDir: "generated/qr-devs/api/api-mensajeria/send/ptv",
+            baseUrl: "/qr-devs/api/api-mensajeria/send/ptv",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+            },
+          },
+
+          send_location: {
+            specPath: "api/Send/send-location.yml",
+            outputDir: "generated/qr-devs/api/api-mensajeria/send/location",
+            baseUrl: "/qr-devs/api/api-mensajeria/send/location",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+            },
+          },
+
+          send_contact: {
+            specPath: "api/Send/send-contact.yml",
+            outputDir: "generated/qr-devs/api/api-mensajeria/send/contact",
+            baseUrl: "/qr-devs/api/api-mensajeria/send/contact",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+            },
+          },
+
+          send_poll: {
+            specPath: "api/Send/send-poll.yml",
+            outputDir: "generated/qr-devs/api/api-mensajeria/send/poll",
+            baseUrl: "/qr-devs/api/api-mensajeria/send/poll",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+            },
+          },
+
+          send_buttons: {
+            specPath: "api/Send/send-buttons.yml",
+            outputDir: "generated/qr-devs/api/api-mensajeria/send/buttons",
+            baseUrl: "/qr-devs/api/api-mensajeria/send/buttons",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+            },
+          },
+
+          send_list: {
+            specPath: "api/Send/send-list.yml",
+            outputDir: "generated/qr-devs/api/api-mensajeria/send/list",
+            baseUrl: "/qr-devs/api/api-mensajeria/send/list",
             sidebarOptions: {
               groupPathsBy: "tag",
             },

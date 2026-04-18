@@ -1,0 +1,1 @@
+{"title":"Body","body":{"content":{"application/json":{"schema":{"type":"object","example":{"webhook":{"enabled":true,"url":"https://webhook.site","headers":{"autorization":"Bearer TOKEN","Content-Type":"application/json"},"byEvents":false,"base64":false,"events":["MESSAGES_UPSERT"]}}}}}}}

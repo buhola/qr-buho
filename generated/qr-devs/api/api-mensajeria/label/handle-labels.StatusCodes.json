@@ -1,0 +1,1 @@
+{"responses":{"200":{"description":"Successful response","content":{"application/json":{"schema":{"type":"object","example":{"message":"Etiqueta aplicada exitosamente","data":{"number":"51936811821@s.whatsapp.net","labelId":"1","action":"add"}}}}}}}}

@@ -1,0 +1,1 @@
+{"responses":{"200":{"description":"Successful response","content":{"application/json":{"schema":{"type":"object","example":{"data":[{"id":"51910398955@s.whatsapp.net","unreadCount":5,"lastMessage":{"key":{"remoteJid":"51910398955@s.whatsapp.net","fromMe":false,"id":"AC7DADBF26C8FF9F768B2CF01A8EA581"}}}]}}}}}}}

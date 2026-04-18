@@ -1,6 +1,7 @@
-openapi: 3.0.3
+openapi: 3.0.0
 info:
-  title: Send Image
+  title: "Enviar imagen"
+  description: "Envía una imagen a través del sistema."
   version: 1.0.0
 
 servers:
@@ -9,18 +10,18 @@ servers:
     variables:
       tenant_id:
         default: demo
-        description: Tenant subdomain
+        description: Tenant Subdomain
 
 paths:
-  /api/send/{instance}:
+  "/api/send/{instance}":
     post:
-      summary: Send image message
-      description: Send an image using the generic send endpoint.
+      summary: "Enviar imagen"
+      description: "Envía una imagen o foto a través de la API de Evolution."
       parameters:
         - name: instance
           in: path
           required: true
-          description: Connected device instance number
+          description: Número de dispositivo
           schema:
             type: string
             example: "51987654321"
@@ -30,24 +31,28 @@ paths:
           application/json:
             schema:
               type: object
-              required: [type, payload]
+              required:
+                - type
+                - payload
               properties:
                 type:
                   type: string
-                  example: sendMedia
+                  example: "sendMedia"
                 payload:
                   type: object
-                  required: [number, mediatype, media]
+                  required:
+                    - number
+                    - mediatype
+                    - media
                   properties:
                     number:
                       type: string
                       example: "51987654321"
                     mediatype:
                       type: string
-                      example: image
+                      example: "image"
                     media:
                       type: string
-                      description: Public URL or base64 image content
                       example: "https://example.com/foto.jpg"
                     caption:
                       type: string
@@ -55,12 +60,11 @@ paths:
                     mimetype:
                       type: string
                       example: "image/jpeg"
-                    fileName:
+                    filename:
                       type: string
                       example: "foto.jpg"
                     delay:
                       type: integer
-                      default: 1200
                       example: 1200
             example:
               type: sendMedia
@@ -70,11 +74,11 @@ paths:
                 media: "https://example.com/foto.jpg"
                 caption: "Esta es mi foto favorita"
                 mimetype: "image/jpeg"
-                fileName: "foto.jpg"
+                filename: "foto.jpg"
                 delay: 1200
       responses:
         '200':
-          description: Successful response
+          description: "Mensaje de imagen enviado exitosamente"
           content:
             application/json:
               schema:

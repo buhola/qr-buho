@@ -1,0 +1,1 @@
+{"parameters":[{"name":"remoteJid","in":"query","required":true,"schema":{"type":"string"},"description":"Remote JID"},{"name":"id","in":"query","required":true,"schema":{"type":"string"},"description":"Message ID"},{"name":"fromMe","in":"query","schema":{"type":"boolean"},"description":"Message from me"}]}

@@ -1,0 +1,1 @@
+{"parameters":[{"name":"instance","in":"path","required":true,"description":"Connected device instance number","schema":{"type":"string","example":"51987654321"}}]}

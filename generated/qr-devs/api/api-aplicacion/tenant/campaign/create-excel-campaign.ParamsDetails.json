@@ -1,0 +1,1 @@
+{"parameters":[{"name":"paginate","in":"query","schema":{"type":"integer"},"description":"Number of items per page"}]}

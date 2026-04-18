@@ -1,0 +1,1 @@
+{"responses":{"200":{"description":"Success","content":{"application/json":{"schema":{"type":"object","example":{"message":"Tenant registrado exitosamente","data":{"id":"31845898-ba4b-4b59-b932-a6d34730cc55","name":"EmpresaDemo","domain":"demooooo","email":"admin@empresa.com"}}}}}}}}

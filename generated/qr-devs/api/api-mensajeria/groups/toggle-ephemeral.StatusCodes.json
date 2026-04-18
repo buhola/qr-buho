@@ -1,0 +1,1 @@
+{"responses":{"200":{"description":"Successful response","content":{"application/json":{"schema":{"type":"object","example":{"message":"Mensajes efímeros actualizados exitosamente","data":{"groupJid":"120363404495022854@g.us","ephemeral":86400}}}}}}}}

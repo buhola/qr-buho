@@ -1,0 +1,1 @@
+{"title":"Body","body":{"content":{"application/json":{"schema":{"type":"object","example":{"name":"EmpresaDemo","domain":"demooooo","email":"admin@empresa.com","password":"123456","plan_id":1}}}}}}

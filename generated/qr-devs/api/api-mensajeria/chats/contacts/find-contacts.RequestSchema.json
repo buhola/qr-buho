@@ -1,0 +1,1 @@
+{"title":"Body","body":{"required":false,"content":{"application/json":{"schema":{"type":"object","properties":{"where":{"type":"object","properties":{"isGroup":{"type":"boolean","description":"Filtrar por tipo (false: contactos, true: grupos)","default":false}}}}},"example":{"where":{"isGroup":false}}}}}}

@@ -1,0 +1,1 @@
+{"responses":{"200":{"description":"Successful response","content":{"application/json":{"schema":{"type":"object","example":{"message":"Foto del grupo actualizada exitosamente","data":{"groupJid":"120363404495022854@g.us"}}}}}}}}

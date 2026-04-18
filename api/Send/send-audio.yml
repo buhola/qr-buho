@@ -1,6 +1,7 @@
-openapi: 3.0.3
+openapi: 3.0.0
 info:
-  title: Send WhatsApp Audio
+  title: "Enviar audio"
+  description: "Envía un archivo de audio o una nota de voz de WhatsApp."
   version: 1.0.0
 
 servers:
@@ -9,18 +10,18 @@ servers:
     variables:
       tenant_id:
         default: demo
-        description: Tenant subdomain
+        description: Tenant Subdomain
 
 paths:
-  /api/send/{instance}:
+  "/api/send/{instance}":
     post:
-      summary: Send WhatsApp audio
-      description: Send an audio message using the sendWhatsAppAudio type.
+      summary: "Enviar audio"
+      description: "Envía un archivo de audio o una nota de voz usando el servicio de Evolution."
       parameters:
         - name: instance
           in: path
           required: true
-          description: Connected device instance number
+          description: Número de dispositivo
           schema:
             type: string
             example: "51987654321"
@@ -30,21 +31,24 @@ paths:
           application/json:
             schema:
               type: object
-              required: [type, payload]
+              required:
+                - type
+                - payload
               properties:
                 type:
                   type: string
-                  example: sendWhatsAppAudio
+                  example: "sendWhatsAppAudio"
                 payload:
                   type: object
-                  required: [number, audio]
+                  required:
+                    - number
+                    - audio
                   properties:
                     number:
                       type: string
                       example: "51987654321"
                     audio:
                       type: string
-                      description: Public URL or base64 audio content
                       example: "https://example.com/audio.mp3"
             example:
               type: sendWhatsAppAudio
@@ -53,7 +57,7 @@ paths:
                 audio: "https://example.com/audio.mp3"
       responses:
         '200':
-          description: Successful response
+          description: "Mensaje de audio enviado exitosamente"
           content:
             application/json:
               schema:

@@ -1,6 +1,7 @@
-openapi: 3.0.3
+openapi: 3.0.0
 info:
-  title: Send Buttons
+  title: "Enviar botones"
+  description: "Envía un mensaje con botones interactivos."
   version: 1.0.0
 
 servers:
@@ -9,18 +10,18 @@ servers:
     variables:
       tenant_id:
         default: demo
-        description: Tenant subdomain
+        description: Tenant Subdomain
 
 paths:
-  /api/send/{instance}:
+  "/api/send/{instance}":
     post:
-      summary: Send buttons message
-      description: Send a message with interactive reply buttons.
+      summary: "Enviar botones"
+      description: "Envía un mensaje con botones interactivos para que el usuario pueda responder."
       parameters:
         - name: instance
           in: path
           required: true
-          description: Connected device instance number
+          description: Número de dispositivo
           schema:
             type: string
             example: "51987654321"
@@ -30,14 +31,19 @@ paths:
           application/json:
             schema:
               type: object
-              required: [type, payload]
+              required:
+                - type
+                - payload
               properties:
                 type:
                   type: string
-                  example: sendButtons
+                  example: "sendButtons"
                 payload:
                   type: object
-                  required: [number, title, buttons]
+                  required:
+                    - number
+                    - title
+                    - buttons
                   properties:
                     number:
                       type: string
@@ -78,7 +84,7 @@ paths:
                     id: "123"
       responses:
         '200':
-          description: Successful response
+          description: "Mensaje de botones enviado exitosamente"
           content:
             application/json:
               schema:

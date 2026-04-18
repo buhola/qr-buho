@@ -1,6 +1,7 @@
-openapi: 3.0.3
+openapi: 3.0.0
 info:
-  title: Send Contact
+  title: "Enviar contacto"
+  description: "Envía un contacto de WhatsApp a través del sistema."
   version: 1.0.0
 
 servers:
@@ -9,18 +10,18 @@ servers:
     variables:
       tenant_id:
         default: demo
-        description: Tenant subdomain
+        description: Tenant Subdomain
 
 paths:
-  /api/send/{instance}:
+  "/api/send/{instance}":
     post:
-      summary: Send contact
-      description: Send a WhatsApp contact card.
+      summary: "Enviar contacto"
+      description: "Envía un contacto de WhatsApp."
       parameters:
         - name: instance
           in: path
           required: true
-          description: Connected device instance number
+          description: Número de dispositivo
           schema:
             type: string
             example: "51987654321"
@@ -30,21 +31,25 @@ paths:
           application/json:
             schema:
               type: object
-              required: [type, payload]
+              required:
+                - type
+                - payload
               properties:
                 type:
                   type: string
-                  example: sendContact
+                  example: "sendContact"
                 payload:
                   type: object
-                  required: [number, contact]
+                  required:
+                    - number
+                    - contact
                   properties:
                     number:
                       type: string
                       example: "51987654321"
                     contact:
                       type: object
-                      description: Contact payload forwarded to Evolution
+                      description: Contacto de WhatsApp
                       properties:
                         fullName:
                           type: string
@@ -65,7 +70,7 @@ paths:
                   organization: "Digital Buho"
       responses:
         '200':
-          description: Successful response
+          description: "Contacto enviado exitosamente"
           content:
             application/json:
               schema:

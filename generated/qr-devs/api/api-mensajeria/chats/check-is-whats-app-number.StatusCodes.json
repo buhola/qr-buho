@@ -1,0 +1,1 @@
+{"responses":{"200":{"description":"Successful response","content":{"application/json":{"schema":{"type":"object","example":{"data":[{"number":"51955682576","isWhatsApp":true},{"number":"5112345678","isWhatsApp":false}]}}}}}}}
