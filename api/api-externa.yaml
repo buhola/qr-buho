@@ -1,0 +1,236 @@
+openapi: 3.0.3
+info:
+  title: API Externa (Mensajería Simple)
+  description: API externa para el envío de mensajes simples de texto, multimedia y archivos PDF a través de WhatsApp.
+  version: 1.0.0
+
+servers:
+  - url: https://demo.qr.uio.la
+    description: Servidor de producción
+
+tags:
+  - name: API Externa
+    description: Endpoints para envío de mensajes externos.
+
+paths:
+  /api/message/send-text:
+    post:
+      tags:
+        - API Externa
+      summary: Enviar Mensaje de Texto
+      operationId: sendText
+      description: |
+        Permite enviar un mensaje de texto a un número de WhatsApp. 
+        El campo 'number' debe ser el número en formato internacional sin el '+'.
+      requestBody:
+        description: Datos para enviar el mensaje de texto.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SendTextRequest"
+      responses:
+        "200":
+          description: Mensaje enviado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+        "400":
+          description: Error en la solicitud
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "401":
+          description: No autorizado
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /api/message/send-media:
+    post:
+      tags:
+        - API Externa
+      summary: Enviar Archivo Multimedia
+      operationId: sendMedia
+      description: |
+        Permite enviar imágenes, videos o audios a un número de WhatsApp.
+        - **media_type**: Puede ser 'image', 'video' o 'audio'.
+        - **link**: URL pública o cadena en Base64 del archivo.
+        - **caption**: Texto opcional que acompaña el archivo.
+        - **number**: Número en formato internacional sin el '+'.
+      requestBody:
+        description: Datos para enviar el archivo multimedia.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SendMediaRequest"
+      responses:
+        "200":
+          description: Multimedia enviado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+        "400":
+          description: Error en la solicitud
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "401":
+          description: No autorizado
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /api/message/send/pdf:
+    post:
+      tags:
+        - API Externa
+      summary: Enviar PDF por WhatsApp
+      operationId: sendPdf
+      description: |
+        Permite enviar un archivo PDF a un número de WhatsApp.
+        - **number**: Número en formato internacional sin el '+'.
+        - **message**: Texto que acompaña el PDF.
+        - **file**: Archivo en formato Base64.
+        - **filename**: Nombre del archivo con extensión .pdf.
+      requestBody:
+        description: Datos para enviar el PDF.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SendPdfRequest"
+      responses:
+        "200":
+          description: PDF enviado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+        "400":
+          description: Error en la solicitud
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "401":
+          description: No autorizado
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  security:
+    - bearerAuth: []
+
+  schemas:
+    SendTextRequest:
+      type: object
+      required:
+        - number
+        - message
+      properties:
+        number:
+          type: string
+          example: "123456789"
+          description: Número de teléfono en formato internacional sin el "+".
+        message:
+          type: string
+          example: "Plain text message"
+          description: El mensaje de texto a enviar.
+
+    SendMediaRequest:
+      type: object
+      required:
+        - number
+        - media_type
+        - link
+      properties:
+        number:
+          type: string
+          example: "51123456789"
+          description: Número de teléfono en formato internacional sin el "+".
+        media_type:
+          type: string
+          example: "image"
+          description: "Tipo de multimedia: image, video, o audio"
+          enum: [image, video, audio]
+        caption:
+          type: string
+          example: "Plain Text message"
+          description: Texto opcional que acompaña el archivo.
+        link:
+          type: string
+          example: "https://example.com/image.png"
+          description: URL pública o cadena en Base64 del archivo.
+
+    SendPdfRequest:
+      type: object
+      required:
+        - number
+        - file
+        - filename
+      properties:
+        number:
+          type: string
+          example: "123456789"
+          description: Número de teléfono en formato internacional sin el "+".
+        message:
+          type: string
+          example: "File PDF"
+          description: Texto que acompaña el PDF.
+        file:
+          type: string
+          format: byte
+          example: "JVBERi0xLjQKJeLjz9MK...."
+          description: Archivo en formato Base64.
+        filename:
+          type: string
+          example: "file.pdf"
+          description: Nombre del archivo con extensión .pdf.
+
+    SuccessResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            key:
+              type: object
+              properties:
+                remoteJid:
+                  type: string
+                  example: "51123456789@s.whatsapp.net"
+                fromMe:
+                  type: boolean
+                  example: true
+                id:
+                  type: string
+                  example: "BAE51C2115EE6FC0"
+            messageTimestamp:
+              type: string
+              example: "1726586899"
+            status:
+              type: string
+              example: "PENDING"
+              
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "Descripción del error"

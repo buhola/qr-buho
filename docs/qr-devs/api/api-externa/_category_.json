@@ -1,9 +1,9 @@
 {
-  "label": "API de Aplicación",
+  "label": "API Externa",
   "position": 4,
   "link": {
     "type": "generated-index",
-    "slug": "api/aplicacion",
+    "slug": "api-externa",
     "description": "Endpoints principales del sistema multitenant: gestión para resellers y funcionalidades para clientes finales (cuentas/tenants)."
   }
 }

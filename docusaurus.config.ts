@@ -146,18 +146,10 @@ const config: Config = {
               groupPathsBy: "tag",
             },
           },
-          enviarPDF: {
-            specPath: "api/Enviarpdf/enviarPDF.yaml",
-            outputDir: "generated/qr-devs/api/api-externa/enviar-pdf",
-            baseUrl: "/qr-devs/api/api-externa/enviar-pdf",
-            sidebarOptions: {
-              groupPathsBy: "tag",
-            },
-          },
-          enviarMultimedia: {
-            specPath: "api/Enviarmultimedia/enviarMultimedia.yaml",
-            outputDir: "generated/qr-devs/api/api-externa/enviar-multimedia",
-            baseUrl: "/qr-devs/api/api-externa/enviar-multimedia",
+          apiExterna: {
+            specPath: "api/api-externa.yaml",
+            outputDir: "docs/qr-devs/api/api-externa",
+            baseUrl: "/qr-devs/api/api-externa",
             sidebarOptions: {
               groupPathsBy: "tag",
             },
