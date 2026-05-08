@@ -8,7 +8,7 @@ import type * as OpenApiPlugin from "docusaurus-plugin-openapi-docs";
 const config: Config = {
   title: 'Manual QR Buho',
   tagline: 'Manual de QR Buho',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/waya.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -279,15 +279,15 @@ const config: Config = {
 
   themeConfig: {
     // Replace with your project's social card
-    image: 'img/docusaurus-social-card.jpg',
+    image: 'img/waya-social-card.png',
     colorMode: {
       respectPrefersColorScheme: true,
     },
     navbar: {
       title: 'WaYa',
       logo: {
-        alt: 'Qr Buho Logo',
-        src: 'img/logo.svg',
+        alt: 'Waya Logo',
+        src: 'img/waya.svg',
       },
       items: [
         /*{

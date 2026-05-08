@@ -10,7 +10,7 @@ servers:
         default: demo
         description: Tenant Subdomain
 paths:
-  "/webhook/set":
+  "/api/webhook/set":
     post:
       summary: "Set"
       requestBody:
