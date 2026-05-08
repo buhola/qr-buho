@@ -1,0 +1,72 @@
+---
+id: registrar-plan
+title: "Registrar Plan"
+description: "Registrar Plan"
+sidebar_label: "Registrar Plan"
+hide_title: true
+hide_table_of_contents: true
+api: eJytls1y4zYMx19Fg7PWVjrtIbptPw47s23dJD15PBmIRGyk/FBIKpuMR4/UUx9hX6wDyo7syNndZFYXiTTxBwj8QHoLge46iulnrx+h3uYhB9JQp9BRCcq7RC7JT9i2hhUm9m5+G72Tuag2ZFG+0mNLUINvbkklKA+EluDQEpTA8fomkHy1gZW8DVtO15ruWVF8GluKEdcHExIEqhRhJaa+pZCYonjNyqP3mAK7NZSgKarArcQKNfzhbROo0GSK1qCDEugBbWvEZGHQFYtAljsL/RjkKNp4byhbHat+cJoVFpGLnW5BsVgHTB0nf+hDMtnvNz3qus42FCayi0CK/clgfzyfnZ/3zwy+tvlfh5Hiz/+5QlNCY1DjF5KhvCuS1xgLg7G46Zxi79CwRk1RUnRctTEAdonWJ3b08fO/lpPkv9AcWx858b2Ph57Pqn5S/VcJW3IRb+lI9KeqGmWfGHqV7M7qebBV1edHMI+td3EI94eqktex2mWnFEUReHMvHTO/S9Cpyj+rZKA1xxRQ+4IeOPmIllwiqaHG9A2uWJ9M15iJvnyxBd/WYt/cNK9tiu8P+avhfQOYJ5jL2B0jdrGrcygWQ0dbShuvoYbWx1xVTBuoYY4tz6Xp5wMZ2UWkcE8hQr3cQhcM1LBJqY31fH4XZk238TODkxb5HdkVl9kS+vK54TaRQ5euWfcvKlzlJXuNEu4xMDZml7q9/dBON9iZBDVosv5Foa7R3iI76Pt+VYJ01cV4t/22T+T+zjim8gDK4d7bcZfhmpzQXwdows9ZNUVEMJhScDbAwe7G51RwytT+dfF+8aF4lyss+lKzIZyzWTWrBFkptkV3sMcJGKebJNFDEi4keeVQy+2OmSVgy0LQYP/EzaqEjbBVL2G7bTDS38H0vUzfdRQeoV6uxprKqC9hQ6gpZND+oUeo4ZfhQHx3JWHIctNJOJPDUQgbLN4rRW364trVAf6LPy+voIRm9+fGei02AT/JVvAT1AAl+JyOzF2e24JBt+7yEQuDpjz/A+FIK1A=
+sidebar_class_name: "post api-method"
+info_path: qr-devs/api/api-aplicacion/admin/qrapi-plans
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Registrar Plan"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/api/plan/register"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Registrar Plan
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["name","is_free","price","limit_devices","limit_messages","limit_contacts"],"properties":{"name":{"type":"string","description":"Nombre del plan","example":"Plan Premium"},"is_free":{"type":"boolean","description":"Indica si el plan es gratuito","example":true},"price":{"type":"number","description":"Precio del plan","example":49.99},"description":{"type":"string","description":"Descripción detallada del plan","example":"Plan con todas las funcionalidades"},"limit_devices":{"type":"integer","description":"Límite de dispositivos","example":10},"limit_messages":{"type":"integer","description":"Límite de mensajes","example":5000},"limit_contacts":{"type":"integer","description":"Límite de contactos","example":1000}}}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Success","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","example":"Plan registrado exitosamente"},"data":{"type":"object","properties":{"id":{"type":"integer","example":1},"name":{"type":"string","example":"Plan Premium"},"is_free":{"type":"boolean","example":true},"price":{"type":"number","example":49.99},"description":{"type":"string","example":"Plan con todas las funcionalidades"},"limit_devices":{"type":"integer","example":10},"limit_messages":{"type":"integer","example":5000},"limit_contacts":{"type":"integer","example":1000}}}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

@@ -1,0 +1,72 @@
+---
+id: verificar-token-de-tenant
+title: "Verificar token de Tenant"
+description: "Verifica si el token de autenticación del tenant es válido."
+sidebar_label: "Verificar token de Tenant"
+hide_title: true
+hide_table_of_contents: true
+api: eJylU0uS0zAQvYqr18IOLLUDig0bKCbAIpWaaludWDOypEhyJimXD8AxOANHyMWgpTCZyRQrtJEl9+f1e08TKIpd0D5pZ0HCNwp6ozusoq7IVMndk60UVTgmskl32OnTL74xVSKLNlUUq/3pp9HK1SAg0G6kmN45dQQ55aMOpECmMJKAzlmuw7/Qe6M75L7NXeTmE8SupwH5Kx09gQTX3lGXQIAPzlNImmLJ1bcZ2pPQmIK2WxBXAy3zBB+/Lyus9ufhAsx5MdzonY2l6pvFgrfn+acfB50ccPBAqXcKJHgXMyZMPUho0Osmlz6eQQmIFPYUIsjVBGMwIKFPyUfZNFOh7Varud6Fuh17Vxt8CbuQe5PrgIA9Bo2tKUAfSxS4GxxNAgmKBvfPQmOr3IDa8uhrAcz4l4tWHw44eENX3P7ldBag7cbl1jpxGLx95gcGSCGWjq/rRb3gHKZpwKyRxYGeuCtcjFXwXcOeLk75b0ue/ZHokBpvMgWiiDKdJVzx0GWGi4hrAT3rLFcwTS1G+hrMPPP1bqRwBLlaX2Th0yygJ1QUsur3dPzjnvdlildLxsDhZmQsL7zPkjza6/OnmyUIaM9vaHCKcwI+8PvCB5AAAlxmKtsh301g0G5H3HJsqcnrN1IxXRo=
+sidebar_class_name: "post api-method"
+info_path: qr-devs/api/api-aplicacion/tenant/auth/autenticacion
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Verificar token de Tenant"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/api/verify_token"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Verifica si el token de autenticación del tenant es válido.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"api_token":{"type":"string","description":"Token JWT a verificar"}}}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Éxito"}}}
+>
+  
+</StatusCodes>
+
+
+      

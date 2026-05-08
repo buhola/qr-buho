@@ -1,0 +1,64 @@
+---
+id: listar-dispositivos
+title: "Listar Dispositivos"
+description: "Obtener la lista de todos los dispositivos registrados."
+sidebar_label: "Listar Dispositivos"
+hide_title: true
+hide_table_of_contents: true
+api: eJylU8tu2zAQ/BVhzoRkp00fuhVo0UuLHpqeDKOgxI3FVCIZ7sqwIegD+l39sYJUEDsGmhyqi0RpZhY7M5pgiNtog1jvUONbI+QoFr0uesuiC0OFeOO56D0XxnLwbMXuPReRdpYlauO5hEIkDt4xMeoJV6tVuj3V/vP7YMVDofVOyElC6BB62+qEqO44wSZw29Gg05McA6GGb+6oFSiE6ANFscsQo+UcpWPURyhYoYFfZltzhrFOaEcRCnTQQ+gJ9XpWcHqgMxRLtG53DsJXW3w8mYJZIXTevUC6Xr9/9/bN9etXV+vEYNEy8vOU1jtHrZDB/HgpDCSdN6ixo7yglg41Kh1sZWhvW+IqpQgFprinyKg3E8bYo0YnEriuqknIaSc/rZnL+1g2Y+fLXkNdhHeTUcX3rAOFvY5WN/3i5aPEEvqtHntBDUOD/6fQ2Bg/aOvSQlsF6259lrKSFz5zldM4irzw1+WqXGWjPcugc2OWnPAlNTYWF9Qn46dT+f6j6w85CR2kCn1eQi22Tg8hbKCDzcNzDFDIQWwVOs+Svk9To5l+xH6e0+v7keIR9WZ7sjadZoWOtKGYk/tFR9T40LYUJGfQj7n5lz9RMvSxG58/3WCe/wISlVlV
+sidebar_class_name: "get api-method"
+info_path: qr-devs/api/api-aplicacion/tenant/device/dispositivos
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Listar Dispositivos"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/api/devices/list"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Obtener la lista de todos los dispositivos registrados.
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Éxito","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"array","items":{"type":"object","properties":{"id":{"type":"integer","example":1},"name":{"type":"string","example":"Mi Dispositivo"},"phone":{"type":"string","example":"51987654321"},"status":{"type":"string","example":"connected"}}}}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

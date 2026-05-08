@@ -1,0 +1,72 @@
+---
+id: listar-campanas
+title: "Listar Campañas"
+description: "Listar campañas (también sirve para campañas desde Excel)."
+sidebar_label: "Listar Campañas"
+hide_title: true
+hide_table_of_contents: true
+api: eJylVM2K20AMfhWjUwuziRPoxbdSlvbQW7enEBbFoySztWdmR3LIYvwAPfQheuyxz5AXK7KTbLL/UBOwyXz69EnfSC1Y4jK5KC54KOCrY8GUlVhH3P1Fzt4J1gu3++MzdmlDWcSEJ8eW2FJ2uS2pej8CA3pck1BiKGYteKwJCoi4ch6FwIDTLLcNpTswwOWaaoSiBbmLCnReaEUJDFhaYlMJFJO8Mw9E7n4J1ZzFkLK4+63U0M0NJOIYPBMr4TTP9fUg8OfWSQADZfBCXhSBMVauREWMb1hh7WNdYXFDpWh9KURK4oYkFuUUhSmhluVU3uvRzj5ZOW2xjhVBMekMiBP9PMJYkvOrUxR82puRWcpiamiB0BlYpdBEfoO4Q+LuhHM2MdN5Z6AmZly9kv9LqNBkxEIZcdb4rCbPeEP3ekZKrj21TUXXKE/xLUOq9UR7ShfiajpLMs2nHy4m+UU+ySZ5keuvJxWUhl/Wd0hsoeu6vih5g7VlkxJ5uY7n9T9jU6T0FqReZQmC1WuMh6dXuw4WClhRLxJlDQWMMbpxP4Vu5XlcOdZDprQ5TF6TKihgLRK5GI9bIY9erp3tRrdptGjWYVQhPBysqx6Vfet5wMAGk8NFNXTkSDHM1X48wVIdniVqFjbU6Ly2fq7Dvww91XCrj1eXNRclHoIno3zUuxsDS439RO4XyX49ncadJW7vJ/u/V9neH6GtjGPVF2GGtrZ7G2aA0ek2ORgBBnor5gbWgUURbbtApu+p6jr9e9h8apB1rK21UCyxYnqhkCfW3TPqftDd+bbdYNUorN+PBzehmOlwrwktpV7LEPexLCnKSdSj1agsxwv5+fIKuu4f88Qpug==
+sidebar_class_name: "get api-method"
+info_path: qr-devs/api/api-aplicacion/tenant/campaign/campanas
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Listar Campañas"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/api/campaigns/list"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Listar campañas (también sirve para campañas desde Excel).
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"paginate","in":"query","schema":{"type":"integer","default":10},"description":"Ítems por página"}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Éxito","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"array","items":{"type":"object","properties":{"id":{"type":"integer","example":1},"title":{"type":"string","example":"Campaña de prueba"},"groups":{"type":"array","items":{"type":"integer"},"example":[1,2]},"message":{"type":"string","example":"Hola, este es un mensaje de prueba."},"schedule_at":{"type":"string","format":"date-time","example":"2025-10-01 10:00:00"},"status":{"type":"string","example":"scheduled"}}}},"meta":{"type":"object","properties":{"current_page":{"type":"integer","example":1},"per_page":{"type":"integer","example":10},"total":{"type":"integer","example":1}}}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

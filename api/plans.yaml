@@ -43,39 +43,81 @@ paths:
             application/json:
               schema:
                 type: object
-                example:
-                  {
-                    "data": [
-                      {
-                        "id": 1,
-                        "name": "Plan Premium",
-                        "is_free": true,
-                        "price": 49.99,
-                        "description": "Plan con todas las funcionalidades",
-                        "limit_devices": 10,
-                        "limit_messages": 5000,
-                        "limit_contacts": 1000
-                      }
-                    ]
-                  }
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: "Plan Premium"
+                        is_free:
+                          type: boolean
+                          example: true
+                        price:
+                          type: number
+                          example: 49.99
+                        description:
+                          type: string
+                          example: "Plan con todas las funcionalidades"
+                        limit_devices:
+                          type: integer
+                          example: 10
+                        limit_messages:
+                          type: integer
+                          example: 5000
+                        limit_contacts:
+                          type: integer
+                          example: 1000
   "/api/plan/register":
     post:
       summary: "Registrar Plan"
       requestBody:
+        required: true
         content:
           application/json:
             schema:
               type: object
-              example:
-                {
-                  "name": "Plan Premium",
-                  "is_free": true,
-                  "price": 49.99,
-                  "description": "Plan con todas las funcionalidades",
-                  "limit_devices": 10,
-                  "limit_messages": 5000,
-                  "limit_contacts": 1000
-                }
+              required:
+                - name
+                - is_free
+                - price
+                - limit_devices
+                - limit_messages
+                - limit_contacts
+              properties:
+                name:
+                  type: string
+                  description: "Nombre del plan"
+                  example: "Plan Premium"
+                is_free:
+                  type: boolean
+                  description: "Indica si el plan es gratuito"
+                  example: true
+                price:
+                  type: number
+                  description: "Precio del plan"
+                  example: 49.99
+                description:
+                  type: string
+                  description: "Descripción detallada del plan"
+                  example: "Plan con todas las funcionalidades"
+                limit_devices:
+                  type: integer
+                  description: "Límite de dispositivos"
+                  example: 10
+                limit_messages:
+                  type: integer
+                  description: "Límite de mensajes"
+                  example: 5000
+                limit_contacts:
+                  type: integer
+                  description: "Límite de contactos"
+                  example: 1000
       responses:
         '200':
           description: Success
@@ -83,17 +125,34 @@ paths:
             application/json:
               schema:
                 type: object
-                example:
-                  {
-                    "message": "Plan registrado exitosamente",
-                    "data": {
-                      "id": 1,
-                      "name": "Plan Premium",
-                      "is_free": true,
-                      "price": 49.99,
-                      "description": "Plan con todas las funcionalidades",
-                      "limit_devices": 10,
-                      "limit_messages": 5000,
-                      "limit_contacts": 1000
-                    }
-                  }
+                properties:
+                  message:
+                    type: string
+                    example: "Plan registrado exitosamente"
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: "Plan Premium"
+                      is_free:
+                        type: boolean
+                        example: true
+                      price:
+                        type: number
+                        example: 49.99
+                      description:
+                        type: string
+                        example: "Plan con todas las funcionalidades"
+                      limit_devices:
+                        type: integer
+                        example: 10
+                      limit_messages:
+                        type: integer
+                        example: 5000
+                      limit_contacts:
+                        type: integer
+                        example: 1000

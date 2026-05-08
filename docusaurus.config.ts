@@ -108,7 +108,7 @@ const config: Config = {
           // Application APIs
           devices: {
             specPath: "api/devices.yaml",
-            outputDir: "generated/qr-devs/api/api-aplicacion/tenant/device",
+            outputDir: "docs/qr-devs/api/api-aplicacion/tenant/device",
             baseUrl: "/qr-devs/api/api-aplicacion/tenant/device",
             sidebarOptions: {
               groupPathsBy: "tag",
@@ -116,15 +116,23 @@ const config: Config = {
           },
           campaigns: {
             specPath: "api/campaigns.yaml",
-            outputDir: "generated/qr-devs/api/api-aplicacion/tenant/campaign",
+            outputDir: "docs/qr-devs/api/api-aplicacion/tenant/campaign",
             baseUrl: "/qr-devs/api/api-aplicacion/tenant/campaign",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+            },
+          },
+          tenant_auth: {
+            specPath: "api/tenant-auth.yaml",
+            outputDir: "docs/qr-devs/api/api-aplicacion/tenant/auth",
+            baseUrl: "/qr-devs/api/api-aplicacion/tenant/auth",
             sidebarOptions: {
               groupPathsBy: "tag",
             },
           },
           reseller: {
             specPath: "api/reseller.yaml",
-            outputDir: "generated/qr-devs/api/api-aplicacion/admin/auth",
+            outputDir: "docs/qr-devs/api/api-aplicacion/admin/auth",
             baseUrl: "/qr-devs/api/api-aplicacion/admin/auth",
             sidebarOptions: {
               groupPathsBy: "tag",
@@ -132,7 +140,7 @@ const config: Config = {
           },
           plans: {
             specPath: "api/plans.yaml",
-            outputDir: "generated/qr-devs/api/api-aplicacion/admin",
+            outputDir: "docs/qr-devs/api/api-aplicacion/admin",
             baseUrl: "/qr-devs/api/api-aplicacion/admin",
             sidebarOptions: {
               groupPathsBy: "tag",
@@ -140,7 +148,7 @@ const config: Config = {
           },
           tenants: {
             specPath: "api/tenants.yaml",
-            outputDir: "generated/qr-devs/api/api-aplicacion/admin",
+            outputDir: "docs/qr-devs/api/api-aplicacion/admin",
             baseUrl: "/qr-devs/api/api-aplicacion/admin",
             sidebarOptions: {
               groupPathsBy: "tag",

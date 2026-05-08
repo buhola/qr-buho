@@ -1,0 +1,72 @@
+---
+id: detalles-de-campana
+title: "Detalles de Campaña"
+description: "Obtener información detallada de una campaña específica."
+sidebar_label: "Detalles de Campaña"
+hide_title: true
+hide_table_of_contents: true
+api: eJylVMFu00AQ/RVrTiBtYyeiF98QRcAJCcopiqqJdxJvsXe3u+O2keUP4GM4ID6hP4ZmnaRpmxYkokhxkpk3b97Mmx40xSoYz8ZZKOHzkslSyIxdudBiZe5+20wTY9OgxkxT1lnMKmw93v3CjKKn6u7nylQ4AQUeA7bEFCKU8x4stgQlGA0KjKB75BoUBLrqTCANJYeOFMSqphah7IE3PmVYpjUFGNQjep/OhEKD2bstAxgWghe9s5GiQMyKQj4e5t39uDXsQEHlLJNliUDvG1OhROSXUcL6p0zc8pIqltaC8xTYjEU08j9EGX2kJwV0i61vCMrpoIANy+M+LHIwdn0YBbtepXUfOlqiCLMOrvPxIBNDwI0ozdTG42LuMedTNVsMClqKEdd/qf/RNagyikwZxayzWUs24iXd85kIuGinu4YukI/hpX1iKEU7OmHT0oMis2J2ejItToppNi3KQt4JlJG7+DK/XWEtCewYm4tAlfGGLB8T4iD3tJAa24V4PuzN6aBghUZqvIw37F6iLddOQwlrSqshu19Cjt7kyT9mbWMea3eT90YPIDzC9c46XWighJrZxzLPeyaLli+MHiZXYbLsajdpEB674zxFZV8TDii4xmBw2YzLuIcY3bHCrknToNY9C9QttWvRWBgG8ZkchQQ17ux+MaPUohDH5OmkmKTZeRe5xeSr7SU4S4eEomzO3sGPivf3Hv3Pa7QdE9Mt575JbahR2H47jTmgN3IVdvOQKdTuBhSURsNCQe0iS1zfLzHSt9AMg/x81VHYQDlf3IucxqZNlGcN5QqbSC+09urL9gi+zp4etWe474xuN2m4TSffQMF32oxndhBP14SaQqIz/vG2qsjzQcqTyyfD3a/rh/fnMAx/AJEoGMY=
+sidebar_class_name: "get api-method"
+info_path: qr-devs/api/api-aplicacion/tenant/campaign/campanas
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Detalles de Campaña"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/api/campaigns/show/{id}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Obtener información detallada de una campaña específica.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"id","in":"path","required":true,"schema":{"type":"integer"},"description":"ID de la Campaña"}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Éxito","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"object","properties":{"id":{"type":"integer","example":1},"title":{"type":"string","example":"Campaña de prueba"},"groups":{"type":"array","items":{"type":"integer"},"example":[1,2]},"message":{"type":"string","example":"Hola, este es un mensaje de prueba."},"schedule_at":{"type":"string","format":"date-time","example":"2025-10-01 10:00:00"},"status":{"type":"string","example":"scheduled"},"total_recipients":{"type":"integer","example":50},"sent":{"type":"integer","example":45},"failed":{"type":"integer","example":5}}}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

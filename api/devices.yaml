@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  title: "QRAPI - Devices"
+  title: "Dispositivos"
   version: 1.0.0
 servers:
   - url: https://{tenant_id}.qr.buho.la
@@ -12,99 +12,151 @@ servers:
 paths:
   "/api/devices/create":
     post:
-      summary: "Create Device"
+      summary: "Crear Dispositivo"
+      description: "Registrar una nueva instancia de WhatsApp."
       requestBody:
+        required: true
         content:
           application/json:
             schema:
               type: object
-              example:
-                {
-                  "name": "Mi Dispositivo",
-                  "phone": "51987654321"
-                }
+              required:
+                - app_name
+                - number
+              properties:
+                app_name:
+                  type: string
+                  description: "Nombre del dispositivo"
+                  example: "MiDispositivo"
+                number:
+                  type: string
+                  description: "Número de teléfono"
+                  example: "51923456781"
       responses:
         '200':
-          description: Success
+          description: Éxito
           content:
             application/json:
               schema:
                 type: object
-                example:
-                  {
-                    "message": "Dispositivo creado exitosamente",
-                    "data": {
-                      "id": 1,
-                      "name": "Mi Dispositivo",
-                      "phone": "51987654321",
-                      "status": "connected"
-                    }
-                  }
+                properties:
+                  message:
+                    type: string
+                    example: "Dispositivo creado exitosamente"
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: "Mi Dispositivo"
+                      phone:
+                        type: string
+                        example: "51987654321"
+                      status:
+                        type: string
+                        example: "connected"
   "/api/devices/list":
     get:
-      summary: "List Devices"
+      summary: "Listar Dispositivos"
+      description: "Obtener la lista de todos los dispositivos registrados."
       responses:
         '200':
-          description: Success
+          description: Éxito
           content:
             application/json:
               schema:
                 type: object
-                example:
-                  {
-                    "data": [
-                      {
-                        "id": 1,
-                        "name": "Mi Dispositivo",
-                        "phone": "51987654321",
-                        "status": "connected"
-                      }
-                    ]
-                  }
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: "Mi Dispositivo"
+                        phone:
+                          type: string
+                          example: "51987654321"
+                        status:
+                          type: string
+                          example: "connected"
+  "/api/devices/fetch":
+    get:
+      summary: "Detalles de Dispositivo"
+      description: "Obtener información técnica de una instancia."
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: integer
+          description: ID del Dispositivo
+      responses:
+        '200':
+          description: Éxito
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: "Mi Dispositivo"
+                      phone:
+                        type: string
+                        example: "51987654321"
+                      status:
+                        type: string
+                        example: "connected"
+                      qrcode:
+                        type: string
+                        example: "data:image/png;base64,..."
+  "/api/devices/reconnect/{id}":
+    get:
+      summary: "Conectar Instancia"
+      description: "Reconectar una instancia de WhatsApp."
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID de la Instancia
+      responses:
+        '200':
+          description: Éxito
   "/api/devices/delete/{id}":
     delete:
-      summary: "Delete Device"
+      summary: "Eliminar Dispositivo"
+      description: "Eliminar una instancia de WhatsApp del sistema."
       parameters:
         - name: id
           in: path
           required: true
           schema:
             type: integer
-          description: Device ID
+          description: ID del Dispositivo
       responses:
         '200':
-          description: Success
+          description: Éxito
           content:
             application/json:
               schema:
                 type: object
-                example:
-                  {
-                    "message": "Dispositivo eliminado exitosamente"
-                  }
-  "/api/devices/fetch":
-    get:
-      summary: "Fetch Device"
-      parameters:
-        - name: id
-          in: query
-          schema:
-            type: integer
-          description: Device ID
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  {
-                    "data": {
-                      "id": 1,
-                      "name": "Mi Dispositivo",
-                      "phone": "51987654321",
-                      "status": "connected",
-                      "qrcode": "data:image/png;base64,..."
-                    }
-                  }
+                properties:
+                  message:
+                    type: string
+                    example: "Dispositivo eliminado exitosamente"

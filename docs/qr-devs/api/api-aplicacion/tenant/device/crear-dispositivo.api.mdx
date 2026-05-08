@@ -1,0 +1,101 @@
+---
+id: crear-dispositivo
+title: "Crear Dispositivo"
+description: "Registrar una nueva instancia de WhatsApp."
+sidebar_label: "Crear Dispositivo"
+sidebar_position: 2
+hide_title: true
+hide_table_of_contents: true
+api: eJydVMlS3EAM/RWXzs4swLD4RpZjlgJSOUxNUbJbjJvY3U23PDDlmg/Ip+QXcuXHUmobZiFAEl+8tZ6k957UgqJQeO1YWwMZnNFcB/bok8ZgYhpaYKJNYDSFxkRR8q1EDqfODSAFTzcNBX5r1RKyNr5qTwoy9g2lUFjDZFh+oXOVLlCSDK+DZGohFCXVKE+8dAQZ2PyaCu5xO6CpRF4arAlSME2dk4dZCs5bR541hR68O7KGCuy1mUO6090nW+eeEkVVonRwNmjWCwsp0B3WrpLIj/r9xp/VY9bXse9/1eStcMRU3f+8smYbeTI+2ds/mBweHY9hFS/pNDhrQtfH3mgkt23Y+x93mgXov9ncJqumEHD+R67WpW5QkBSeUNmEpIyANRkmoUUh/0U2rTbOaMM0J7+ZaSwEPyPdpibJjiiutOaVoMn45PjocHKwvzeWiMDITXg5pLDGUMGken2iRDVxaRVk4GyIDSKXkMEQnR4qWuiCwlA4YrFoIL8gHyCbttD4CjIomV3IhsOWyaDhS61Wgxs/yJvSDip84qKLeCo5jziQwgK9xrzq2HyE6GxyhU3FkIGi2j4L1OTK1qiNtDRLQexyth7bDw+9b07RzgysR2Dbwiloc2VjXZp3bROkdvKhK2Y8GA1GUTcbuMZo2D7XO0/ok+18W520a+f/23bqdWa646GrIgVpJ0rbiyjbRcd8UUYZsk7IWQqlqJ1NoW1zDPTVV6uVfL5pyC8hm87W0sjbKoWSUAlJ0xa+01I668p+cyF1yPGqkXqeDO8qfYg4LQpy/OLZ2YYhv3w+v4AU8n791lZJjMdbWaF4CxlACjbSGO0Tv7VQoZk3cQVAhynXb2SIFJk=
+sidebar_class_name: "post api-method"
+info_path: qr-devs/api/api-aplicacion/tenant/device/dispositivos
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Crear Dispositivo"}
+></Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/api/devices/create"}
+  context={"endpoint"}
+></MethodEndpoint>
+
+Registrar una nueva instancia de WhatsApp.
+
+<Heading id={"request"} as={"h2"} className={"openapi-tabs__heading"}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails parameters={undefined}></ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{
+    required: true,
+    content: {
+      "application/json": {
+        schema: {
+          type: "object",
+          required: ["app_name", "number"],
+          properties: {
+            app_name: {
+              type: "string",
+              description: "Nombre del dispositivo",
+              example: "MiDispositivo",
+            },
+            number: {
+              type: "string",
+              description: "Número de teléfono",
+              example: "51923456781",
+            },
+          },
+        },
+      },
+    },
+  }}
+></RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{
+    "200": {
+      description: "Éxito",
+      content: {
+        "application/json": {
+          schema: {
+            type: "object",
+            properties: {
+              message: {
+                type: "string",
+                example: "Dispositivo creado exitosamente",
+              },
+              data: {
+                type: "object",
+                properties: {
+                  id: { type: "integer", example: 1 },
+                  name: { type: "string", example: "Mi Dispositivo" },
+                  phone: { type: "string", example: "51987654321" },
+                  status: { type: "string", example: "connected" },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  }}
+></StatusCodes>

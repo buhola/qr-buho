@@ -59,7 +59,7 @@ Authorization: Bearer TU_TOKEN_DE_ACCESO
    **Nota:** Este token es único para tu cuenta de tenant y es necesario para autenticar todas las solicitudes a la API. Guárdalo en un lugar seguro.
 
     <Admonition type="note" title="Obten tu token">
-      Ingresa [**aquí**](../api-aplicacion/tenant/auth/tenant-login.api.mdx) para obtener tu token. 
+      Ingresa [**aquí**](../api-aplicacion/tenant/auth/login-de-tenant.api.mdx) para obtener tu token. 
     </Admonition>
 
 2. **Conecta tu número de WhatsApp**:
@@ -69,7 +69,7 @@ Authorization: Bearer TU_TOKEN_DE_ACCESO
  - Escanea el QR que te dio la API para conectar tu número de WhatsApp al sistema Evolution.
  
     <Admonition type="note" title="Registra tu dispositivo">
-      Ingresa [**aquí**](../api-aplicacion/tenant/device/create-device.api.mdx) para crear tu dispositivo. 
+      Ingresa [**aquí**](../api-aplicacion/tenant/device/crear-dispositivo.api.mdx) para crear tu dispositivo. 
     </Admonition>
 
 <Admonition type="note" title="Nota importante">

@@ -1,0 +1,72 @@
+---
+id: detalles-de-dispositivo
+title: "Detalles de Dispositivo"
+description: "Obtener información técnica de una instancia."
+sidebar_label: "Detalles de Dispositivo"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVNtu00AQ/RVrnkBa2UlpC5gnpCDEA0KC8lRFaLI7iafYu5vdcZTK8gfwKTzzCf2xau2kpHeEXyxZ55y5nDnuwFDUgb2ws1DCl4WQpZCxXbrQoOarPzaTq9/assbMUNZazNhGQasZc1DgMWBDQiFCed6BxYagBDaggJPiuqVwCQoCrVsOZKCU0JKCqCtqEMoO5NIPFCu0ogC9utPTp1lmqM5mHL2LLLxx0M+TYPTORopJ42gySa/bxKtfWxYHCrSzQlYSAr2vWWNCFBcxwbr7rbjFBWlJwwXnKQiPRQzKP6DYPDCUAtpi42uCctqr3ZZuUFEC29UhCD7z7YEV+MrZZ0gn07dvXp+eHL86miZGFJQ2Pk3RzlrSQiYR1kE780yNtISSG1xR4e3q3QIjnR6rPM+h3z8KGpLKGShhRcOCUCoooUDPhaENa4rFkkRXoCBS2OyPpw01lFCJ+FgWRSdk0coPNn2+DvmirVxeI9w9j7MBlX0bdEDBBgPjoh7NuJEYr2OJbS1pCGrco0LtwrgG2aaB5umKl26QYhkWcGBLTOUoxJE/zSf5ZHDKRWlwOK1dHGYkWNcUU4IObb3TQvf3Uv8jiTvPhLZS+HoYQI0r7XYOnAN6HooOHoCC0YW5gspFSYCuS45+D3Xfp89jepM3hmPaqoFyiXWkJzp/8XUX9ZfZA9F9pM+fdLn/bWywbhNgSPneTSjP572CitBQGBoaGe+1Ji8HrHsBTyo39/jxwxn0/TVxLrUj
+sidebar_class_name: "get api-method"
+info_path: qr-devs/api/api-aplicacion/tenant/device/dispositivos
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Detalles de Dispositivo"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/api/devices/fetch"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Obtener información técnica de una instancia.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"id","in":"query","required":true,"schema":{"type":"integer"},"description":"ID del Dispositivo"}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Éxito","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"object","properties":{"id":{"type":"integer","example":1},"name":{"type":"string","example":"Mi Dispositivo"},"phone":{"type":"string","example":"51987654321"},"status":{"type":"string","example":"connected"},"qrcode":{"type":"string","example":"data:image/png;base64,..."}}}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

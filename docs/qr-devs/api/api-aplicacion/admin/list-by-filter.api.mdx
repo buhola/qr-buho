@@ -1,0 +1,72 @@
+---
+id: list-by-filter
+title: "List by Filter"
+description: "List by Filter"
+sidebar_label: "List by Filter"
+hide_title: true
+hide_table_of_contents: true
+api: eJylVVtP2zAU/ivReXYv0HaDPA0JNiFt0y7sCVXoJDltzRLb2CcVVeT/PjlpQyBry1heIiXfxefqCgxaLIjJOohvK1BYEMQgMxAgFcTwUJLdgACXrqhAiCvgjQkQx1aqJXgBGbnUSsNSB8INKVQcXV+CF61epguU6n81tyodXUxZrumobqJ1Tqj6wh9lzmSjZBM1SpFj5NJ1LQwupUI+biIV05Js3+RrWSRkI72IJFPhIkM2Mrgk8HMBlpzRypELSqfjcXg9p/8s05ScAwGpVkyKAwSNyWWKATK6dwFX9U+kk3tKGQQYqw1Zlo1LhtxFobUYAqoPd5wts37BBNAjFiYPnyYnZ9PZ2fnZIMFpMpgms/NBcj45HeC7bDJ9Pxmn6WwWctSk95DSVWEsObykQtdJbap/kJJRocMT8FSgzA/DMSuk+kCNzzDVReBte6rfPR0m25K8915AQfyKlKeltaT4ri57v2U6yidegCH7GuTYC2DNmB9T3D0vG/OzdBx6v5kCqINZ6QxiWFIdA/IKYhihkSOuR3CUSxf+OLLr3coobQ4xrJiNi0ejBztMypUe5ggv7b6gVNHPmlkP2HNi1TjcyczvVdjuga2GgDVaiUne5LjlNyO0wDLnbUvsFSqT3U7xYRilWuhaSnLdH99/XHy7jgZRAw8jGKJuJE6G4+E49IvRjgusG3O7Mnp5fWbe1orpkUcmb1Zak41qm/NbQCNBbGMCAXXe5wJW2nH4XVUJOvplc+/D52YphWpk0oWMZBAvMHfU8253SGdRi7+f6DdtdlfBGvMyAOq6/bNFu/0P2LSYN1rt2+QHTdvr442mezf7QdfOjfLkO3/qZohv517AijAjWxe14V2kKRnusHqXQFBpZ/jT1Q14/wcxR6qd
+sidebar_class_name: "get api-method"
+info_path: qr-devs/api/api-aplicacion/admin/qrapi-tenants
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"List by Filter"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/api/tenant/list"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+List by Filter
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"id","in":"query","schema":{"type":"string"},"description":"Tenant ID"},{"name":"domain","in":"query","schema":{"type":"string"},"description":"Tenant domain"},{"name":"active","in":"query","schema":{"type":"boolean"},"description":"Filter by active status"},{"name":"paginate","in":"query","schema":{"type":"integer"},"description":"Number of items per page"}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Success","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"array","items":{"type":"object","properties":{"id":{"type":"string","example":"31845898-ba4b-4b59-b932-a6d34730cc55"},"name":{"type":"string","example":"EmpresaDemo"},"domain":{"type":"string","example":"demooooo"},"email":{"type":"string","example":"admin@empresa.com"},"active":{"type":"boolean","example":true}}}},"meta":{"type":"object","properties":{"current_page":{"type":"integer","example":1},"per_page":{"type":"integer","example":10},"total":{"type":"integer","example":1}}}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      
